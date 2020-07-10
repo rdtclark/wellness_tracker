@@ -1,6 +1,4 @@
-# The_Java_Project
-
-## Wellbeing app
+# Wellbeing app
 
 
 Our wellbeing app is aimed towards individuals who want to track how they were feeling over a set period of time. (16 weeks codeclan)
