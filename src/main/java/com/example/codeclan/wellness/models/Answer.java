@@ -1,10 +1,12 @@
 package com.example.codeclan.wellness.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 @Entity
+@Table(name = "answers")
 public class Answer {
 
     @Id
@@ -14,18 +16,18 @@ public class Answer {
     @Column(name = "score")
     private int score;
 
-    @Column(name = "question_id")
+    @Column(name = "questionType")
     private QuestionType questionType;
 
-    @JsonIgnore
+    @JsonIgnoreProperties("answers")
     @ManyToOne
     @JoinColumn(name = "submission_id", nullable = false)
-    private Submission submission;
+    private Long submissionId;
 
-    public Answer(int score, QuestionType questionType, Submission submission) {
+    public Answer(int score, QuestionType questionType, Long submissionId) {
         this.score = score;
         this.questionType = questionType;
-        this.submission = submission;
+        this.submissionId = submissionId;
     }
 
     public Answer(){
@@ -48,11 +50,15 @@ public class Answer {
         return questionType;
     }
 
-    public Submission getSubmission() {
-        return submission;
+    public String getQuestion(){
+        return this.questionType.getQuestion();
     }
 
-    public void setSubmission(Submission submission) {
-        this.submission = submission;
+    public Long getSubmissionId() {
+        return submissionId;
+    }
+
+    public void setSubmissionId(Long submissionId) {
+        this.submissionId = submissionId;
     }
 }

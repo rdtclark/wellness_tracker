@@ -2,9 +2,11 @@ package com.example.codeclan.wellness.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.time.Instant;
 import java.util.ArrayList;
 
 @Entity
@@ -15,33 +17,33 @@ public class Submission {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonIgnore
+    @JsonIgnoreProperties("submissions")
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private Long userId;
 
-    @JsonBackReference
+    @JsonIgnoreProperties("submission")
     @OneToMany(mappedBy = "submission", fetch = FetchType.LAZY)
     private ArrayList<Answer> answers;
 
     @Column(name = "time")
-    private Time time;
+    private Instant instant;
 
-    public Submission(User user, Time time) {
-        this.user = user;
-        this.time = time;
+    public Submission(Long userId) {
+        this.userId = userId;
+//        this.instant = instant;
     }
 
     public Submission(){
 
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public ArrayList<Answer> getAnswers() {
@@ -52,11 +54,11 @@ public class Submission {
         this.answers = answers;
     }
 
-    public Time getTime() {
-        return time;
+    public Instant getTime() {
+        return instant;
     }
 
-    public void setTime(Time time) {
-        this.time = time;
+    public void setTime(Instant instant) {
+        this.instant = instant;
     }
 }

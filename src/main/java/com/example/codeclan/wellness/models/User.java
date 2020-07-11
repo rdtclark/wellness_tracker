@@ -1,8 +1,10 @@
 package com.example.codeclan.wellness.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,9 +18,10 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @JsonBackReference
+    @JsonIgnoreProperties ("user")
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Submission> submissions;
+
 
     public User(String name) {
         this.name = name;
