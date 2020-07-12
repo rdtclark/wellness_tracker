@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import WellnessContainer from '../components/WellnessContainer'
+import QuestionList from '../components/QuestionList';
 
 class WellnessContainer extends Component{
 
     constructor(props){
         super(props);
         this.state={
-            questions:[],
+            questionList:[],
             QuestionSelected: null
         }
     }
@@ -18,7 +18,7 @@ class WellnessContainer extends Component{
 
         fetch(url)
         .then(res => res.json())
-        .then(data => this.setState({questions: data}))
+        .then(data => this.setState({questionList: data}))
     }
 
     // handleQuestionSelected(questions){
@@ -28,7 +28,8 @@ class WellnessContainer extends Component{
     render(){
         return(
             <>
-               
+               <QuestionList
+               questionList={this.state.questionList}/>
             </>
         )
     }
