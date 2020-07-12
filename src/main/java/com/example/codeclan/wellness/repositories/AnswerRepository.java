@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface AnswerRepository extends JpaRepository<Answer, Long> {
 
-//    List<Answer> findAllBySubmissionsUserId( Long userId );
+//    List<Answer> findBySubmissionsUserId( Long userId );
 
 }

@@ -17,11 +17,6 @@ public class SubmissionController {
     @Autowired
     SubmissionRepository submissionRepository;
 
-//    @GetMapping("/submissions")
-//    public ResponseEntity<List<Submission>> getAllSubmissions(){
-//        return new ResponseEntity<>(submissionRepository.findAll(), HttpStatus.OK);
-//    }
-
     // /submissions?date=dd-mm-yyyy&userId=00
     @GetMapping("/submissions")
     public ResponseEntity<List<Submission>> getSubmissionsForDateAndUserId(
@@ -37,9 +32,6 @@ public class SubmissionController {
     public ResponseEntity getSubmission(@PathVariable Long id){
         return new ResponseEntity<>(submissionRepository.findById(id), HttpStatus.OK);
     }
-
-//    /submissions?
-
 
     @PostMapping("/submissions")
     public ResponseEntity<Submission> postSubmission(@RequestBody Submission sub){
