@@ -6,7 +6,9 @@ const Question = ({type}) => {
 
     return(
         <div>
+            <li>
             {type}
+            </li>
         </div>
     )
 }

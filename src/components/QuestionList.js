@@ -1,19 +1,23 @@
 import React from 'react';
-import Question from './Question';
+import Question from '.Question';
 
 const QuestionList = ({questionList}) => {
 
     const questions = questionList.map(question => {
 
-        return {
+        return (
             <Question
-            type={question.type}/>
-        }
+            type={question.type}
+            key={question.id}>
+            </Question>
+        )
     })
 
     return(
         <div>
+            <ul>
             {questions}
+            </ul>
         </div>
     )
 }
