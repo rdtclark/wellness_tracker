@@ -32,7 +32,7 @@ public class DataLoader implements ApplicationRunner {
         //User
         User neil = new User("Neil");
         userRepository.save(neil);
-        
+
         //Submission
         Submission submission1 = new Submission(neil, 4, "Enjoyed my 10k run");
         submissionRepository.save(submission1);

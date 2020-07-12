@@ -25,6 +25,7 @@ public class User {
 
     public User(String name) {
         this.name = name;
+        this.submissions = new ArrayList<Submission>();
     }
 
     public User(){

@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.sql.Time;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "submissions")
@@ -24,7 +25,7 @@ public class Submission {
 
     @JsonIgnoreProperties("submission")
     @OneToMany(mappedBy = "submission", fetch = FetchType.LAZY)
-    private ArrayList<Answer> answers;
+    private List<Answer> answers;
 
     @Column(name = "dayScore")
     private int dayScore;
@@ -39,6 +40,7 @@ public class Submission {
         this.user = user;
         this.dayScore = dayScore;
         this.dayComment = dayComment;
+        this.answers = new ArrayList<Answer>();
     }
 
     public Submission(){
@@ -53,7 +55,7 @@ public class Submission {
         this.user = user;
     }
 
-    public ArrayList<Answer> getAnswers() {
+    public List<Answer> getAnswers() {
         return answers;
     }
 
