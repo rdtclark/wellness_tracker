@@ -20,30 +20,37 @@ public class Submission {
     @JsonIgnoreProperties("submissions")
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private Long userId;
+    private User user;
 
     @JsonIgnoreProperties("submission")
     @OneToMany(mappedBy = "submission", fetch = FetchType.LAZY)
     private ArrayList<Answer> answers;
 
+    @Column(name = "dayScore")
+    private int dayScore;
+
+    @Column(name = "dayComment")
+    private String dayComment;
+
     @Column(name = "time")
     private Instant instant;
 
-    public Submission(Long userId) {
-        this.userId = userId;
-//        this.instant = instant;
+    public Submission(User user, int dayScore, String dayComment) {
+        this.user = user;
+        this.dayScore = dayScore;
+        this.dayComment = dayComment;
     }
 
     public Submission(){
 
     }
 
-    public Long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public ArrayList<Answer> getAnswers() {
@@ -60,5 +67,21 @@ public class Submission {
 
     public void setTime(Instant instant) {
         this.instant = instant;
+    }
+
+    public int getDayScore() {
+        return dayScore;
+    }
+
+    public void setDayScore(int dayScore) {
+        this.dayScore = dayScore;
+    }
+
+    public String getDayComment() {
+        return dayComment;
+    }
+
+    public void setDayComment(String dayComment) {
+        this.dayComment = dayComment;
     }
 }

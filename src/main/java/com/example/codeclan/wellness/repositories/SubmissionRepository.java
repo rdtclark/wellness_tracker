@@ -1,4 +1,7 @@
 package com.example.codeclan.wellness.repositories;
 
-public interface SubmissionRepository {
+import com.example.codeclan.wellness.models.Submission;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface SubmissionRepository extends JpaRepository<Submission, Long> {
 }

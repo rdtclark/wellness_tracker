@@ -22,12 +22,12 @@ public class Answer {
     @JsonIgnoreProperties("answers")
     @ManyToOne
     @JoinColumn(name = "submission_id", nullable = false)
-    private Long submissionId;
+    private Submission submission;
 
-    public Answer(int score, QuestionType questionType, Long submissionId) {
+    public Answer(Submission submission, int score, QuestionType questionType) {
+        this.submission = submission;
         this.score = score;
         this.questionType = questionType;
-        this.submissionId = submissionId;
     }
 
     public Answer(){
@@ -54,11 +54,11 @@ public class Answer {
         return this.questionType.getQuestion();
     }
 
-    public Long getSubmissionId() {
-        return submissionId;
+    public Submission getSubmission() {
+        return submission;
     }
 
-    public void setSubmissionId(Long submissionId) {
-        this.submissionId = submissionId;
+    public void setSubmission(Submission submission) {
+        this.submission = submission;
     }
 }
