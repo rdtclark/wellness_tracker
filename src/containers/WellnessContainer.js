@@ -6,8 +6,8 @@ class WellnessContainer extends Component{
     constructor(props){
         super(props);
         this.state={
-            wellness:[],
-            WellnessSelected: null
+            questions:[],
+            QuestionSelected: null
         }
     }
 
@@ -18,12 +18,12 @@ class WellnessContainer extends Component{
 
         fetch(url)
         .then(res => res.json())
-        .then(data => this.setState({wellness: data}))
+        .then(data => this.setState({questions: data}))
     }
 
-    handlePirateSelected(wellness){
-        this.setState({WellnessSelected: wellness})
-    }
+    // handleQuestionSelected(questions){
+    //     this.setState({QuestionSelected: questions})
+    // }
 
     render(){
         return(
