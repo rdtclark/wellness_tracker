@@ -34,10 +34,10 @@ public class DataLoader implements ApplicationRunner {
         userRepository.save(neil);
 
         //Submission
-        Submission submission1 = new Submission(neil, 4, "Enjoyed my 10k run");
+        Submission submission1 = new Submission(neil, 4, "Enjoyed my 10k run", "12-06-2020");
         submissionRepository.save(submission1);
 
-        Submission submission2 = new Submission(neil, 1, "Didn't sleep");
+        Submission submission2 = new Submission(neil, 1, "Didn't sleep","13-06-2020");
         submissionRepository.save(submission2);
 
         //Answer

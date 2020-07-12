@@ -17,8 +17,19 @@ public class SubmissionController {
     @Autowired
     SubmissionRepository submissionRepository;
 
+//    @GetMapping("/submissions")
+//    public ResponseEntity<List<Submission>> getAllSubmissions(){
+//        return new ResponseEntity<>(submissionRepository.findAll(), HttpStatus.OK);
+//    }
+
+    // /submissions?date=dd-mm-yyyy&userId=00
     @GetMapping("/submissions")
-    public ResponseEntity<List<Submission>> getAllSubmissions(){
+    public ResponseEntity<List<Submission>> getSubmissionsForDateAndUserId(
+            @RequestParam(name = "date", required = false) String date,
+            @RequestParam(name = "userId", required = false) Long userId){
+        if (date != null && userId != null){
+            return new ResponseEntity<>(submissionRepository.findByDateAndUserId(date, userId), HttpStatus.OK);
+        }
         return new ResponseEntity<>(submissionRepository.findAll(), HttpStatus.OK);
     }
 
@@ -27,10 +38,13 @@ public class SubmissionController {
         return new ResponseEntity<>(submissionRepository.findById(id), HttpStatus.OK);
     }
 
+//    /submissions?
+
+
     @PostMapping("/submissions")
     public ResponseEntity<Submission> postSubmission(@RequestBody Submission sub){
-        Submission newSub = new Submission(sub.getUser(), sub.getDayScore(), sub.getDayComment());
-        submissionRepository.save(sub);
+        Submission newSub = new Submission(sub.getUser(), sub.getDayScore(), sub.getDayComment(), sub.getDate());
+        submissionRepository.save(newSub);
         return new ResponseEntity<>(newSub, HttpStatus.CREATED);
     }
 }

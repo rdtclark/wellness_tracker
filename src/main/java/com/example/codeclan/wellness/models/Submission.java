@@ -34,15 +34,14 @@ public class Submission {
     private String dayComment;
 
     @Column(name = "time")
-    private Instant instant;
+    private String date;
 
-    public Submission(User user, int dayScore, String dayComment) {
+    public Submission(User user, int dayScore, String dayComment, String date) {
         this.user = user;
         this.dayScore = dayScore;
         this.dayComment = dayComment;
         this.answers = new ArrayList<Answer>();
-        long unixTime = Instant.now().getEpochSecond();
-        this.instant = Instant.ofEpochSecond(unixTime);
+        this.date = date;
     }
 
     public Submission(){
@@ -69,12 +68,12 @@ public class Submission {
         this.answers = answers;
     }
 
-    public Instant getTime() {
-        return instant;
+    public String getDate() {
+        return date;
     }
 
-    public void setTime(Instant instant) {
-        this.instant = instant;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public int getDayScore() {
