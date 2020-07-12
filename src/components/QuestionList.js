@@ -16,7 +16,8 @@ class QuestionList extends Component {
         const questions = this.props.questionList.map(question => {
           return <Question
             question_content={question.content}
-            key={question.id}>
+            key={question.id}
+            id={question.id}>
             </Question>
         
         });

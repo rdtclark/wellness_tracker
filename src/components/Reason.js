@@ -4,9 +4,14 @@ const Reason = ({}) => {
 
     return(
         <div>
-            <li>
-            <h3>Good/Bad Day Reason [Box]</h3>
-            </li>
+            
+            <p>Good/Bad Day Reason [Box]</p>
+            <input 
+            type="text" 
+            placeholder="Answer" 
+            id="day-reason"
+            />
+            <input type="submit" value="Submit" />
         </div>
     )
     

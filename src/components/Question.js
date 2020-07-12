@@ -8,7 +8,7 @@ class Question extends Component{
 
     render() {
 
-    if (!this.props.question_content && !this.props.key) return null;
+    if (!this.props.question_content && !this.props.id) return null;
     
     return(
         <>
@@ -18,7 +18,7 @@ class Question extends Component{
             <input 
             type="text" 
             placeholder="Answer" 
-            id={this.props.key}
+            id={this.props.id}
             />
         </>
     )
