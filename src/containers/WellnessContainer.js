@@ -28,8 +28,8 @@ class WellnessContainer extends Component{
     render(){
         return(
             <>
-               <QuestionList
-               questionList={this.state.questionList}/>
+                <QuestionList
+                questionList={this.state.questionList}/>
             </>
         )
     }
