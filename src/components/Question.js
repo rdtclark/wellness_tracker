@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Question = ({type}) => {
+const Question = ({question_content}) => {
 
-    if (!type) return null;
+    if (!question_content) return null;
 
     return(
         <div>
             <li>
-            {type}
+            {question_content}
             </li>
         </div>
     )

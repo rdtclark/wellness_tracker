@@ -6,23 +6,25 @@ class WellnessContainer extends Component{
     constructor(props){
         super(props);
         this.state={
-            questionList:[],
-            QuestionSelected: null
+            // questionList:[]
+            questionList:[
+                { "id":"SLEEP", "content":"How well did you sleep?" }, 
+                { "id":"EAT", "content":"Did you eat well?" },
+                { "id":"PHYSICAL", "content":"Have you exercised?" },
+                { "id":"MENTAL", "content":"Did you learn anything new?" },
+                { "id":"SOCIAL", "content": "Did you speak to anyone?" } 
+            ]
         }
-    }
+    } 
 
     // http://localhost:8080
 
-    componentDidMount(){
-        const url = "/"
+    // componentDidMount(){
+    //     const url = "/"
 
-        fetch(url)
-        .then(res => res.json())
-        .then(data => this.setState({questionList: data}))
-    }
-
-    // handleQuestionSelected(questions){
-    //     this.setState({QuestionSelected: questions})
+    //     fetch(url)
+    //     .then(res => res.json())
+    //     .then(data => this.setState({questionList: data}))
     // }
 
     render(){
@@ -33,8 +35,5 @@ class WellnessContainer extends Component{
             </>
         )
     }
-
-
-
 }
 export default WellnessContainer;

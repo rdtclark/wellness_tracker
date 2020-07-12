@@ -1,5 +1,5 @@
 import React from 'react';
-import Question from '.Question';
+import Question from './Question';
 
 const QuestionList = ({questionList}) => {
 
@@ -7,7 +7,7 @@ const QuestionList = ({questionList}) => {
 
         return (
             <Question
-            type={question.type}
+            question_content={question.content}
             key={question.id}>
             </Question>
         )
