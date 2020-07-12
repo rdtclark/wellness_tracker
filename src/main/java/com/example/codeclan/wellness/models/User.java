@@ -1,8 +1,5 @@
 package com.example.codeclan.wellness.models;
 
-<<<<<<< HEAD
-public class User {
-=======
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -71,5 +68,4 @@ public class User {
     public void setQuestions(ArrayList<QuestionType> questions) {
         this.questions = questions;
     }
->>>>>>> models_branch
 }

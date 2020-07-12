@@ -1,8 +1,5 @@
 package com.example.codeclan.wellness.models;
 
-<<<<<<< HEAD
-public class Answer {
-=======
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -64,5 +61,5 @@ public class Answer {
     public void setSubmission(Submission submission) {
         this.submission = submission;
     }
->>>>>>> models_branch
+
 }

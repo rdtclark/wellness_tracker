@@ -1,8 +1,6 @@
 package com.example.codeclan.wellness.models;
 
 public enum QuestionType {
-<<<<<<< HEAD
-=======
     SLEEP(1L, "How well did you sleep?"),
     EAT(2L, "Did you eat well?"),
     SOCIAL(3L, "How were your social interactions?"),
@@ -24,5 +22,4 @@ public enum QuestionType {
     public String getQuestion() {
         return question;
     }
->>>>>>> models_branch
 }
