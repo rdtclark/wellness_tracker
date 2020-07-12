@@ -1,27 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Question from './Question';
 import Reason from './Reason';
 
-const QuestionList = ({questionList}) => {
+class QuestionList extends Component {
+    
+    constructor(props) {
+        super(props);
+        this.state = {
+            answers: []
+        }
+    }
 
-    const questions = questionList.map(question => {
+    render() {
 
-        return (
-            <Question
+        const questions = this.props.questionList.map(question => {
+          return <Question
             question_content={question.content}
             key={question.id}>
             </Question>
+        
+        });
+        
+        return (
+            <>
+                <form className="question-form">      
+                {questions}
+                <Reason/>
+                </form>
+            </>
         )
-    })
-
-    return(
-        <div>
-            <ul>
-            {questions}
-            </ul>
-            <Reason/>
-        </div>
-    )
+    }
 }
+
 
 export default QuestionList;
