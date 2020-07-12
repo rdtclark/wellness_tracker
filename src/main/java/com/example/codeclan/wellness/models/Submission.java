@@ -41,6 +41,8 @@ public class Submission {
         this.dayScore = dayScore;
         this.dayComment = dayComment;
         this.answers = new ArrayList<Answer>();
+        long unixTime = Instant.now().getEpochSecond();
+        this.instant = Instant.ofEpochSecond(unixTime);
     }
 
     public Submission(){
