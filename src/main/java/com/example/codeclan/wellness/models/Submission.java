@@ -49,6 +49,10 @@ public class Submission {
 
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public User getUser() {
         return user;
     }
@@ -88,4 +92,5 @@ public class Submission {
     public void setDayComment(String dayComment) {
         this.dayComment = dayComment;
     }
+
 }

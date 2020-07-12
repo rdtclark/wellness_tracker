@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,5 +21,11 @@ public class AnswerController {
     @GetMapping("/answers")
     public ResponseEntity<List<Answer>> getAllAnswers(){
         return new ResponseEntity<>(answerRepository.findAll(), HttpStatus.OK);
+    }
+
+    @PostMapping("/answers")
+    public ResponseEntity<Answer> postAnswer(@RequestBody Answer answer){
+        answerRepository.save(answer);
+        return new ResponseEntity<>(answer, HttpStatus.CREATED);
     }
 }
