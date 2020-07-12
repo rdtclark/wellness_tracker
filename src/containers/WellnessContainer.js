@@ -12,7 +12,8 @@ class WellnessContainer extends Component{
                 { "id":"EAT", "content":"Did you eat well?" },
                 { "id":"PHYSICAL", "content":"Have you exercised?" },
                 { "id":"MENTAL", "content":"Did you learn anything new?" },
-                { "id":"SOCIAL", "content": "Did you speak to anyone?" } 
+                { "id":"SOCIAL", "content": "Did you speak to anyone?" },
+                { "id":"DAY", "content": "Rate your day?" }
             ]
         }
     } 

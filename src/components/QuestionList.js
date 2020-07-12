@@ -1,5 +1,6 @@
 import React from 'react';
 import Question from './Question';
+import Reason from './Reason';
 
 const QuestionList = ({questionList}) => {
 
@@ -18,6 +19,7 @@ const QuestionList = ({questionList}) => {
             <ul>
             {questions}
             </ul>
+            <Reason/>
         </div>
     )
 }
