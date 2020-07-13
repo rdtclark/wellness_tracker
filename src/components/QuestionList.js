@@ -96,10 +96,10 @@ class QuestionList extends Component {
         
         return (
             <>
-                <form className="question-form" onSubmit={this.handleSubmit}>      
+                <form className="" onSubmit={this.handleSubmit}>      
                 {questions}
                 <p>Good/Bad Day Reason [Box]</p>
-                <input 
+                <input className="field"
                 type="text" 
                 placeholder="Answer"
                 id="day-comment"

@@ -55,7 +55,7 @@ class ReasonByDate extends Component {
                 <h1><b>Select a date</b></h1>
             <form onSubmit={this.handleSubmit}>
                 <label for="sdate">Start Date</label>
-                <input
+                <input className="control"
                 type="date"
                 name="sdate"
                 value={this.state.startDate}
@@ -63,13 +63,13 @@ class ReasonByDate extends Component {
 
 
                 <label for="edate">End Date</label>
-                <input
+                <input className="control"
                 type="date"
                 name="edate"
                 value={this.state.endDate}
                 onChange={this.handleEndDateChange}/>
 
-                <input
+                <input className="button is-info is-inverted" 
                 type="submit"
                 value="Get"/>
             </form>
