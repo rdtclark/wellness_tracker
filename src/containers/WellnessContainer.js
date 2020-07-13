@@ -8,17 +8,7 @@ class WellnessContainer extends Component{
     constructor(props){
         super(props);
         this.state={
-            // questionList:[]
-            questionList:[
-                { "id":"SLEEP", "content":"How well did you sleep?" }, 
-                { "id":"EAT", "content":"Did you eat well?" },
-                { "id":"PHYSICAL", "content":"Have you exercised?" },
-                { "id":"MENTAL", "content":"Did you learn anything new?" },
-                { "id":"SOCIAL", "content": "Did you speak to anyone?" },
-                { "id":"DAY", "content": "Rate your day?" }
-            ],
-            answers: [],
-        
+            questionList:[],
             previousResults: [],
             previousResultsTest: [
                 {"id": 1, "user": "Frank", "answers":[], "dayScore": 5, "dayComment": "Met with friends", "date": "12-06-2020"},
@@ -39,13 +29,13 @@ class WellnessContainer extends Component{
 
     // http://localhost:8080
 
-    // componentDidMount(){
-    //     const url = "/"
+    componentDidMount() {
+        const url = "http://localhost:8080/questions"
 
-    //     fetch(url)
-    //     .then(res => res.json())
-    //     .then(data => this.setState({questionList: data}))
-    // }
+        fetch(url)
+        .then(res => res.json())
+        .then(data => this.setState({questionList: data}))
+    }
 
     handleAnswerSubmit(submittedAnswers) {
         
@@ -59,31 +49,32 @@ class WellnessContainer extends Component{
             body: JSON.stringify({"userId": 1,
                 "dayScore": submittedAnswers.DAY,
                 "dayComment": submittedAnswers.dayComment,
+                // TODO set date dynamically
                 "date": "01-09-2020",
                 "answers": [
                     {
                     "question": "SLEEP",
-                    "score": parseInt(submittedAnswers.SLEEP, 10)
+                    "score": submittedAnswers.SLEEP
                     },
                             {
                     "question": "EAT",
-                    "score": parseInt(submittedAnswers.EAT, 10)
+                    "score": submittedAnswers.EAT
                     },
                             {
                     "question": "MENTAL",
-                    "score": parseInt(submittedAnswers.MENTAL, 10)
+                    "score": submittedAnswers.MENTAL
                     },
                             {
                     "question": "PHYSICAL",
-                    "score": parseInt(submittedAnswers.PHYSICAL, 10)
+                    "score": submittedAnswers.PHYSICAL
                     },
                             {
                     "question": "SLEEP",
-                    "score": parseInt(submittedAnswers.SLEEP, 10)
+                    "score": submittedAnswers.SLEEP
                     },
                             {
                     "question": "SOCIAL",
-                    "score": parseInt(submittedAnswers.SOCIAL, 10)
+                    "score": submittedAnswers.SOCIAL
                 
                             }
                 ]
