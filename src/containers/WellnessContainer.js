@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import QuestionList from '../components/QuestionList';
 import ReviewList from '../components/ReviewList';
 import ReasonByDate from '../components/ReasonByDate';
+import Greeting from '../components/Greeting';
 
 class WellnessContainer extends Component{
 
     constructor(props){
         super(props);
         this.state={
+            user: [],
             questionList:[],
             previousResults: [],
             previousResultsTest: [
@@ -25,16 +27,24 @@ class WellnessContainer extends Component{
         this.handleDateSubmit = this.handleDateSubmit.bind(this);
     }
 
-    
-
     // http://localhost:8080
 
     componentDidMount() {
-        const url = "http://localhost:8080/questions"
 
-        fetch(url)
+        // Get all questiosn
+        const questions_url = "http://localhost:8080/questions"
+
+        fetch(questions_url)
         .then(res => res.json())
         .then(data => this.setState({questionList: data}))
+
+        // Get User Data
+        const users_url = "http://localhost:8080/users/1"
+
+        fetch(users_url)
+        .then(res => res.json())
+        .then(data => this.setState({user: data}))
+
     }
 
     handleAnswerSubmit(submittedAnswers) {
@@ -75,10 +85,6 @@ class WellnessContainer extends Component{
                     "score": submittedAnswers.PHYSICAL
                     },
                             {
-                    "question": "SLEEP",
-                    "score": submittedAnswers.SLEEP
-                    },
-                            {
                     "question": "SOCIAL",
                     "score": submittedAnswers.SOCIAL
                 
@@ -115,6 +121,10 @@ class WellnessContainer extends Component{
 
         return(
             <>
+                <Greeting
+                name={this.state.user.name}
+                />
+
                 <QuestionList
                 questionList={this.state.questionList}
                 onAnswerSubmit={this.handleAnswerSubmit}
