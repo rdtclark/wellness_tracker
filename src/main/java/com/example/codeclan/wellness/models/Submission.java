@@ -18,7 +18,8 @@ public class Submission {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonIgnoreProperties("submissions")
+//    @JsonIgnoreProperties("submissions")
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -40,7 +41,7 @@ public class Submission {
         this.user = user;
         this.dayScore = dayScore;
         this.dayComment = dayComment;
-        this.answers = new ArrayList<Answer>();
+        this.answers = new ArrayList<>();
         this.date = date;
     }
 

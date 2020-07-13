@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,10 +18,11 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @JsonIgnoreProperties ("user")
+//    @JsonIgnoreProperties ("user")
+    @JsonBackReference
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Submission> submissions;
-    
+
     @Column(name = "questions")
     private ArrayList<QuestionType> questions;
 
