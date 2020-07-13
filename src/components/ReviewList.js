@@ -5,6 +5,16 @@ const ReviewList = ({previousResults, previousResultsTest}) => {
 
 //USING OUR BACKEND
 
+    const reasons = previousResults.map(reason => {
+        return(
+            <Reason
+            reason={reason.dayComment}
+            key={reason.id}>
+
+            </Reason>
+        )
+    })
+
     const goodReasons = previousResults.map(reason => {
 
         if (reason.dayScore > 3){ 
@@ -80,7 +90,9 @@ const ReviewList = ({previousResults, previousResultsTest}) => {
     return(
         <>
         <div>
-            <h3><b>Good</b></h3>
+            {reasons}
+
+            {/* <h3><b>Good</b></h3>
             <p>{goodReasons}</p>
         </div>
         <div>
@@ -101,7 +113,7 @@ const ReviewList = ({previousResults, previousResultsTest}) => {
         </div>
         <div>
             <h3><b>June Bad</b></h3>
-            <p>{sortBadByDateTest}</p>
+            <p>{sortBadByDateTest}</p> */}
         </div>
         </>
     )

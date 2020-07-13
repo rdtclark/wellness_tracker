@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import QuestionList from '../components/QuestionList';
 import ReviewList from '../components/ReviewList';
+import ReasonByDate from '../components/ReasonByDate';
 
 class WellnessContainer extends Component{
 
@@ -31,6 +32,7 @@ class WellnessContainer extends Component{
             ]
         }
         this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
+        this.handleDateSubmit = this.handleDateSubmit.bind(this);
     }
 
     
@@ -94,13 +96,24 @@ class WellnessContainer extends Component{
 
     }
     
-    componentDidMount(){
-        const url = "/submissions"
+    // componentDidMount(){
+    //     const url = "/submissions"
 
+    //     fetch(url)
+    //     .then(res => res.json())
+    //     .then(data => this.setState({previousResults: data}))
+
+    // }
+
+    handleDateSubmit(dates){
+
+        console.log(dates.startDate);
+        const url =`http://localhost:8080/submissions/1?from=${dates.startDate}&to=${dates.endDate}`
         fetch(url)
         .then(res => res.json())
         .then(data => this.setState({previousResults: data}))
-
+        .then(console.log(this.state.previousResults));
+        console.log(url);
     }
 
 
@@ -115,6 +128,9 @@ class WellnessContainer extends Component{
                 <ReviewList 
                 previousResults={this.state.previousResults} 
                 previousResultsTest={this.state.previousResultsTest}/>
+
+                <ReasonByDate
+                onDateSubmit={this.handleDateSubmit}/>
             </>
             )
         }
