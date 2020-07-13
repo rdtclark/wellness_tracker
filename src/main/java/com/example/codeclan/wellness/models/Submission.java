@@ -6,8 +6,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -34,15 +39,20 @@ public class Submission {
     @Column(name = "dayComment")
     private String dayComment;
 
-    @Column(name = "time")
-    private String date;
+    @Column(name = "date")
+    @Temporal(TemporalType.DATE)
+    private Date date;
 
-    public Submission(User user, int dayScore, String dayComment, String date) {
+
+
+    public Submission(User user, int dayScore, String dayComment, String dateString) throws ParseException {
+        DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         this.user = user;
         this.dayScore = dayScore;
         this.dayComment = dayComment;
         this.answers = new ArrayList<>();
-        this.date = date;
+
+        this.date = format.parse(dateString);
     }
 
     public Submission(){
@@ -69,11 +79,11 @@ public class Submission {
         this.answers = answers;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
