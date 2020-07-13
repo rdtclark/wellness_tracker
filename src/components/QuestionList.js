@@ -40,7 +40,7 @@ class QuestionList extends Component {
         EAT: EAT,
         PHYSICAL: PHYSICAL,
         MENTAL: MENTAL,
-        SOCIAL:SOCIAL,
+        SOCIAL: SOCIAL,
         DAY: DAY,
         dayComment: dayComment
       });

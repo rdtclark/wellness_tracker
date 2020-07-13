@@ -14,7 +14,8 @@ class WellnessContainer extends Component{
                 { "id":"MENTAL", "content":"Did you learn anything new?" },
                 { "id":"SOCIAL", "content": "Did you speak to anyone?" },
                 { "id":"DAY", "content": "Rate your day?" }
-            ]
+            ],
+            answers: []
         };
         this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
     } 
@@ -30,8 +31,80 @@ class WellnessContainer extends Component{
     // }
 
     handleAnswerSubmit(submittedAnswers) {
+        
+        // TODO: make Date - yesterady if time past 5pm
         // submittedAnswers.timestamp = Date.now();
-        console.log(submittedAnswers);
+
+        // {
+        //     "userId": 1,
+        //     "dayScore": 4,
+        //     "dayComment": "bof bof",
+        //     "date": "30-07-2020",
+        //     "answers": [
+        //         {
+        //             "question": "SLEEP",
+        //             "score": 3
+        //         },
+        //                 {
+        //             "question": "EAT",
+        //             "score": 3
+        //         },
+        //                 {
+        //             "question": "SOCIAL",
+        //             "score": 3
+        //         }
+        //     ]
+        // }
+
+            // { DAY: "1",
+            // EAT: "3",
+            // MENTAL: "2",
+            // PHYSICAL: "34",
+            // SLEEP: "12",
+            // SOCIAL: "1",
+            // dayComment: "5" }
+
+        const requestOptions = {
+                
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({"userId": 1,
+                "dayScore": submittedAnswers.DAY,
+                "dayComment": submittedAnswers.dayComment,
+                "date": "01-09-2020",
+                "answers": [
+                    {
+                        "question": "SLEEP",
+                        "score": parseInt(submittedAnswers.SLEEP, 10)
+                    },
+                            {
+                        "question": "EAT",
+                        "score": parseInt(submittedAnswers.EAT, 10)
+                    },
+                            {
+                        "question": "MENTAL",
+                        "score": parseInt(submittedAnswers.MENTAL, 10)
+                    },
+                            {
+                    "question": "PHYSICAL",
+                    "score": parseInt(submittedAnswers.PHYSICAL, 10)
+                    },
+                            {
+                    "question": "SLEEP",
+                    "score": parseInt(submittedAnswers.SLEEP, 10)
+                    },
+                            {
+                    "question": "SOCIAL",
+                    "score": parseInt(submittedAnswers.SOCIAL, 10)
+                
+                            }
+                ]
+            })
+        };
+        // console.log(requestOptions);
+        fetch('http://localhost:8080/submissions', requestOptions)
+        .then(response => response.json())
+
       }
 
     render(){
