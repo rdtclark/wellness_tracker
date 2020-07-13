@@ -1,19 +1,20 @@
 package com.example.codeclan.wellness.controllers.messages;
 
+import com.example.codeclan.wellness.models.Question;
 import com.example.codeclan.wellness.models.QuestionType;
 
 import java.io.Serializable;
 
 public class AnswerRequest implements Serializable {
 
-    private QuestionType question;
+    private String question;
     private int score;
 
-    public QuestionType getQuestion() {
+    public String getQuestion() {
         return question;
     }
 
-    public void setQuestion(QuestionType question) {
+    public void setQuestion(String question) {
         this.question = question;
     }
 

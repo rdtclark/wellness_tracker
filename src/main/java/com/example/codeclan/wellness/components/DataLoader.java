@@ -1,10 +1,8 @@
 package com.example.codeclan.wellness.components;
 
-import com.example.codeclan.wellness.models.Answer;
-import com.example.codeclan.wellness.models.QuestionType;
-import com.example.codeclan.wellness.models.Submission;
-import com.example.codeclan.wellness.models.User;
+import com.example.codeclan.wellness.models.*;
 import com.example.codeclan.wellness.repositories.AnswerRepository;
+import com.example.codeclan.wellness.repositories.QuestionRepository;
 import com.example.codeclan.wellness.repositories.SubmissionRepository;
 import com.example.codeclan.wellness.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +24,30 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     UserRepository userRepository;
     
+    @Autowired
+    QuestionRepository questionRepository;
+    
     public DataLoader(){
         
     }
     
     public void run(ApplicationArguments args) throws ParseException {
+        //Questions
+        Question sleep = new Question("SLEEP", "How well did you sleep?");
+        questionRepository.save(sleep);
+        
+        Question eat = new Question("EAT", "Did you eat well?");
+        questionRepository.save(eat);
+        
+        Question social = new Question("SOCIAL", "Did you speak to anyone?");
+        questionRepository.save(social);
+        
+        Question mental = new Question("MENTAL", "Did you learn anything new?");
+        questionRepository.save(mental);
+        
+        Question physical = new Question("PHYSICAL", "Have you exercised?");
+        questionRepository.save(physical);
+                
         //User
         User neil = new User("Neil");
         userRepository.save(neil);
@@ -46,49 +63,49 @@ public class DataLoader implements ApplicationRunner {
         submissionRepository.save(submission3);
 
         //Answer
-        Answer answer1 = new Answer(submission1, 3, QuestionType.SLEEP);
+        Answer answer1 = new Answer(submission1, 3, sleep.getId());
         answerRepository.save(answer1);
 
-        Answer answer2 = new Answer(submission1, 3, QuestionType.EAT);
+        Answer answer2 = new Answer(submission1, 3, eat.getId());
         answerRepository.save(answer2);
 
-        Answer answer3 = new Answer(submission1, 4, QuestionType.MENTAL);
+        Answer answer3 = new Answer(submission1, 4, mental.getId());
         answerRepository.save(answer3);
 
-        Answer answer4 = new Answer(submission1, 3, QuestionType.SOCIAL);
+        Answer answer4 = new Answer(submission1, 3, social.getId());
         answerRepository.save(answer4);
 
-        Answer answer5 = new Answer(submission1, 5, QuestionType.PHYSICAL);
+        Answer answer5 = new Answer(submission1, 5, physical.getId());
         answerRepository.save(answer5);
 
-        Answer answer6 = new Answer(submission2, 1, QuestionType.SLEEP);
+        Answer answer6 = new Answer(submission2, 1, sleep.getId());
         answerRepository.save(answer6);
 
-        Answer answer7 = new Answer(submission2, 3, QuestionType.EAT);
+        Answer answer7 = new Answer(submission2, 3, eat.getId());
         answerRepository.save(answer7);
 
-        Answer answer8 = new Answer(submission2, 2, QuestionType.MENTAL);
+        Answer answer8 = new Answer(submission2, 2, mental.getId());
         answerRepository.save(answer8);
 
-        Answer answer9 = new Answer(submission2, 2, QuestionType.SOCIAL);
+        Answer answer9 = new Answer(submission2, 2, social.getId());
         answerRepository.save(answer9);
 
-        Answer answer10 = new Answer(submission2, 3, QuestionType.PHYSICAL);
+        Answer answer10 = new Answer(submission2, 3, physical.getId());
         answerRepository.save(answer10);
 
-        Answer answer11 = new Answer(submission3, 4, QuestionType.SLEEP);
+        Answer answer11 = new Answer(submission3, 4, sleep.getId());
         answerRepository.save(answer11);
 
-        Answer answer12 = new Answer(submission3, 4, QuestionType.EAT);
+        Answer answer12 = new Answer(submission3, 4, eat.getId());
         answerRepository.save(answer12);
 
-        Answer answer13 = new Answer(submission3, 5, QuestionType.MENTAL);
+        Answer answer13 = new Answer(submission3, 5, mental.getId());
         answerRepository.save(answer13);
 
-        Answer answer14 = new Answer(submission3, 5, QuestionType.SOCIAL);
+        Answer answer14 = new Answer(submission3, 5, social.getId());
         answerRepository.save(answer14);
 
-        Answer answer15 = new Answer(submission3, 5, QuestionType.PHYSICAL);
+        Answer answer15 = new Answer(submission3, 5, physical.getId());
         answerRepository.save(answer15);
     }
 }

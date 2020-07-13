@@ -51,7 +51,6 @@ public class Submission {
         this.dayScore = dayScore;
         this.dayComment = dayComment;
         this.answers = new ArrayList<>();
-
         this.date = format.parse(dateString);
     }
 

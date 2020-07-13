@@ -16,18 +16,18 @@ public class Answer {
     @Column(name = "score")
     private int score;
 
-    @Column(name = "questionType")
-    private QuestionType questionType;
+    @Column(name = "question")
+    private String question;
 
     @JsonIgnoreProperties("answers")
     @ManyToOne
     @JoinColumn(name = "submission_id", nullable = false)
     private Submission submission;
 
-    public Answer(Submission submission, int score, QuestionType questionType) {
+    public Answer(Submission submission, int score, String question) {
         this.submission = submission;
         this.score = score;
-        this.questionType = questionType;
+        this.question = question;
     }
 
     public Answer(){
@@ -46,12 +46,12 @@ public class Answer {
         this.score = score;
     }
 
-    public QuestionType getQuestionType() {
-        return questionType;
+    public String getQuestion() {
+        return question;
     }
 
-    public String getQuestion(){
-        return this.questionType.getQuestion();
+    public void setQuestion(String question){
+        this.question = question;
     }
 
     public Submission getSubmission() {

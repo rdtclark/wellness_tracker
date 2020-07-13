@@ -1,5 +1,6 @@
 package com.example.codeclan.wellness.controllers;
 
+import com.example.codeclan.wellness.models.QuestionType;
 import com.example.codeclan.wellness.models.Submission;
 import com.example.codeclan.wellness.models.User;
 import com.example.codeclan.wellness.repositories.SubmissionRepository;
@@ -38,6 +39,9 @@ public class UserController {
         return new ResponseEntity<>(submissionRepository.findByUserId(id), HttpStatus.OK);
     }
 
-//    @GetMapping(value = "/users/{id}/submissions?filter=time")
+//    @GetMapping(value = "/questions")
+//    public ResponseEntity<List<QuestionType>> getQuestions(){
+//        return new ResponseEntity<>(userRepository.findByQuestions(), HttpStatus.OK);
+//    }
 
 }
