@@ -9,83 +9,85 @@ const ReviewList = ({previousResults, previousResultsTest}) => {
         return(
             <Reason
             reason={reason.dayComment}
+            date={reason.date}
+            dayScore={reason.dayScore}
             key={reason.id}>
 
             </Reason>
         )
     })
 
-    const goodReasons = previousResults.map(reason => {
+    // const goodReasons = previousResults.map(reason => {
 
-        if (reason.dayScore > 3){ 
-        return (
-            <Reason
-            reason={reason.dayComment}
-            key={reason.id}>
+    //     if (reason.dayScore > 3){ 
+    //     return (
+    //         <Reason
+    //         reason={reason.dayComment}
+    //         key={reason.id}>
 
-            </Reason>
-        )} 
-    })
+    //         </Reason>
+    //     )} 
+    // })
 
-    const badReasons = previousResults.map(reason => {
+    // const badReasons = previousResults.map(reason => {
 
-        if (reason.dayScore < 3){ 
-        return (
-            <Reason
-            reason={reason.dayComment}
-            key={reason.id}>
+    //     if (reason.dayScore < 3){ 
+    //     return (
+    //         <Reason
+    //         reason={reason.dayComment}
+    //         key={reason.id}>
 
-            </Reason>
-        )} 
-    })
+    //         </Reason>
+    //     )} 
+    // })
 
 //    USING TEST DATA
 
-    const goodReasonsTest = previousResultsTest.map(reason => {
+    // const goodReasonsTest = previousResultsTest.map(reason => {
 
-        if (reason.dayScore > 3){
-        return (
-            <Reason
-            reason={reason.dayComment}
-            key={reason.id}>
+    //     if (reason.dayScore > 3){
+    //     return (
+    //         <Reason
+    //         reason={reason.dayComment}
+    //         key={reason.id}>
 
-            </Reason>
-        )} 
-    })
+    //         </Reason>
+    //     )} 
+    // })
 
-    const badReasonsTest = previousResultsTest.map(reason => {
+    // const badReasonsTest = previousResultsTest.map(reason => {
 
-        if (reason.dayScore < 3){
-        return (
-            <Reason
-            reason={reason.dayComment}
-            key={reason.id}>
+    //     if (reason.dayScore < 3){
+    //     return (
+    //         <Reason
+    //         reason={reason.dayComment}
+    //         key={reason.id}>
 
-            </Reason>
-        )} 
-    })
+    //         </Reason>
+    //     )} 
+    // })
 
-    const sortGoodByDateTest = previousResultsTest.map(reason => {
-        if(reason.date.slice(4, 5) == 6 && reason.dayScore > 3){
-            return (
-                <Reason
-                reason={reason.dayComment}
-                key={reason.id}>    
-                </Reason>
-            )
-        }
-    })
+    // const sortGoodByDateTest = previousResultsTest.map(reason => {
+    //     if(reason.date.slice(4, 5) == 6 && reason.dayScore > 3){
+    //         return (
+    //             <Reason
+    //             reason={reason.dayComment}
+    //             key={reason.id}>    
+    //             </Reason>
+    //         )
+    //     }
+    // })
 
-    const sortBadByDateTest = previousResultsTest.map(reason => {
-        if(reason.date.slice(4, 5) == 6 && reason.dayScore < 3){
-            return (
-                <Reason
-                reason={reason.dayComment}
-                key={reason.id}>    
-                </Reason>
-            )
-        }
-    })
+    // const sortBadByDateTest = previousResultsTest.map(reason => {
+    //     if(reason.date.slice(4, 5) == 6 && reason.dayScore < 3){
+    //         return (
+    //             <Reason
+    //             reason={reason.dayComment}
+    //             key={reason.id}>    
+    //             </Reason>
+    //         )
+    //     }
+    // })
 
     return(
         <>

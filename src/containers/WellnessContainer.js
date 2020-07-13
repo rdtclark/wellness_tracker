@@ -124,12 +124,14 @@ class WellnessContainer extends Component{
                 onAnswerSubmit={this.handleAnswerSubmit}
                 />
 
-                <ReviewList 
-                previousResults={this.state.previousResults} 
-                previousResultsTest={this.state.previousResultsTest}/>
+
 
                 <ReasonByDate
                 onDateSubmit={this.handleDateSubmit}/>
+
+                <ReviewList 
+                previousResults={this.state.previousResults} 
+                previousResultsTest={this.state.previousResultsTest}/>
             </>
             )
         }
