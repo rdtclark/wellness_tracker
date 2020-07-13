@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 
 class ReasonByDate extends Component {
 
+//startDate might have to be null?
+
     constructor(props){
         super(props);
         this.state={
@@ -36,7 +38,7 @@ class ReasonByDate extends Component {
 
     handleEndDateChange(event){
         this.setState({
-            startEnd: event.target.value
+            endDate: event.target.value
         })
     }
 
@@ -48,14 +50,15 @@ class ReasonByDate extends Component {
 
     render(){
         return(
+            <>
             <div>
                 <h1><b>Select a date</b></h1>
             <form onSubmit={this.handleSubmit}>
                 <label for="sdate">Start Date</label>
                 <input
                 type="date"
-                placeholder="Start Date"
                 name="sdate"
+                required pattern="\d{1}-\d{1}-\d{1}"
                 value={this.state.startDate}
                 onChange={this.handleStartDateChange}/>
 
@@ -63,16 +66,18 @@ class ReasonByDate extends Component {
                 <label for="edate">End Date</label>
                 <input
                 type="date"
-                placeholder="End Date"
                 name="edate"
-                value={this.start.endDate}
+                required pattern="\d{1}-\d{1}-\d{1}"
+                value={this.state.endDate}
                 onChange={this.handleEndDateChange}/>
 
                 <input
                 type="submit"
                 value="Get"/>
             </form>
+            
             </div>
+            </>
         )
     }
 }
