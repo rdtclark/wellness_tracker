@@ -11,6 +11,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
+import java.util.Random;
 
 @Component
 public class DataLoader implements ApplicationRunner {
@@ -53,59 +54,50 @@ public class DataLoader implements ApplicationRunner {
         userRepository.save(neil);
 
         //Submission
-        Submission submission1 = new Submission(neil, 4, "Enjoyed my 10k run", "12-06-2020");
-        submissionRepository.save(submission1);
+        for(int i =  1 ; i < 92 ; i++ ){
 
-        Submission submission2 = new Submission(neil, 1, "Didn't sleep", "13-06-2020");
-        submissionRepository.save(submission2);
+            int day = i;
+            int month = 1;
 
-        Submission submission3 = new Submission(neil, 5, "Saw my friends", "14-06-2020");
-        submissionRepository.save(submission3);
+            if( 31 < i && i < 60 ){
+                day = i - 31;
+                month = 2;
+            }
+            if( 60 < i && i < 92 ){
+                day =  i - 60;
+                month = 3;
+            }
 
-        //Answer
-        Answer answer1 = new Answer(submission1, 3, sleep.getId());
-        answerRepository.save(answer1);
+            int score = (int)(Math.random() * 6) + 1;
 
-        Answer answer2 = new Answer(submission1, 3, eat.getId());
-        answerRepository.save(answer2);
+            Submission submission = new Submission(neil, score, "Enjoyed my 10k run", String.format("%s-%s-2020", day, month));
+            submissionRepository.save(submission);
 
-        Answer answer3 = new Answer(submission1, 4, mental.getId());
-        answerRepository.save(answer3);
+            score = (int)(Math.random() * 6) + 1;
 
-        Answer answer4 = new Answer(submission1, 3, social.getId());
-        answerRepository.save(answer4);
+            Answer answer1 = new Answer(submission, score, sleep.getId());
+            answerRepository.save(answer1);
 
-        Answer answer5 = new Answer(submission1, 5, physical.getId());
-        answerRepository.save(answer5);
+            score = (int)(Math.random() * 6) + 1;
 
-        Answer answer6 = new Answer(submission2, 1, sleep.getId());
-        answerRepository.save(answer6);
+            Answer answer2 = new Answer(submission, 3, eat.getId());
+            answerRepository.save(answer2);
 
-        Answer answer7 = new Answer(submission2, 3, eat.getId());
-        answerRepository.save(answer7);
+            score = (int)(Math.random() * 6) + 1;
 
-        Answer answer8 = new Answer(submission2, 2, mental.getId());
-        answerRepository.save(answer8);
+            Answer answer3 = new Answer(submission, 4, mental.getId());
+            answerRepository.save(answer3);
 
-        Answer answer9 = new Answer(submission2, 2, social.getId());
-        answerRepository.save(answer9);
+            score = (int)(Math.random() * 6) + 1;
 
-        Answer answer10 = new Answer(submission2, 3, physical.getId());
-        answerRepository.save(answer10);
+            Answer answer4 = new Answer(submission, 3, social.getId());
+            answerRepository.save(answer4);
 
-        Answer answer11 = new Answer(submission3, 4, sleep.getId());
-        answerRepository.save(answer11);
+            score = (int)(Math.random() * 6) + 1;
 
-        Answer answer12 = new Answer(submission3, 4, eat.getId());
-        answerRepository.save(answer12);
+            Answer answer5 = new Answer(submission, 5, physical.getId());
+            answerRepository.save(answer5);
+        }
 
-        Answer answer13 = new Answer(submission3, 5, mental.getId());
-        answerRepository.save(answer13);
-
-        Answer answer14 = new Answer(submission3, 5, social.getId());
-        answerRepository.save(answer14);
-
-        Answer answer15 = new Answer(submission3, 5, physical.getId());
-        answerRepository.save(answer15);
     }
 }
