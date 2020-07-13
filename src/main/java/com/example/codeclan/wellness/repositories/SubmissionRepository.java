@@ -13,4 +13,10 @@ public interface SubmissionRepository extends JpaRepository<Submission, Long> {
 
     List<Submission> findByUserId(Long id);
 
+    List<Submission> findByUserIdAndId(Long userId, Long id);
+
+    List<Submission> findByUserIdAndDayScoreGreaterThan(Long userId, Integer dayScore);
+
+    List<Submission> findByUserIdAndDayScoreLessThan(Long userId, Integer dayScore);
+
 }

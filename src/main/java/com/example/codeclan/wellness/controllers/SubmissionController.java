@@ -35,24 +35,36 @@ public class SubmissionController {
     @Autowired
     AnswerRepository answerRepository;
 
-    // /submissions?userId=00&from=12-12-2020&to=31-12-2020
-    @GetMapping("/submissions")
-    public ResponseEntity<List<Submission>> getSubmissionsForDateAndUserId(
-            @RequestParam(name = "userId", required = false) Long userId,
+    // /submissions/userId?from=12-12-2020&to=31-12-2020
+    // /submissions/userId?dayScore=3&request=greater
+    // /submissions/userId?dayScore=3&request=less
+    @GetMapping("/submissions/{userId}")
+    public ResponseEntity<List<Submission>> getSubmissionsForDateAndUserIdOrScore(
+            @PathVariable Long userId,
             @RequestParam(name = "from", required = false) String from,
-            @RequestParam(name = "to", required = false) String to) throws ParseException {
-        if (userId != null && from != null &&  to != null){
+            @RequestParam(name = "to", required = false) String to,
+            @RequestParam(name = "dayScore", required = false) Integer dayScore,
+            @RequestParam(name = "request", required = false) String request) throws ParseException {
+        if (from != null &&  to != null){
             SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
             Date dateFrom = format.parse(from);
             Date dateTo = format.parse(to);
             return new ResponseEntity<>(submissionRepository.findByUserIdAndDateBetween(userId, dateFrom, dateTo), HttpStatus.OK);
         }
-        return new ResponseEntity<>(submissionRepository.findAll(), HttpStatus.OK);
+        if (dayScore != null && request != null){
+            if(request.equals("greater")){
+                return new ResponseEntity<>(submissionRepository.findByUserIdAndDayScoreGreaterThan(userId, dayScore), HttpStatus.OK);
+            }
+            else if(request.equals("less")){
+                return new ResponseEntity<>(submissionRepository.findByUserIdAndDayScoreLessThan(userId, dayScore), HttpStatus.OK);
+            }
+        }
+        return new ResponseEntity<>(submissionRepository.findByUserId(userId), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/submissions/{id}")
-    public ResponseEntity getSubmission(@PathVariable Long id){
-        return new ResponseEntity<>(submissionRepository.findById(id), HttpStatus.OK);
+    @GetMapping(value = "/submissions/{userId}/{id}")
+    public ResponseEntity getSubmission(@PathVariable Long userId, @PathVariable Long id){
+        return new ResponseEntity<>(submissionRepository.findByUserIdAndId(userId, id), HttpStatus.OK);
     }
 
     @PostMapping("/submissions")
