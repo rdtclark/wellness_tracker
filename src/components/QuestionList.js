@@ -26,7 +26,7 @@ class QuestionList extends Component {
             {question.content}
             </p>
             <input
-             
+            
             type="text" 
             placeholder="Answer" 
             id={question.id}

@@ -1,11 +1,17 @@
 const { Component } = require("react")
 
-import React, {Component} from 'react';
+import React from 'react';
+import GoodReason from './GoodReason';
 
-class ReviewList extends Components {
+const ReviewList = ({previousResults}) => {
 
-    
 
+    const goodReasons = previousResults.map(reason => {
+
+        return (
+            
+        )
+    })
 
 
 }
