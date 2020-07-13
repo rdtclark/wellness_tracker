@@ -55,6 +55,18 @@ const ReviewList = ({previousResults, previousResultsTest}) => {
         )} 
     })
 
+    const sortbyDateTest = previousResultsTest.map(reason => {
+        if(reason.date.slice(4, 5) == 6){
+            return (
+                <Reason
+                reason={reason.dayComment}
+                key={reason.id}>
+    
+                </Reason>
+            )
+        }
+    })
+
     return(
         <>
         <div>
@@ -72,6 +84,10 @@ const ReviewList = ({previousResults, previousResultsTest}) => {
         <div>
             <h3><b>Bad Test</b></h3>
             <p>{badReasonsTest}</p>
+        </div>
+        <div>
+            <h3><b>June</b></h3>
+            <p>{sortbyDateTest}</p>
         </div>
         </>
     )
