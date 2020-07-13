@@ -20,27 +20,43 @@ class QuestionList extends Component {
         
         // Submit Binding
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleDayCommentChange = this.handleDayCommentChange.bind(this);
     }
 
     handleSubmit(event) {
         event.preventDefault();
         const SLEEP = this.state.SLEEP.trim();
-        if (!SLEEP) {
+        const EAT = this.state.EAT.trim();
+        const PHYSICAL = this.state.PHYSICAL.trim();
+        const MENTAL = this.state.MENTAL.trim();
+        const SOCIAL = this.state.SOCIAL.trim();
+        const DAY = this.state.DAY.trim();
+        const dayComment = this.state.dayComment.trim();
+        if (!SLEEP || !EAT || !PHYSICAL || !MENTAL || !SOCIAL || !DAY || !dayComment) {
           return
         }
 
       this.props.onAnswerSubmit({
-        SLEEP: SLEEP
+        SLEEP: SLEEP,
+        EAT: EAT,
+        PHYSICAL: PHYSICAL,
+        MENTAL: MENTAL,
+        SOCIAL:SOCIAL,
+        DAY: DAY,
+        dayComment: dayComment
       });
 
       this.setState({
-        SLEEP: ''
+        SLEEP: '',
+        EAT: '',
+        PHYSICAL: '',
+        MENTAL: '',
+        SOCIAL: '',
+        DAY: '',
+        dayComment: ''
       });
     }
 
     handleAnswerChange(event) {
-        // console.log(event.target.id);
         this.setState({
           [event.target.id]: event.target.value
         });
@@ -74,7 +90,7 @@ class QuestionList extends Component {
         
         return (
             <>
-                <form className="question-form">      
+                <form className="question-form" onSubmit={this.handleSubmit}>      
                 {questions}
                 <p>Good/Bad Day Reason [Box]</p>
                 <input 
@@ -85,8 +101,7 @@ class QuestionList extends Component {
                 />
                 <input 
                 type="submit"
-                value="Submit"
-                
+                value="Post"
                 />
                 </form>
             </>

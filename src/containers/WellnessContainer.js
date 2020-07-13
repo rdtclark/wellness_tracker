@@ -15,7 +15,8 @@ class WellnessContainer extends Component{
                 { "id":"SOCIAL", "content": "Did you speak to anyone?" },
                 { "id":"DAY", "content": "Rate your day?" }
             ]
-        }
+        };
+        this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
     } 
 
     // http://localhost:8080
@@ -28,11 +29,18 @@ class WellnessContainer extends Component{
     //     .then(data => this.setState({questionList: data}))
     // }
 
+    handleAnswerSubmit(submittedAnswers) {
+        // submittedAnswers.timestamp = Date.now();
+        console.log(submittedAnswers);
+      }
+
     render(){
         return(
             <>
                 <QuestionList
-                questionList={this.state.questionList}/>
+                questionList={this.state.questionList}
+                onAnswerSubmit={this.handleAnswerSubmit}
+                />
             </>
         )
     }
