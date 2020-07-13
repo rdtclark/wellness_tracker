@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import QuestionList from '../components/QuestionList';
+import ReviewList from '../components/ReviewList';
 
 class WellnessContainer extends Component{
 
@@ -15,10 +16,24 @@ class WellnessContainer extends Component{
                 { "id":"SOCIAL", "content": "Did you speak to anyone?" },
                 { "id":"DAY", "content": "Rate your day?" }
             ],
-            answers: []
-        };
+            answers: [],
+        
+            previousResults: [],
+            previousResultsTest: [
+                {"id": 1, "user": "Frank", "answers":[], "dayScore": 5, "dayComment": "Met with friends", "date": "12-06-2020"},
+                {"id": 1, "user": "Frank", "answers":[], "dayScore": 5, "dayComment": "Ate like a King", "date": "15-05-2020"},
+                {"id": 1, "user": "Frank", "answers":[], "dayScore": 5, "dayComment": "Finally starting to understand Ruby", "date": "16-05-2020"},
+                {"id": 2, "user": "Phil", "answers":[], "dayScore": 4, "dayComment": "Found a new cafe to write my novel", "date": "12-05-2020"},
+                {"id": 3, "user": "Jane", "answers":[], "dayScore": 2, "dayComment": "Didn't eat enough", "date": "14-06-2020"},
+                {"id": 4, "user": "Terry", "answers":[], "dayScore": 1, "dayComment": "Saw no one", "date": "18-05-2020"},
+                {"id": 4, "user": "Terry", "answers":[], "dayScore": 1, "dayComment": "Didn't want to get out of bed", "date": "19-06-2020"},
+                {"id": 4, "user": "Terry", "answers":[], "dayScore": 1, "dayComment": "Didn't leave the house", "date": "20-06-2020"}
+            ]
+        }
         this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
-    } 
+    }
+
+    
 
     // http://localhost:8080
 
@@ -76,7 +91,17 @@ class WellnessContainer extends Component{
         fetch('http://localhost:8080/submissions', requestOptions)
         .then(response => response.json())
 
-      }
+    }
+    
+    componentDidMount(){
+        const url = "/submissions"
+
+        fetch(url)
+        .then(res => res.json())
+        .then(data => this.setState({previousResults: data}))
+
+    }
+
 
     render(){
         return(
@@ -85,8 +110,12 @@ class WellnessContainer extends Component{
                 questionList={this.state.questionList}
                 onAnswerSubmit={this.handleAnswerSubmit}
                 />
+
+                <ReviewList 
+                previousResults={this.state.previousResults} 
+                previousResultsTest={this.state.previousResultsTest}/>
             </>
-        )
-    }
+            )
+        }
 }
 export default WellnessContainer;
