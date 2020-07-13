@@ -106,13 +106,11 @@ class WellnessContainer extends Component{
 
     handleDateSubmit(dates){
 
-        console.log(dates.startDate);
         const url =`http://localhost:8080/submissions/1?from=${dates.startDate}&to=${dates.endDate}`
         fetch(url)
         .then(res => res.json())
         .then(data => this.setState({previousResults: data}))
         .then(console.log(this.state.previousResults));
-        console.log(url);
     }
 
 
