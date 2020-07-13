@@ -42,6 +42,8 @@ class WellnessContainer extends Component{
         // TODO: make Date - yesterady if time past 5pm
         // submittedAnswers.timestamp = Date.now();
 
+        let timestamp = new Date().toISOString().split('T')[0];
+
         const requestOptions = {
                 
             method: 'POST',
@@ -50,7 +52,7 @@ class WellnessContainer extends Component{
                 "dayScore": submittedAnswers.DAY,
                 "dayComment": submittedAnswers.dayComment,
                 // TODO set date dynamically
-                "date": "01-09-2020",
+                "date": timestamp,
                 "answers": [
                     {
                     "question": "SLEEP",
