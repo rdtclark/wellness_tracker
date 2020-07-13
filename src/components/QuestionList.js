@@ -79,13 +79,17 @@ class QuestionList extends Component {
             {question.content}
             </p>
 
-            <input 
+            <input className="slider"
             id={question.id} 
             type="range" 
             min="1" max="6" 
             value={this.state[question.id]}
             onChange={this.handleAnswerChange}
             step="1"/>
+            <div id="selector">
+                <div className="btn">
+                </div>
+            </div>
             </div>
         
         });

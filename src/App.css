@@ -17,17 +17,43 @@
 }
 
 .btn{
-  
+
+}
+
+.slider{
+  -webkit-appearance: none;
+  width: 50%;
+  height: 7px;
+  outline: none;
+  border-radius: 3px;
+
+
+
+}
+
+.slider::-webkit-slider-thumb{
+  /* -webkit-appearance: none; */
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  position: relative;
+}
+
+#selector{
+  height: 104px;
+  width: 48px;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -2;
+}
+
+.btn{
+  height: 58px;
+  width: 48px;
+  background-color: black;
 }
 
 
 
-/* 
-body {
-  background-image: url("photo.jpg");
-  background-position: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
- } */
