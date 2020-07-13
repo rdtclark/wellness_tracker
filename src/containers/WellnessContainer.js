@@ -35,35 +35,6 @@ class WellnessContainer extends Component{
         // TODO: make Date - yesterady if time past 5pm
         // submittedAnswers.timestamp = Date.now();
 
-        // {
-        //     "userId": 1,
-        //     "dayScore": 4,
-        //     "dayComment": "bof bof",
-        //     "date": "30-07-2020",
-        //     "answers": [
-        //         {
-        //             "question": "SLEEP",
-        //             "score": 3
-        //         },
-        //                 {
-        //             "question": "EAT",
-        //             "score": 3
-        //         },
-        //                 {
-        //             "question": "SOCIAL",
-        //             "score": 3
-        //         }
-        //     ]
-        // }
-
-            // { DAY: "1",
-            // EAT: "3",
-            // MENTAL: "2",
-            // PHYSICAL: "34",
-            // SLEEP: "12",
-            // SOCIAL: "1",
-            // dayComment: "5" }
-
         const requestOptions = {
                 
             method: 'POST',
@@ -74,16 +45,16 @@ class WellnessContainer extends Component{
                 "date": "01-09-2020",
                 "answers": [
                     {
-                        "question": "SLEEP",
-                        "score": parseInt(submittedAnswers.SLEEP, 10)
+                    "question": "SLEEP",
+                    "score": parseInt(submittedAnswers.SLEEP, 10)
                     },
                             {
-                        "question": "EAT",
-                        "score": parseInt(submittedAnswers.EAT, 10)
+                    "question": "EAT",
+                    "score": parseInt(submittedAnswers.EAT, 10)
                     },
                             {
-                        "question": "MENTAL",
-                        "score": parseInt(submittedAnswers.MENTAL, 10)
+                    "question": "MENTAL",
+                    "score": parseInt(submittedAnswers.MENTAL, 10)
                     },
                             {
                     "question": "PHYSICAL",
