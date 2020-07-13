@@ -5,12 +5,12 @@ class QuestionList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            SLEEP: null,
-            EAT: null,
-            PHYSICAL: null,
-            MENTAL: null,
-            SOCIAL: null,
-            DAY: null,
+            SLEEP: 3,
+            EAT: 3,
+            PHYSICAL: 3,
+            MENTAL: 3,
+            SOCIAL: 3,
+            DAY: 3,
             dayComment: ""
         }
 
@@ -24,12 +24,12 @@ class QuestionList extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        const SLEEP = this.state.SLEEP.trim();
-        const EAT = this.state.EAT.trim();
-        const PHYSICAL = this.state.PHYSICAL.trim();
-        const MENTAL = this.state.MENTAL.trim();
-        const SOCIAL = this.state.SOCIAL.trim();
-        const DAY = this.state.DAY.trim();
+        const SLEEP = this.state.SLEEP;
+        const EAT = this.state.EAT;
+        const PHYSICAL = this.state.PHYSICAL;
+        const MENTAL = this.state.MENTAL;
+        const SOCIAL = this.state.SOCIAL;
+        const DAY = this.state.DAY;
         const dayComment = this.state.dayComment.trim();
         if (!SLEEP || !EAT || !PHYSICAL || !MENTAL || !SOCIAL || !DAY || !dayComment) {
           return
@@ -46,12 +46,12 @@ class QuestionList extends Component {
       });
 
       this.setState({
-        SLEEP: "",
-        EAT: "",
-        PHYSICAL: "",
-        MENTAL: "",
-        SOCIAL: "",
-        DAY: "",
+        SLEEP: 3,
+        EAT: 3,
+        PHYSICAL: 3,
+        MENTAL: 3,
+        SOCIAL: 3,
+        DAY: 3,
         dayComment: ""
       });
     }
@@ -83,16 +83,9 @@ class QuestionList extends Component {
             id={question.id} 
             type="range" 
             min="1" max="6" 
-            value={this.state.value} 
+            value={this.state[question.id]}
             onChange={this.handleAnswerChange}
             step="1"/>
-
-            {/* <input  
-            type="text" 
-            placeholder="Answer" 
-            id={question.id}
-            onChange={this.handleAnswerChange}
-            /> */}
             </div>
         
         });
