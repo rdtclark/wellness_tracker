@@ -4576,7 +4576,32 @@ Caused by: java.lang.IllegalStateException: Reading from file nio:/Users/user/fl
 Caused by: java.io.EOFException
 	at org.h2.mvstore.DataUtils.readFully(DataUtils.java:444)
 	... 14 more
-2020-07-13 15:11:35 database: flush
+2020-07-13 15:11:53 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: Reading from file nio:/Users/user/floobits/share/usermt35dw/The_Java_Project/db/wellness_db.mv.db failed at 40960 (length 40960), read 0, remaining 12288 [1.4.200/1]" [50000-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2877)
+	at org.h2.mvstore.MVStore.writeInBackground(MVStore.java:2813)
+	at org.h2.mvstore.MVStore$BackgroundWriterThread.run(MVStore.java:3290)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: Reading from file nio:/Users/user/floobits/share/usermt35dw/The_Java_Project/db/wellness_db.mv.db failed at 40960 (length 40960), read 0, remaining 12288 [1.4.200/1]" [50000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 6 more
+Caused by: java.lang.IllegalStateException: Reading from file nio:/Users/user/floobits/share/usermt35dw/The_Java_Project/db/wellness_db.mv.db failed at 40960 (length 40960), read 0, remaining 12288 [1.4.200/1]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:950)
+	at org.h2.mvstore.DataUtils.readFully(DataUtils.java:456)
+	at org.h2.mvstore.FileStore.readFully(FileStore.java:98)
+	at org.h2.mvstore.MVStore.moveChunk(MVStore.java:1915)
+	at org.h2.mvstore.MVStore.compactMoveChunks(MVStore.java:1839)
+	at org.h2.mvstore.MVStore.compactMoveChunks(MVStore.java:1772)
+	at org.h2.mvstore.MVStore.doMaintenance(MVStore.java:2848)
+	at org.h2.mvstore.MVStore.writeInBackground(MVStore.java:2788)
+	... 1 more
+Caused by: java.io.EOFException
+	at org.h2.mvstore.DataUtils.readFully(DataUtils.java:444)
+	... 7 more
+2020-07-13 15:27:32 database: flush
 org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/user/codeclan_work/wellness_project/wellness/db/wellness_db.mv.db [1.4.200/7]" [50000-200]
 	at org.h2.message.DbException.get(DbException.java:194)
 	at org.h2.message.DbException.convert(DbException.java:347)
