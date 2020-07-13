@@ -99,6 +99,7 @@ class QuestionList extends Component {
                 type="text" 
                 placeholder="Answer"
                 id="day-comment"
+                value={this.state.dayComment}
                 onChange={this.handleDayCommentChange}
                 />
                 <input 
