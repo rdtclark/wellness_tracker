@@ -55,13 +55,23 @@ const ReviewList = ({previousResults, previousResultsTest}) => {
         )} 
     })
 
-    const sortbyDateTest = previousResultsTest.map(reason => {
-        if(reason.date.slice(4, 5) == 6){
+    const sortGoodByDateTest = previousResultsTest.map(reason => {
+        if(reason.date.slice(4, 5) == 6 && reason.dayScore > 3){
             return (
                 <Reason
                 reason={reason.dayComment}
-                key={reason.id}>
-    
+                key={reason.id}>    
+                </Reason>
+            )
+        }
+    })
+
+    const sortBadByDateTest = previousResultsTest.map(reason => {
+        if(reason.date.slice(4, 5) == 6 && reason.dayScore < 3){
+            return (
+                <Reason
+                reason={reason.dayComment}
+                key={reason.id}>    
                 </Reason>
             )
         }
@@ -86,8 +96,12 @@ const ReviewList = ({previousResults, previousResultsTest}) => {
             <p>{badReasonsTest}</p>
         </div>
         <div>
-            <h3><b>June</b></h3>
-            <p>{sortbyDateTest}</p>
+            <h3><b>June Good</b></h3>
+            <p>{sortGoodByDateTest}</p>
+        </div>
+        <div>
+            <h3><b>June Bad</b></h3>
+            <p>{sortBadByDateTest}</p>
         </div>
         </>
     )
