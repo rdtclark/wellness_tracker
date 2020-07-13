@@ -68,8 +68,8 @@ public class SubmissionController {
     }
 
     @CrossOrigin
-//    @PostMapping("/submissions")
-    @RequestMapping(method = RequestMethod.POST, path = "/submissions")
+    @PostMapping("/submissions")
+//    @RequestMapping(method = RequestMethod.POST, path = "/submissions")
     public ResponseEntity postSubmission(@RequestBody SubmissionRequest sub) throws ParseException {
 
         User user = userRepository.findUserById(sub.getUserId());
