@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import QuestionList from '../components/QuestionList';
 import ReviewList from '../components/ReviewList';
 import ReasonByDate from '../components/ReasonByDate';
+import Greeting from '../components/Greeting';
 
 class WellnessContainer extends Component{
 
     constructor(props){
         super(props);
         this.state={
+            user: [],
             questionList:[],
             previousResults: [],
             previousResultsTest: [
@@ -25,23 +27,38 @@ class WellnessContainer extends Component{
         this.handleDateSubmit = this.handleDateSubmit.bind(this);
     }
 
-    
-
     // http://localhost:8080
 
     componentDidMount() {
-        const url = "http://localhost:8080/questions"
 
-        fetch(url)
+        // Get all questiosn
+        const questions_url = "http://localhost:8080/questions"
+
+        fetch(questions_url)
         .then(res => res.json())
         .then(data => this.setState({questionList: data}))
+
+        // Get User Data
+        const users_url = "http://localhost:8080/users/1"
+
+        fetch(users_url)
+        .then(res => res.json())
+        .then(data => this.setState({user: data}))
+
     }
 
     handleAnswerSubmit(submittedAnswers) {
         
-        // TODO: make Date - yesterady if time past 5pm
-        // submittedAnswers.timestamp = Date.now();
+        // If it's past 5PM submit for yesterday
+        let submission_day = new Date();
+        if (submission_day.getHours() >= 17) {
+            submission_day.setDate( submission_day.getDate() - 1 )
+            {console.log("its past 5PM, submitting for yesterday")}
+        }
 
+        let timestamp = submission_day.toISOString().split('T')[0];
+
+        // POST All Answers
         const requestOptions = {
                 
             method: 'POST',
@@ -49,8 +66,7 @@ class WellnessContainer extends Component{
             body: JSON.stringify({"userId": 1,
                 "dayScore": submittedAnswers.DAY,
                 "dayComment": submittedAnswers.dayComment,
-                // TODO set date dynamically
-                "date": "01-09-2020",
+                "date": timestamp,
                 "answers": [
                     {
                     "question": "SLEEP",
@@ -67,10 +83,6 @@ class WellnessContainer extends Component{
                             {
                     "question": "PHYSICAL",
                     "score": submittedAnswers.PHYSICAL
-                    },
-                            {
-                    "question": "SLEEP",
-                    "score": submittedAnswers.SLEEP
                     },
                             {
                     "question": "SOCIAL",
@@ -97,20 +109,22 @@ class WellnessContainer extends Component{
     // }
 
     handleDateSubmit(dates){
-
-        console.log(dates.startDate);
         const url =`http://localhost:8080/submissions/1?from=${dates.startDate}&to=${dates.endDate}`
         fetch(url)
         .then(res => res.json())
         .then(data => this.setState({previousResults: data}))
         .then(console.log(this.state.previousResults));
-        console.log(url);
     }
 
 
-    render(){
+    render(){ 
+
         return(
             <>
+                <Greeting
+                name={this.state.user.name}
+                />
+
                 <QuestionList
                 questionList={this.state.questionList}
                 onAnswerSubmit={this.handleAnswerSubmit}
