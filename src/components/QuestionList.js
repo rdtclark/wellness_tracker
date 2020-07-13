@@ -5,14 +5,51 @@ class QuestionList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            answer1: "",
-            answer2: "",
-            answer3: "",
-            answer4: "",
-            answer5: "",
-            answer6: "",
+            SLEEP: "",
+            EAT: "",
+            PHYSICAL: "",
+            MENTAL: "",
+            SOCIAL: "",
+            DAY: "",
             dayComment: ""
         }
+
+        // Answer Bindings
+        this.handleAnswerChange = this.handleAnswerChange.bind(this);
+        this.handleDayCommentChange = this.handleDayCommentChange.bind(this);
+        
+        // Submit Binding
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDayCommentChange = this.handleDayCommentChange.bind(this);
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        const SLEEP = this.state.SLEEP.trim();
+        if (!SLEEP) {
+          return
+        }
+
+      this.props.onAnswerSubmit({
+        SLEEP: SLEEP
+      });
+
+      this.setState({
+        SLEEP: ''
+      });
+    }
+
+    handleAnswerChange(event) {
+        // console.log(event.target.id);
+        this.setState({
+          [event.target.id]: event.target.value
+        });
+    }
+
+    handleDayCommentChange(event) {
+        this.setState({
+            dayComment: event.target.value
+        })
     }
 
     render() {
@@ -25,11 +62,11 @@ class QuestionList extends Component {
             <p>
             {question.content}
             </p>
-            <input
-             
+            <input  
             type="text" 
             placeholder="Answer" 
             id={question.id}
+            onChange={this.handleAnswerChange}
             />
             </div>
         
@@ -44,8 +81,13 @@ class QuestionList extends Component {
                 type="text" 
                 placeholder="Answer" 
                 id="day-comment"
+                onChange={this.handleDayCommentChange}
                 />
-                <input type="submit" value="Submit" />
+                <input 
+                type="submit"
+                value="Submit"
+                
+                />
                 </form>
             </>
         )
