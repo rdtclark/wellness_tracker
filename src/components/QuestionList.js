@@ -5,12 +5,12 @@ class QuestionList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            SLEEP: "",
-            EAT: "",
-            PHYSICAL: "",
-            MENTAL: "",
-            SOCIAL: "",
-            DAY: "",
+            SLEEP: null,
+            EAT: null,
+            PHYSICAL: null,
+            MENTAL: null,
+            SOCIAL: null,
+            DAY: null,
             dayComment: ""
         }
 
@@ -79,12 +79,20 @@ class QuestionList extends Component {
             {question.content}
             </p>
 
-            <input  
+            <input 
+            id={question.id} 
+            type="range" 
+            min="1" max="6" 
+            value={this.state.value} 
+            onChange={this.handleAnswerChange}
+            step="1"/>
+
+            {/* <input  
             type="text" 
             placeholder="Answer" 
             id={question.id}
             onChange={this.handleAnswerChange}
-            />
+            /> */}
             </div>
         
         });
