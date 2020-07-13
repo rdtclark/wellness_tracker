@@ -12,6 +12,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.text.ParseException;
+
 @Component
 public class DataLoader implements ApplicationRunner {
     
@@ -28,7 +30,7 @@ public class DataLoader implements ApplicationRunner {
         
     }
     
-    public void run(ApplicationArguments args){
+    public void run(ApplicationArguments args) throws ParseException {
         //User
         User neil = new User("Neil");
         userRepository.save(neil);
@@ -37,8 +39,11 @@ public class DataLoader implements ApplicationRunner {
         Submission submission1 = new Submission(neil, 4, "Enjoyed my 10k run", "12-06-2020");
         submissionRepository.save(submission1);
 
-        Submission submission2 = new Submission(neil, 1, "Didn't sleep","13-06-2020");
+        Submission submission2 = new Submission(neil, 1, "Didn't sleep", "13-06-2020");
         submissionRepository.save(submission2);
+
+        Submission submission3 = new Submission(neil, 5, "Saw my friends", "14-06-2020");
+        submissionRepository.save(submission3);
 
         //Answer
         Answer answer1 = new Answer(submission1, 3, QuestionType.SLEEP);
@@ -70,5 +75,20 @@ public class DataLoader implements ApplicationRunner {
 
         Answer answer10 = new Answer(submission2, 3, QuestionType.PHYSICAL);
         answerRepository.save(answer10);
+
+        Answer answer11 = new Answer(submission3, 4, QuestionType.SLEEP);
+        answerRepository.save(answer11);
+
+        Answer answer12 = new Answer(submission3, 4, QuestionType.EAT);
+        answerRepository.save(answer12);
+
+        Answer answer13 = new Answer(submission3, 5, QuestionType.MENTAL);
+        answerRepository.save(answer13);
+
+        Answer answer14 = new Answer(submission3, 5, QuestionType.SOCIAL);
+        answerRepository.save(answer14);
+
+        Answer answer15 = new Answer(submission3, 5, QuestionType.PHYSICAL);
+        answerRepository.save(answer15);
     }
 }
