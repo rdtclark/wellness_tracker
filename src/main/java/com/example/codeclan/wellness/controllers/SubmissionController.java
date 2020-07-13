@@ -1,5 +1,6 @@
 package com.example.codeclan.wellness.controllers;
 
+import com.example.codeclan.wellness.controllers.messages.AnswerRequest;
 import com.example.codeclan.wellness.controllers.messages.SubmissionRequest;
 import com.example.codeclan.wellness.models.Answer;
 import com.example.codeclan.wellness.models.Submission;
@@ -54,9 +55,11 @@ public class SubmissionController {
         Submission newSub = new Submission(user, sub.getDayScore(), sub.getDayComment(), sub.getDate());
         submissionRepository.save(newSub);
 
-//        for(Answer answer : sub.getAnswers()){
-//            answerRepository.save(answer);
-//        }
+        for(AnswerRequest answerRequest : sub.getAnswers()){
+            Answer answer = new Answer(newSub, answerRequest.getScore(), answerRequest.getQuestion());
+            answerRepository.save(answer);
+        }
+
         return new ResponseEntity<>(newSub, HttpStatus.CREATED);
     }
 }

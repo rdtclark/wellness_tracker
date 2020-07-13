@@ -11,7 +11,7 @@ public class SubmissionRequest implements Serializable {
     private int dayScore;
     private String dayComment;
     private String date;
-    //    private ArrayList<Answer> answers;
+    private ArrayList<AnswerRequest> answers;
 
     public Long getUserId() {
         return userId;
@@ -33,22 +33,23 @@ public class SubmissionRequest implements Serializable {
         return dayComment;
     }
 
-    
-
     public void setDayComment(String dayComment) {
         this.dayComment = dayComment;
     }
-
-    
 
     public String getDate() {
         return date;
     }
 
-    
-
     public void setDate(String date) {
         this.date = date;
     }
 
+    public ArrayList<AnswerRequest> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(ArrayList<AnswerRequest> answers) {
+        this.answers = answers;
+    }
 }
