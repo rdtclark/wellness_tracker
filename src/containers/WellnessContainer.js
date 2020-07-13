@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import QuestionList from '../components/QuestionList';
+import ReviewList from '../components/ReviewList';
 
 class WellnessContainer extends Component{
 
@@ -14,7 +15,8 @@ class WellnessContainer extends Component{
                 { "id":"MENTAL", "content":"Did you learn anything new?" },
                 { "id":"SOCIAL", "content": "Did you speak to anyone?" },
                 { "id":"DAY", "content": "Rate your day?" }
-            ]
+            ],
+            previousResults: []
         }
     } 
 
@@ -33,6 +35,7 @@ class WellnessContainer extends Component{
             <>
                 <QuestionList
                 questionList={this.state.questionList}/>
+                <ReviewList previousResults={this.state.previousResults}/>
             </>
         )
     }
