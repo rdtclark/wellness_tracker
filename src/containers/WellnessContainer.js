@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import QuestionList from '../components/QuestionList';
 import ReviewList from '../components/ReviewList';
+import ReasonByDate from '../components/ReasonByDate';
 
 class WellnessContainer extends Component{
 
@@ -114,6 +115,8 @@ class WellnessContainer extends Component{
                 <ReviewList 
                 previousResults={this.state.previousResults} 
                 previousResultsTest={this.state.previousResultsTest}/>
+
+                <ReasonByDate/>
             </>
             )
         }
