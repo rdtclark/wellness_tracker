@@ -102,9 +102,7 @@ class QuestionList extends Component {
                 value={this.state.dayComment}
                 onChange={this.handleDayCommentChange}
                 />
-                <input 
-                type="submit"
-                value="Post"
+                <input className="button is-info is-inverted" type="submit"value="Post"
                 />
                 </form>
             </>
