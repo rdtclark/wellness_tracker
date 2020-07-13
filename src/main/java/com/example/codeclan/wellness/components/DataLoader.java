@@ -70,7 +70,7 @@ public class DataLoader implements ApplicationRunner {
 
             int score = (int)(Math.random() * 6) + 1;
 
-            Submission submission = new Submission(neil, score, "Enjoyed my 10k run", String.format("%s-%s-2020", day, month));
+            Submission submission = new Submission(neil, score, "Enjoyed my 10k run", String.format("2020-%s-%s", month, day));
             submissionRepository.save(submission);
 
             score = (int)(Math.random() * 6) + 1;

@@ -46,7 +46,7 @@ public class Submission {
 
 
     public Submission(User user, int dayScore, String dayComment, String dateString) throws ParseException {
-        DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         this.user = user;
         this.dayScore = dayScore;
         this.dayComment = dayComment;

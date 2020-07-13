@@ -46,7 +46,7 @@ public class SubmissionController {
             @RequestParam(name = "dayScore", required = false) Integer dayScore,
             @RequestParam(name = "request", required = false) String request) throws ParseException {
         if (from != null &&  to != null){
-            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             Date dateFrom = format.parse(from);
             Date dateTo = format.parse(to);
             return new ResponseEntity<>(submissionRepository.findByUserIdAndDateBetween(userId, dateFrom, dateTo), HttpStatus.OK);
