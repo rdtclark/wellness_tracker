@@ -58,7 +58,6 @@ class ReasonByDate extends Component {
                 <input
                 type="date"
                 name="sdate"
-                required pattern="\d{1}-\d{1}-\d{1}"
                 value={this.state.startDate}
                 onChange={this.handleStartDateChange}/>
 
@@ -67,7 +66,6 @@ class ReasonByDate extends Component {
                 <input
                 type="date"
                 name="edate"
-                required pattern="\d{1}-\d{1}-\d{1}"
                 value={this.state.endDate}
                 onChange={this.handleEndDateChange}/>
 
