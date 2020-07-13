@@ -46,13 +46,13 @@ class QuestionList extends Component {
       });
 
       this.setState({
-        SLEEP: '',
-        EAT: '',
-        PHYSICAL: '',
-        MENTAL: '',
-        SOCIAL: '',
-        DAY: '',
-        dayComment: ''
+        SLEEP: "",
+        EAT: "",
+        PHYSICAL: "",
+        MENTAL: "",
+        SOCIAL: "",
+        DAY: "",
+        dayComment: ""
       });
     }
 
@@ -78,6 +78,7 @@ class QuestionList extends Component {
             <p>
             {question.content}
             </p>
+
             <input  
             type="text" 
             placeholder="Answer" 
@@ -95,7 +96,7 @@ class QuestionList extends Component {
                 <p>Good/Bad Day Reason [Box]</p>
                 <input 
                 type="text" 
-                placeholder="Answer" 
+                placeholder="Answer"
                 id="day-comment"
                 onChange={this.handleDayCommentChange}
                 />

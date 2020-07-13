@@ -72,11 +72,12 @@ class WellnessContainer extends Component{
                 ]
             })
         };
+
         // console.log(requestOptions);
         fetch('http://localhost:8080/submissions', requestOptions)
         .then(response => response.json())
 
-      }
+    }
 
     render(){
         return(
