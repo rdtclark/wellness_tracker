@@ -30,6 +30,15 @@ class WellnessContainer extends Component{
     //     .then(data => this.setState({questionList: data}))
     // }
 
+    componentDidMount(){
+        const url = "/submissions"
+
+        fetch(url)
+        .then(res => res.json())
+        .then(data => this.setState({previousResults: data}))
+    }
+
+
     render(){
         return(
             <>

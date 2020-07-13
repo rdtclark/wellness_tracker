@@ -1,17 +1,18 @@
-const { Component } = require("react")
-
 import React from 'react';
 import GoodReason from './GoodReason';
 
 const ReviewList = ({previousResults}) => {
 
 
-    const goodReasons = previousResults.map(reason => {
+   // const goodReasons = previousResults.map(reason => {
 
         return (
-            
+            <>
+            <h1>hello</h1>
+            <GoodReason/>
+            </>
         )
-    })
+ //   })
 
 
 }
