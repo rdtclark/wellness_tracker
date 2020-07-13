@@ -16,7 +16,13 @@ class WellnessContainer extends Component{
                 { "id":"SOCIAL", "content": "Did you speak to anyone?" },
                 { "id":"DAY", "content": "Rate your day?" }
             ],
-            previousResults: []
+            previousResults: [],
+            previousResultsTest: [
+                {"id": 1, "user": "Frank", "answers":[], "dayScore": 5, "dayComment": "Met with friends", "date": "12-06-2020"},
+                {"id": 2, "user": "Phil", "answers":[], "dayScore": 2, "dayComment": "Didn't eat enough", "date": "12-05-2020"},
+                {"id": 3, "user": "Jane", "answers":[], "dayScore": 4, "dayComment": "Found a new cafe to write my novel", "date": "14-06-2020"},
+                {"id": 4, "user": "Terry", "answers":[], "dayScore": 1, "dayComment": "Saw no one", "date": "18-05-2020"}
+            ]
         }
     } 
 
@@ -44,7 +50,7 @@ class WellnessContainer extends Component{
             <>
                 <QuestionList
                 questionList={this.state.questionList}/>
-                <ReviewList previousResults={this.state.previousResults}/>
+                <ReviewList previousResults={this.state.previousResults} previousResultsTest={this.state.previousResultsTest}/>
             </>
         )
     }

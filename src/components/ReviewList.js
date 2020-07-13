@@ -1,18 +1,19 @@
 import React from 'react';
-import GoodReason from './GoodReason';
+import Reason from './Reason';
 
-const ReviewList = ({previousResults}) => {
+const ReviewList = ({previousResults, previousResultsTest}) => {
 
+//USING OUR BACKEND
 
     const goodReasons = previousResults.map(reason => {
 
         if (reason.dayScore > 3){ 
         return (
-            <GoodReason
+            <Reason
             reason={reason.dayComment}
             key={reason.id}>
 
-            </GoodReason>
+            </Reason>
         )} 
     })
 
@@ -20,27 +21,63 @@ const ReviewList = ({previousResults}) => {
 
         if (reason.dayScore < 3){ 
         return (
-            <GoodReason
+            <Reason
             reason={reason.dayComment}
             key={reason.id}>
 
-            </GoodReason>
+            </Reason>
         )} 
     })
 
+//    USING TEST DATA
+
+    const goodReasonsTest = previousResultsTest.map(reason => {
+
+        if (reason.dayScore > 3){
+        return (
+            <Reason
+            reason={reason.dayComment}
+            key={reason.id}>
+
+            </Reason>
+        )} 
+    })
+
+    const badReasonsTest = previousResultsTest.map(reason => {
+
+        if (reason.dayScore < 3){
+        return (
+            <Reason
+            reason={reason.dayComment}
+            key={reason.id}>
+
+            </Reason>
+        )} 
+    })
 
     return(
         <>
         <div>
-            <h3>Good</h3>
+            <h3><b>Good</b></h3>
             <p>{goodReasons}</p>
         </div>
         <div>
-            <h3>Bad</h3>
+            <h3><b>Bad</b></h3>
             <p>{badReasons}</p>
+        </div>
+        <div>
+            <h3><b>Good Test</b></h3>
+            <p>{goodReasonsTest}</p>
+        </div>
+        <div>
+            <h3><b>Bad Test</b></h3>
+            <p>{badReasonsTest}</p>
         </div>
         </>
     )
+
+
+
 
 }
 

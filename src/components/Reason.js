@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GoodReason = ({reason}) => {
+const Reason = ({reason}) => {
 
 
     return (
@@ -11,4 +11,4 @@ const GoodReason = ({reason}) => {
     )
 }
 
-export default GoodReason;
+export default Reason;
