@@ -1,9 +1,10 @@
 import React from "react";
+import ReasonByDate from './ReasonByDate';
 
 
-const CalendarBox = ({selectedResults}) => {
+const CalendarBox = (props) => {
 
-  const results = selectedResults.map(result => {
+  const results = props.selectedResults.map(result => {
     
     let dt = new Date(result.date);
 
@@ -12,22 +13,23 @@ const CalendarBox = ({selectedResults}) => {
     } else {
       var day_style = "red"
     }   
-    
-    return (<li id={result.id}>
-    <p>{result.dayComment}</p>
-    <p>{dt.getDate()}</p>
-    <p>{dt.getDay()}</p>
-    <p className={day_style}>{result.dayScore}</p>
-    <p></p>
-    </li>
-    )
+
+    return (<div className="panel" id={result.id}>{dt.getDate()}
+      <p>{result.dayComment}</p>
+      <p>{dt.getDay()}</p>
+      <p className={day_style}>{result.dayScore}</p>
+    </div>
+    )  
   })
 
     return(
         <>
-        <ul>
+        <ReasonByDate
+          onDateSubmit={props.onDateSubmit}
+        />
+        <div class="wrapper">
           {results}
-        </ul>
+        </div>
         </>
     )
 }

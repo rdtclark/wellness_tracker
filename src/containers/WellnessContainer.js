@@ -3,7 +3,6 @@ import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import QuestionList from '../components/QuestionList';
 import CalendarBox from '../components/CalendarBox';
-import ReviewList from '../components/ReviewList';
 import ReasonByDate from '../components/ReasonByDate';
 import Greeting from '../components/Greeting';
 import Footer from '../components/Footer';
@@ -127,8 +126,8 @@ class WellnessContainer extends Component{
             name={this.state.user.name}
             />
 
-            <ReasonByDate
-                onDateSubmit={this.handleDateSubmit}/>
+            {/* <ReasonByDate
+                onDateSubmit={this.handleDateSubmit}/> */}
 
             <Router>
                 <>
@@ -144,7 +143,8 @@ class WellnessContainer extends Component{
                     <Route 
                     path="/calendar"
                     render={() => <CalendarBox
-                        selectedResults={this.state.selectedResults} 
+                        selectedResults={this.state.selectedResults}
+                        onDateSubmit={this.handleDateSubmit} 
                          />}
                     />
 
@@ -153,9 +153,7 @@ class WellnessContainer extends Component{
                 </>
             </Router>
 
-                <ReviewList 
-                selectedResults={this.state.selectedResults} 
-                />
+
                 <Footer />
 
             </>
