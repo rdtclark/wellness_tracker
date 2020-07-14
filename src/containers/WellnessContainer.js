@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
+import NavBar from '../components/NavBar';
 import QuestionList from '../components/QuestionList';
+import CalendarBox from '../components/CalendarBox';
 import ReviewList from '../components/ReviewList';
 import ReasonByDate from '../components/ReasonByDate';
 import Greeting from '../components/Greeting';
 import Footer from '../components/Footer';
-// import { BrowserRouter as Router, Route } from "react-router-dom";
+import ErrorPage from "../components/ErrorPage";
+import Home from "../components/Home";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class WellnessContainer extends Component{
 
@@ -56,7 +60,7 @@ class WellnessContainer extends Component{
         let submission_day = new Date();
         if (submission_day.getHours() >= 17) {
             submission_day.setDate( submission_day.getDate() - 1 )
-            {console.log("its past 5PM, submitting for yesterday")}
+            // {console.log("its past 5PM, submitting for yesterday")}
         }
 
         let timestamp = submission_day.toISOString().split('T')[0];
@@ -125,18 +129,34 @@ class WellnessContainer extends Component{
 
         return(
             <>
-                <Header/>
 
-                <Greeting
-                name={this.state.user.name}
-                />
+            <Header/>
 
-                <QuestionList
-                questionList={this.state.questionList}
-                onAnswerSubmit={this.handleAnswerSubmit}
-                />
+            <Greeting
+            name={this.state.user.name}
+            />
 
+            <Router>
+                <>
+                    <NavBar />
+                    <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route
+                        path="/submission"
+                        render={() => <QuestionList 
+                            questionList={this.state.questionList}
+                            onAnswerSubmit={this.handleAnswerSubmit} />}
+                    />
+                    <Route 
+                    path="/calendar"
+                    render={() => <CalendarBox 
+                         />}
+                    />
 
+                    <Route component={ErrorPage}/>
+                    </Switch>
+                </>
+            </Router>
 
                 <ReasonByDate
                 onDateSubmit={this.handleDateSubmit}/>
