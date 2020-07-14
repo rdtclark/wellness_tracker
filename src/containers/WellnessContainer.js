@@ -112,6 +112,7 @@ class WellnessContainer extends Component{
     // }
 
     handleDateSubmit(dates){
+
         const url =`http://localhost:8080/submissions/1?from=${dates.startDate}&to=${dates.endDate}`
         fetch(url)
         .then(res => res.json())
@@ -135,14 +136,17 @@ class WellnessContainer extends Component{
                 onAnswerSubmit={this.handleAnswerSubmit}
                 />
 
-                <ReviewList 
-                previousResults={this.state.previousResults} 
-                previousResultsTest={this.state.previousResultsTest}/>
+
 
                 <ReasonByDate
                 onDateSubmit={this.handleDateSubmit}/>
 
+                <ReviewList 
+                previousResults={this.state.previousResults} 
+                previousResultsTest={this.state.previousResultsTest}/>
+
                 <Footer />
+
             </>
             )
         }
