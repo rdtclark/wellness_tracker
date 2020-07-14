@@ -114,29 +114,6 @@ class QuestionList extends Component {
     };
 
     render() {
-
-        
-        // const questions = this.props.questionList.map(question => {
-
-        //     if (!question.content && !question.id) return null;
-
-        //     return <div key={question.id}>
-        //     <p>
-        //     {question.content}
-        //     </p>
-
-        //     <input 
-        //     id={question.id} 
-        //     type="range" 
-        //     min="1" max="6" 
-        //     value={this.state[question.id]}
-        //     onChange={this.handleAnswerChange}
-        //     step="1"/>
-        //     </div>
-        
-        // });
-
-        
         
         return (
             <>
