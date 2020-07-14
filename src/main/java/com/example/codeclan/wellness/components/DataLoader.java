@@ -11,6 +11,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 @Component
@@ -33,6 +35,38 @@ public class DataLoader implements ApplicationRunner {
     }
     
     public void run(ApplicationArguments args) throws ParseException {
+
+        ArrayList<String> dailyAnswers = new ArrayList<String>();
+        Collections.addAll(dailyAnswers,
+                "Met my girlfriend", 
+                "Broke up with my girlfriend", 
+                "Did some sports", 
+                "The chips were amazing", 
+                "Went to a nice restaurant", 
+                "Had a nice swim",
+                "My scottish friend keeps bothering me with french fries",
+                "Wrote some good code",
+                "Had a bad day at work",
+                "Got wasted",
+                "I kissed the  Bride",
+                "Obama was okay I guess",
+                "Thanks Obama",
+                "Met with some strange family members",
+                "Great weather",
+                "Was late for work",
+                "Lost my job",
+                "................. FML",
+                "Watched The Godfather and ate too much chocolate",
+                "Didn't leave the house",
+                "Met with my family",
+                "Made lasagne",
+                "Had a fight with my friend",
+                "Made up with my friend",
+                "Finished reading Norwegian Wood",
+                "Applying for jobs",
+                "Learning some Italian");
+        
+        
         //Questions
         Question sleep = new Question("SLEEP", "How well did you sleep?");
         questionRepository.save(sleep);
@@ -48,6 +82,9 @@ public class DataLoader implements ApplicationRunner {
         
         Question physical = new Question("PHYSICAL", "Have you exercised?");
         questionRepository.save(physical);
+
+        Question dayQuestion = new Question("DAY", "Rate your day:");
+        questionRepository.save(dayQuestion);
                 
         //User
         User neil = new User("Neil");
@@ -69,8 +106,9 @@ public class DataLoader implements ApplicationRunner {
             }
 
             int score = (int)(Math.random() * 6) + 1;
+            int dayComment = (int)(Math.random() * dailyAnswers.size());
 
-            Submission submission = new Submission(neil, score, "Enjoyed my 10k run", String.format("2020-%s-%s", month, day));
+            Submission submission = new Submission(neil, score, dailyAnswers.get(dayComment), String.format("2020-%s-%s", month, day));
             submissionRepository.save(submission);
 
             score = (int)(Math.random() * 6) + 1;
