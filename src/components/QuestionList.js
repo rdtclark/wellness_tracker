@@ -289,6 +289,7 @@ function Step6(props) {
     <>
         <p>Score your day..</p>
         <input
+        className="slider"
         id="DAY" 
         type="range" 
         min="1" max="6" 
