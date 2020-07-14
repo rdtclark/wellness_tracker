@@ -205,6 +205,7 @@ function Step2(props) {
     <>
         <p>Did you eat well?</p>
         <input
+        className="slider"
         id="EAT" 
         type="range" 
         min="1" max="6" 
@@ -225,6 +226,7 @@ function Step3(props) {
     <>
         <p>Have you exercised?</p>
         <input
+        className="slider"
         id="PHYSICAL" 
         type="range" 
         min="1" max="6" 
@@ -245,6 +247,7 @@ function Step4(props) {
     <>
         <p>Did you learn anything new?</p>
         <input
+        className="slider"
         id="MENTAL" 
         type="range" 
         min="1" max="6" 
@@ -265,6 +268,7 @@ function Step5(props) {
     <>
         <p>Did you speak to anyone?</p>
         <input
+        className="slider"
         id="SOCIAL" 
         type="range" 
         min="1" max="6" 
