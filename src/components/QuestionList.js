@@ -5,6 +5,7 @@ class QuestionList extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            currentStep: 1,
             SLEEP: 3,
             EAT: 3,
             PHYSICAL: 3,
@@ -14,10 +15,9 @@ class QuestionList extends Component {
             dayComment: ""
         }
 
-        // Answer Bindings
+        // Answer Binding
         this.handleAnswerChange = this.handleAnswerChange.bind(this);
-        this.handleDayCommentChange = this.handleDayCommentChange.bind(this);
-        
+
         // Submit Binding
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -56,60 +56,289 @@ class QuestionList extends Component {
       });
     }
 
-    handleAnswerChange(event) {
+    _next = () => {
+        let currentStep = this.state.currentStep
+        currentStep = currentStep >= 6? 7: currentStep + 1
         this.setState({
-          [event.target.id]: event.target.value
-        });
-    }
-
-    handleDayCommentChange(event) {
+          currentStep: currentStep
+        })
+      }
+        
+    _prev = () => {
+        let currentStep = this.state.currentStep
+        currentStep = currentStep <= 1? 1: currentStep - 1
         this.setState({
-            dayComment: event.target.value
+            currentStep: currentStep
         })
     }
 
+    /*
+    * the functions for our button
+    */
+    previousButton() {
+        let currentStep = this.state.currentStep;
+        if(currentStep !==1){
+            return (
+                <button 
+                    className="btn btn-secondary" 
+                    type="button" onClick={this._prev}>
+                Previous
+                </button>
+            )
+        }
+        return null;
+    }
+    
+    nextButton(){
+        let currentStep = this.state.currentStep;
+        if(currentStep <7){
+            return (
+                <button 
+                    className="btn btn-primary float-right" 
+                    type="button" onClick={this._next}>
+                Next
+                </button>        
+            )
+        }
+        return null;
+    }
+
+    handleAnswerChange(event) {
+        this.setState({
+        [event.target.id]: event.target.value
+        });
+    }
+
+    questions() { 
+        return this.props.questionList 
+    };
+
     render() {
 
-        const questions = this.props.questionList.map(question => {
-
-            if (!question.content && !question.id) return null;
-
-            return <div key={question.id}>
-            <p>
-            {question.content}
-            </p>
-
-            <input 
-            id={question.id} 
-            type="range" 
-            min="1" max="6" 
-            value={this.state[question.id]}
-            onChange={this.handleAnswerChange}
-            step="1"/>
-            </div>
         
-        });
+        // const questions = this.props.questionList.map(question => {
+
+        //     if (!question.content && !question.id) return null;
+
+        //     return <div key={question.id}>
+        //     <p>
+        //     {question.content}
+        //     </p>
+
+        //     <input 
+        //     id={question.id} 
+        //     type="range" 
+        //     min="1" max="6" 
+        //     value={this.state[question.id]}
+        //     onChange={this.handleAnswerChange}
+        //     step="1"/>
+        //     </div>
+        
+        // });
+
+        
         
         return (
             <>
-                <form className="question-form" onSubmit={this.handleSubmit}>      
-                {questions}
-                <p>Good/Bad Day Reason [Box]</p>
-                <input 
-                type="text" 
-                placeholder="Answer"
-                id="day-comment"
-                value={this.state.dayComment}
-                onChange={this.handleDayCommentChange}
-                />
-                <input 
-                type="submit"
-                value="Post"
-                />
+                <h2>Wellness Submission for TODO..Make..Dynamic..Today</h2>
+                <p>Question {this.state.currentStep}</p> 
+                <form className="question-form" onSubmit={this.handleSubmit}>
+
+                    <Step1
+                    questions={this.props.questionList}
+                    currentStep={this.state.currentStep} 
+                    handleAnswerChange={this.handleAnswerChange}
+                    SLEEP={this.state.SLEEP}
+                    />
+
+                    <Step2
+                    currentStep={this.state.currentStep} 
+                    handleAnswerChange={this.handleAnswerChange}
+                    EAT={this.state.EAT}
+                    />
+
+                    <Step3
+                    currentStep={this.state.currentStep} 
+                    handleAnswerChange={this.handleAnswerChange}
+                    PHYSICAL={this.state.PHYSICAL}
+                    />
+
+                    <Step4
+                    currentStep={this.state.currentStep} 
+                    handleAnswerChange={this.handleAnswerChange}
+                    MENTAL={this.state.MENTAL}
+                    />
+
+                    <Step5
+                    currentStep={this.state.currentStep} 
+                    handleAnswerChange={this.handleAnswerChange}
+                    SOCIAL={this.state.SOCIAL}
+                    />
+
+                    <Step6
+                    currentStep={this.state.currentStep} 
+                    handleAnswerChange={this.handleAnswerChange}
+                    DAY={this.state.DAY}
+                    />
+
+                    <Step7
+                    currentStep={this.state.currentStep} 
+                    handleAnswerChange={this.handleAnswerChange}
+                    dayComment={this.state.dayComment}
+                    />
+
+                    {this.previousButton()}
+                    {this.nextButton()}
+                
                 </form>
             </>
         )
     }
+}
+
+
+// STEP 1 INPUT
+function Step1(props) {
+    if (props.currentStep !== 1) {
+      return null
+    } 
+    return(
+    <>
+        {console.log(props.questions.content)}
+        <p>How well did you sleep?</p>
+        <input
+        id="SLEEP" 
+        type="range" 
+        min="1" max="6" 
+        value={props.SLEEP}
+        onChange={props.handleAnswerChange}
+        step="1"
+        />
+    </>
+    );
+}
+
+// STEP 2 INPUT
+function Step2(props) {
+    if (props.currentStep !== 2) {
+      return null
+    } 
+    return(
+    <>
+        <p>Did you eat well?</p>
+        <input
+        id="EAT" 
+        type="range" 
+        min="1" max="6" 
+        value={props.EAT}
+        onChange={props.handleAnswerChange}
+        step="1"
+        />
+    </>
+    );
+}
+
+// STEP 3 INPUT
+function Step3(props) {
+    if (props.currentStep !== 3) {
+      return null
+    } 
+    return(
+    <>
+        <p>Have you exercised?</p>
+        <input
+        id="PHYSICAL" 
+        type="range" 
+        min="1" max="6" 
+        value={props.PHYSICAL}
+        onChange={props.handleAnswerChange}
+        step="1"
+        />
+    </>
+    );
+}
+
+// STEP 4 INPUT
+function Step4(props) {
+    if (props.currentStep !== 4) {
+      return null
+    } 
+    return(
+    <>
+        <p>Did you learn anything new?</p>
+        <input
+        id="MENTAL" 
+        type="range" 
+        min="1" max="6" 
+        value={props.MENTAL}
+        onChange={props.handleAnswerChange}
+        step="1"
+        />
+    </>
+    );
+}
+
+// STEP 5 INPUT
+function Step5(props) {
+    if (props.currentStep !== 5) {
+      return null
+    } 
+    return(
+    <>
+        <p>Did you speak to anyone?</p>
+        <input
+        id="SOCIAL" 
+        type="range" 
+        min="1" max="6" 
+        value={props.SOCIAL}
+        onChange={props.handleAnswerChange}
+        step="1"
+        />
+    </>
+    );
+}
+
+// STEP 6 INPUT
+function Step6(props) {
+    if (props.currentStep !== 6) {
+      return null
+    } 
+    return(
+    <>
+        <p>Score your day..</p>
+        <input
+        id="DAY" 
+        type="range" 
+        min="1" max="6" 
+        value={props.DAY}
+        onChange={props.handleAnswerChange}
+        step="1"
+        />
+    </>
+    );
+}
+
+// STEP 7 INPUT
+function Step7(props) {
+    if (props.currentStep !== 7) {
+      return null
+    } 
+    return(
+    <>
+        <p>Comments on your day...</p>
+        <input 
+        type="text" 
+        placeholder="Answer"
+        id="dayComment"
+        value={props.dayComment}
+        onChange={props.handleAnswerChange}
+        />
+        <input 
+        type="submit"
+        value="Post"
+        />
+    </>
+    );
 }
 
 
