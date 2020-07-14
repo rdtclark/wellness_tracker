@@ -184,6 +184,7 @@ function Step1(props) {
         {console.log(props.questions.content)}
         <p>How well did you sleep?</p>
         <input
+        className="slider"
         id="SLEEP" 
         type="range" 
         min="1" max="6" 
