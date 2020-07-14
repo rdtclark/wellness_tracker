@@ -8,6 +8,7 @@
   height: 100vh;
   display: block;
   padding-top: 100px;
+  /* opacity: 80%; */
 
   
 }
@@ -27,8 +28,6 @@
   outline: none;
   border-radius: 3px;
   opacity: 60%;
-
-
 
 }
 
@@ -56,6 +55,3 @@
   width: 48px;
   background-color: black;
 }
-
-
-

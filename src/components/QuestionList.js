@@ -96,7 +96,7 @@ class QuestionList extends Component {
         
         return (
             <>
-                <form className="" onSubmit={this.handleSubmit}>      
+                <form onSubmit={this.handleSubmit}>      
                 {questions}
                 <p>Good/Bad Day Reason [Box]</p>
                 <input className="field"
