@@ -320,5 +320,4 @@ function Step7(props) {
     );
 }
 
-
 export default QuestionList;
