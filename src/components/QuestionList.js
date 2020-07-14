@@ -80,7 +80,7 @@ class QuestionList extends Component {
         if(currentStep !==1){
             return (
                 <button 
-                    className="btn btn-secondary" 
+                    className="button is-light" 
                     type="button" onClick={this._prev}>
                 Previous
                 </button>
@@ -94,7 +94,7 @@ class QuestionList extends Component {
         if(currentStep <7){
             return (
                 <button 
-                    className="btn btn-primary float-right" 
+                    className="button is-primary float-right" 
                     type="button" onClick={this._next}>
                 Next
                 </button>        
@@ -303,14 +303,16 @@ function Step7(props) {
     return(
     <>
         <p>Comments on your day...</p>
-        <input 
+        <input
+        className="input is-rounded" 
         type="text" 
         placeholder="Answer"
         id="dayComment"
         value={props.dayComment}
         onChange={props.handleAnswerChange}
         />
-        <input 
+        <input
+        className="button is-success" 
         type="submit"
         value="Post"
         />
