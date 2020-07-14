@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import Header from '../components/Header';
 import QuestionList from '../components/QuestionList';
 import ReviewList from '../components/ReviewList';
 import ReasonByDate from '../components/ReasonByDate';
 import Greeting from '../components/Greeting';
+import Footer from '../components/Footer';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class WellnessContainer extends Component{
 
@@ -121,6 +124,8 @@ class WellnessContainer extends Component{
 
         return(
             <>
+                <Header/>
+
                 <Greeting
                 name={this.state.user.name}
                 />
@@ -136,6 +141,8 @@ class WellnessContainer extends Component{
 
                 <ReasonByDate
                 onDateSubmit={this.handleDateSubmit}/>
+
+                <Footer />
             </>
             )
         }
