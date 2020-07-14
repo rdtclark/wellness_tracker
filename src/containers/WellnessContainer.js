@@ -5,7 +5,7 @@ import ReviewList from '../components/ReviewList';
 import ReasonByDate from '../components/ReasonByDate';
 import Greeting from '../components/Greeting';
 import Footer from '../components/Footer';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class WellnessContainer extends Component{
 
