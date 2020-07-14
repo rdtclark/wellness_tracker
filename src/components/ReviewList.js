@@ -1,11 +1,11 @@
 import React from 'react';
 import Reason from './Reason';
 
-const ReviewList = ({previousResults, previousResultsTest}) => {
+const ReviewList = ({selectedResults, previousResultsTest}) => {
 
 //USING OUR BACKEND
 
-    const reasons = previousResults.map(reason => {
+    const reasons = selectedResults.map(reason => {
         return(
             <Reason
             reason={reason.dayComment}
