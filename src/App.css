@@ -1,38 +1,57 @@
-.App {
+.app{
+  box-sizing: border-box;
   text-align: center;
+  background-image: url("photo.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: block;
+  padding-top: 100px;
+  /* opacity: 80%; */
+
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.question-form{
+ font-size: large;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.btn{
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.slider{
+  -webkit-appearance: none;
+  width: 50%;
+  height: 7px;
+  outline: none;
+  border-radius: 3px;
+  opacity: 60%;
+
 }
 
-.App-link {
-  color: #61dafb;
+.slider::-webkit-slider-thumb{
+  /* -webkit-appearance: none; */
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  position: relative;
+  opacity: 60%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#selector{
+  height: 104px;
+  width: 48px;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -2;
+}
+
+.btn{
+  height: 58px;
+  width: 48px;
+  background-color: black;
 }

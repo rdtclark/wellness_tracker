@@ -184,6 +184,7 @@ function Step1(props) {
         {console.log(props.questions.content)}
         <p>How well did you sleep?</p>
         <input
+        className="slider"
         id="SLEEP" 
         type="range" 
         min="1" max="6" 
@@ -204,6 +205,7 @@ function Step2(props) {
     <>
         <p>Did you eat well?</p>
         <input
+        className="slider"
         id="EAT" 
         type="range" 
         min="1" max="6" 
@@ -224,6 +226,7 @@ function Step3(props) {
     <>
         <p>Have you exercised?</p>
         <input
+        className="slider"
         id="PHYSICAL" 
         type="range" 
         min="1" max="6" 
@@ -244,6 +247,7 @@ function Step4(props) {
     <>
         <p>Did you learn anything new?</p>
         <input
+        className="slider"
         id="MENTAL" 
         type="range" 
         min="1" max="6" 
@@ -264,6 +268,7 @@ function Step5(props) {
     <>
         <p>Did you speak to anyone?</p>
         <input
+        className="slider"
         id="SOCIAL" 
         type="range" 
         min="1" max="6" 
@@ -284,6 +289,7 @@ function Step6(props) {
     <>
         <p>Score your day..</p>
         <input
+        className="slider"
         id="DAY" 
         type="range" 
         min="1" max="6" 
@@ -319,5 +325,6 @@ function Step7(props) {
     </>
     );
 }
+
 
 export default QuestionList;
