@@ -42,29 +42,30 @@ const CalendarBox = (props) => {
     //colours for each day score number
     switch (result.dayScore){
       case 1:
-      var day_style = "dred"; 
+      var day_style = "one"; 
       break;
       case 2:
-      var day_style = "red"; 
+      var day_style = "two"; 
       break;
       case 3:
-      var day_style = "orange"; 
+      var day_style = "three"; 
       break;
       case 4:
-      var day_style = "yellow"; 
+      var day_style = "four"; 
       break;
       case 5:
-      var day_style = "green"; 
+      var day_style = "five"; 
       break;
       case 6:
-      var day_style = "bgreen"; 
+      var day_style = "six"; 
       break;
     }
 
-    return (<div className="panel" className={day_style} id={result.id}>{dt.getDate()}
-      <p><i>{result.dayComment}</i></p>
-      <p>{day}</p>
-      <p className={day_style}>{result.dayScore}</p>
+    return (<div className="panel" className={day_style} id={result.id}>
+      <p>{day} {dt.getDate()}</p>
+      <p>"<i>{result.dayComment}</i>"</p>
+      
+      <p className={day_style}>Rating: {result.dayScore}</p>
     </div>
     )  
   })

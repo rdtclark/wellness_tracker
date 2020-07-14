@@ -55,37 +55,37 @@
 
 /* Visual Day Score */
 
-.dred {
-  background-color: rgb(129, 130, 131);
+.one {
+  background-color: rgb(75, 75, 75);
   text-shadow: 1px 1px 3px rgb(105, 105, 105);
 
 }
 
-.red {
+.two {
   background-color:  rgb(90, 110, 129);
   text-shadow: 1px 1px 3px rgb(105, 105, 105);
 
 }
 
-.orange {
+.three {
   background-color:  rgb(55, 94, 133);
   text-shadow: 1px 1px 3px rgb(105, 105, 105);
 
 }
 
-.yellow {
+.four {
   background-color:  rgb(31, 87, 143);
   text-shadow: 1px 1px 3px rgb(105, 105, 105);
 
 }
 
-.green {
+.five {
   background-color:  rgb(19, 107, 196);
   text-shadow: 1px 1px 3px rgb(105, 105, 105);
 
 }
 
-.bgreen {
+.six {
   background-color:  rgb(0, 128, 255);
   text-shadow: 1px 1px 3px rgb(105, 105, 105);
 }
