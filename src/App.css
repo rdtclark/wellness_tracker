@@ -8,9 +8,8 @@
   height: 100vh;
   display: block;
   padding-top: 100px;
-  /* opacity: 80%; */
-
-  
+  background-position: fixed;
+  overflow: scroll; 
 }
 
 .question-form{
@@ -53,5 +52,25 @@
 .btn{
   height: 58px;
   width: 48px;
-  background-color: black;
+}
+
+.navbar-wrapper{
+  /* display:   */
+  opacity: 100%;
+  color: black;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 30px;
+  text-align: center;
+  position: top;
+  top: 0;
+  width: 100%;
+
+}
+
+.nav{
+  opacity: 50%;
+  color: black;
+  /* text-align: center;
+  flex: auto; */
 }

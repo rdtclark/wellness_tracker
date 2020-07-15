@@ -38,7 +38,7 @@ class WellnessContainer extends Component{
 
     componentDidMount() {
 
-        // Get all questiosn
+        // Get all questions
         const questions_url = "http://localhost:8080/questions"
 
         fetch(questions_url)
@@ -141,7 +141,7 @@ class WellnessContainer extends Component{
                     <NavBar />
                     <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route
+                    <Route 
                         path="/submission"
                         render={() => <QuestionList 
                             questionList={this.state.questionList}
