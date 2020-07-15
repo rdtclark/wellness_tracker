@@ -3,7 +3,6 @@ import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import QuestionList from '../components/QuestionList';
 import CalendarBox from '../components/CalendarBox';
-import ReasonByDate from '../components/ReasonByDate';
 import Greeting from '../components/Greeting';
 import Footer from '../components/Footer';
 import ErrorPage from "../components/ErrorPage";
@@ -89,21 +88,10 @@ class WellnessContainer extends Component{
                 ]
             })
         };
-
-        // console.log(requestOptions);
         fetch('http://localhost:8080/submissions', requestOptions)
         .then(response => response.json())
 
     }
-    
-    // componentDidMount(){
-    //     const url = "/submissions"
-
-    //     fetch(url)
-    //     .then(res => res.json())
-    //     .then(data => this.setState({previousResults: data}))
-
-    // }
 
     handleDateSubmit(dates){
 
@@ -125,9 +113,6 @@ class WellnessContainer extends Component{
             <Greeting
             name={this.state.user.name}
             />
-
-            {/* <ReasonByDate
-                onDateSubmit={this.handleDateSubmit}/> */}
 
             <Router>
                 <>
@@ -154,7 +139,7 @@ class WellnessContainer extends Component{
             </Router>
 
 
-                <Footer />
+            <Footer />
 
             </>
             )
