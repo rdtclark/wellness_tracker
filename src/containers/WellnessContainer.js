@@ -3,8 +3,6 @@ import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import QuestionList from '../components/QuestionList';
 import CalendarBox from '../components/CalendarBox';
-import ReviewList from '../components/ReviewList';
-import ReasonByDate from '../components/ReasonByDate';
 import Greeting from '../components/Greeting';
 import Footer from '../components/Footer';
 import ErrorPage from "../components/ErrorPage";
@@ -19,17 +17,8 @@ class WellnessContainer extends Component{
         this.state={
             user: [],
             questionList:[],
-            previousResults: [],
-            previousResultsTest: [
-                {"id": 1, "user": "Frank", "answers":[], "dayScore": 5, "dayComment": "Met with friends", "date": "12-06-2020"},
-                {"id": 1, "user": "Frank", "answers":[], "dayScore": 5, "dayComment": "Ate like a King", "date": "15-05-2020"},
-                {"id": 1, "user": "Frank", "answers":[], "dayScore": 5, "dayComment": "Finally starting to understand Ruby", "date": "16-05-2020"},
-                {"id": 2, "user": "Phil", "answers":[], "dayScore": 4, "dayComment": "Found a new cafe to write my novel", "date": "12-05-2020"},
-                {"id": 3, "user": "Jane", "answers":[], "dayScore": 2, "dayComment": "Didn't eat enough", "date": "14-06-2020"},
-                {"id": 4, "user": "Terry", "answers":[], "dayScore": 1, "dayComment": "Saw no one", "date": "18-05-2020"},
-                {"id": 4, "user": "Terry", "answers":[], "dayScore": 1, "dayComment": "Didn't want to get out of bed", "date": "19-06-2020"},
-                {"id": 4, "user": "Terry", "answers":[], "dayScore": 1, "dayComment": "Didn't leave the house", "date": "20-06-2020"}
-            ]
+            selectedResults: []
+            
         }
         this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
         this.handleDateSubmit = this.handleDateSubmit.bind(this);
@@ -39,7 +28,7 @@ class WellnessContainer extends Component{
 
     componentDidMount() {
 
-        // Get all questiosn
+        // Get all questions
         const questions_url = "http://localhost:8080/questions"
 
         fetch(questions_url)
@@ -111,8 +100,13 @@ class WellnessContainer extends Component{
         const url =`http://localhost:8080/submissions/1?from=${dates.startDate}&to=${dates.endDate}`
         fetch(url)
         .then(res => res.json())
+<<<<<<< HEAD
         .then(data => this.setState({previousResults: data}))
         // .then(console.log(this.state.previousResults));
+=======
+        .then(data => this.setState({selectedResults: data}))
+        .then(console.log(this.state.selectedResults));
+>>>>>>> develop
     }
 
 
@@ -123,6 +117,9 @@ class WellnessContainer extends Component{
 
             <Greeting name={this.state.user.name}/>
 
+            {/* <ReasonByDate
+                onDateSubmit={this.handleDateSubmit}/> */}
+
             <Router>
                 <>
                     <NavBar />
@@ -130,6 +127,7 @@ class WellnessContainer extends Component{
                     <ReasonByDate onDateSubmit={this.handleDateSubmit}/>
 
                     <Switch>
+<<<<<<< HEAD
                         <Route exact path="/" component={Home} />
                         <Route
                             path="/submission"
@@ -147,14 +145,37 @@ class WellnessContainer extends Component{
                         />
 
                         <Route component={ErrorPage}/>
+=======
+                    <Route exact path="/" component={Home} />
+                    <Route
+                    path="/submission"
+                    render={() => <QuestionList 
+                        questionList={this.state.questionList}
+                        onAnswerSubmit={this.handleAnswerSubmit} />}
+                    />
+                    <Route 
+                    path="/calendar"
+                    render={() => <CalendarBox
+                        selectedResults={this.state.selectedResults}
+                        onDateSubmit={this.handleDateSubmit} 
+                         />}
+                    />
+
+                    <Route component={ErrorPage}/>
+>>>>>>> develop
                     </Switch>
                 </>
             </Router>
 
+<<<<<<< HEAD
             <ReviewList 
                 previousResults={this.state.previousResults} 
                 previousResultsTest={this.state.previousResultsTest}
             />
+=======
+
+                <Footer />
+>>>>>>> develop
 
             <Footer />
             </>
