@@ -75,18 +75,33 @@ public class SubmissionController {
     }
 
     @GetMapping(value = "/trends/{userId}")
-    public ResponseEntity<List<String>> getTrends(@PathVariable Long userId) {
-        List<Submission> submissions = submissionRepository.findByUserIdAndDayScoreGreaterThan(userId, 3);
-        HashMap<String, Integer> trends = new HashMap<>();
-        for (Submission submission : submissions){
-            if (trends.containsKey(submission.getDayComment())){
-                int i = trends.get(submission.getDayComment()) + 1;
-                trends.replace(submission.getDayComment(), i);
-            }
-            else {
-                trends.put(submission.getDayComment(), 1);
+    public ResponseEntity<ArrayList> getTrends(@PathVariable Long userId) {
+        List<Submission> submissions = submissionRepository.findByUserIdAndDayScoreGreaterThan(userId, 0);
+        HashMap<String, Integer> goodTrends = new HashMap<>();
+        HashMap<String, Integer> badTrends = new HashMap<>();
+        ArrayList<HashMap> trends = new ArrayList();
+        for (Submission submission : submissions ){
+            if (submission.getDayScore() > 3) {
+                if (goodTrends.containsKey(submission.getDayComment())) {
+                    int i = goodTrends.get(submission.getDayComment()) + 1;
+                    goodTrends.replace(submission.getDayComment(), i);
+                } else {
+                    goodTrends.put(submission.getDayComment(), 1);
+                }
             }
         }
+        for (Submission submission : submissions ){
+            if (submission.getDayScore() < 4) {
+                if (badTrends.containsKey(submission.getDayComment())) {
+                    int i = badTrends.get(submission.getDayComment()) + 1;
+                    badTrends.replace(submission.getDayComment(), i);
+                } else {
+                    badTrends.put(submission.getDayComment(), 1);
+                }
+            }
+        }
+        trends.add(goodTrends);
+        trends.add(badTrends);
         return new ResponseEntity(trends, HttpStatus.OK);
     }
 
