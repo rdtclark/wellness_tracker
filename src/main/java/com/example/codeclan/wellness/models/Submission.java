@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.sql.Array;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -43,6 +44,8 @@ public class Submission {
     @Temporal(TemporalType.DATE)
     private Date date;
 
+    @Column(name = "trends")
+    private String[] trends;
 
 
     public Submission(User user, int dayScore, String dayComment, String dateString) throws ParseException {
@@ -52,6 +55,7 @@ public class Submission {
         this.dayComment = dayComment;
         this.answers = new ArrayList<>();
         this.date = format.parse(dateString);
+        this.trends = dayComment.split(",");
     }
 
     public Submission(){
@@ -101,5 +105,10 @@ public class Submission {
     public void setDayComment(String dayComment) {
         this.dayComment = dayComment;
     }
+
+//    public void splitDayComments(String dayComment){
+//        this.trends = dayComment.split(",");
+//        for (int i = 0; i < trends.length; i++);
+//    }
 
 }

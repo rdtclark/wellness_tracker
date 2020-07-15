@@ -4,6 +4,7 @@ import com.example.codeclan.wellness.models.Submission;
 import com.example.codeclan.wellness.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,4 +20,9 @@ public interface SubmissionRepository extends JpaRepository<Submission, Long> {
 
     List<Submission> findByUserIdAndDayScoreLessThan(Long userId, Integer dayScore);
 
+//    List<String> findByTrends(String dayComment);
+
+//    List<String> findByDayComment(String dayComment);
+
+    List<Submission> findByDayCommentContains(String keyWord);
 }
