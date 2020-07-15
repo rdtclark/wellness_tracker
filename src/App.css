@@ -16,10 +16,6 @@
  font-size: large;
 }
 
-.btn{
-
-}
-
 .slider{
   -webkit-appearance: none;
   width: 50%;
@@ -52,25 +48,105 @@
 .btn{
   height: 58px;
   width: 48px;
+  background-color: black;
 }
 
-.navbar-wrapper{
-  /* display:   */
-  opacity: 100%;
-  color: black;
+
+/* Visual Day Score */
+
+.one {
+  background-color: rgb(75, 75, 75);
+  text-shadow: 1px 1px 3px rgb(105, 105, 105);
+
+}
+
+.two {
+  background-color:  rgb(90, 110, 129);
+  text-shadow: 1px 1px 3px rgb(105, 105, 105);
+
+}
+
+.three {
+  background-color:  rgb(55, 94, 133);
+  text-shadow: 1px 1px 3px rgb(105, 105, 105);
+
+}
+
+.four {
+  background-color:  rgb(31, 87, 143);
+  text-shadow: 1px 1px 3px rgb(105, 105, 105);
+
+}
+
+.five {
+  background-color:  rgb(19, 107, 196);
+  text-shadow: 1px 1px 3px rgb(105, 105, 105);
+
+}
+
+.six {
+  background-color:  rgb(0, 128, 255);
+  text-shadow: 1px 1px 3px rgb(105, 105, 105);
+}
+
+/* Calendar Grid */
+
+*,
+*:before,
+*:after {
   box-sizing: border-box;
-  overflow: hidden;
-  padding: 30px;
-  text-align: center;
-  position: top;
-  top: 0;
-  width: 100%;
-
 }
 
-.nav{
-  opacity: 50%;
-  color: black;
-  /* text-align: center;
-  flex: auto; */
+.wrapper {
+  max-width: 940px;
+  margin: 0 20px;
+  display: grid;
+  grid-gap: 10px;
+}
+
+/* no grid support? */
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrapper {
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: minmax(150px, auto);
+}
+
+.panel {
+  /* needed for the flex layout*/
+  margin-left: 5px;
+  margin-right: 5px;
+  flex: 1 1 200px;
+  box-shadow: 1px 1px 5px grey;
+}
+
+.header,
+.footer {
+  margin-left: 5px;
+  margin-right: 5px;
+  flex: 0 1 100%;
+  grid-column: 1 / -1;
+}
+
+.wrapper > * {
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+  margin-bottom: 10px;
+}
+
+
+/* We need to set the margin used on flex items to 0 as we have gaps in grid.  */
+
+@supports (display: grid) {
+  .wrapper > * {
+    margin: 0;
+  }
 }
