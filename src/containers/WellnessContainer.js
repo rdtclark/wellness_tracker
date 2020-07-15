@@ -3,7 +3,6 @@ import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import QuestionList from '../components/QuestionList';
 import CalendarBox from '../components/CalendarBox';
-import ReasonByDate from '../components/ReasonByDate';
 import Greeting from '../components/Greeting';
 import Footer from '../components/Footer';
 import ErrorPage from "../components/ErrorPage";
@@ -134,19 +133,11 @@ class WellnessContainer extends Component{
                     <NavBar />
                     <Switch>
                     <Route exact path="/" component={Home} />
-<<<<<<< HEAD
-                    <Route 
-                        path="/submission"
-                        render={() => <QuestionList 
-                            questionList={this.state.questionList}
-                            onAnswerSubmit={this.handleAnswerSubmit} />}
-=======
                     <Route
                     path="/submission"
                     render={() => <QuestionList 
                         questionList={this.state.questionList}
                         onAnswerSubmit={this.handleAnswerSubmit} />}
->>>>>>> b276ad60e20158c573058129b965b8edecc15ce8
                     />
                     <Route 
                     path="/calendar"
