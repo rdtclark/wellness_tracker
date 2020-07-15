@@ -23,6 +23,7 @@
   outline: none;
   border-radius: 3px;
   opacity: 60%;
+  color: black;
 
 }
 
@@ -149,4 +150,32 @@
   .wrapper > * {
     margin: 0;
   }
+}
+
+
+.sliderValue1{
+  background-color: red;
+}
+
+.sliderValue2{
+  background-color: orange;
+}
+
+.sliderValue3{
+  background-color:#c5db1a;
+}
+
+.sliderValue4{
+  background-color:aqua;
+}
+.sliderValue5{
+  background-color: green;
+}
+
+.sliderValue6{
+  background-color: blue;
+}
+
+.sliderValue *{
+  color: aliceblue;
 }

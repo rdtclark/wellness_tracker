@@ -113,7 +113,11 @@ class QuestionList extends Component {
         return this.props.questionList 
     };
 
+   
+
     render() {
+
+       
         
         return (
             <>
@@ -175,14 +179,23 @@ class QuestionList extends Component {
 
 
 // STEP 1 INPUT
+
+// let slider = document.getElementById("myRange");
+// let output = document.getElementById("demo");
+// output.innerHTML = slider.value;
+
+// slider.oninput = function() {
+//     output.innerHTML = this.value;
+//   }
+
 function Step1(props) {
     if (props.currentStep !== 1) {
       return null
     } 
     return(
     <>
-        {console.log(props.questions.content)}
         <p>How well did you sleep?</p>
+        <p className={`sliderValue${props.SLEEP}`}>Selected Score: {props.SLEEP}</p>
         <input
         className="slider"
         id="SLEEP" 
@@ -204,6 +217,7 @@ function Step2(props) {
     return(
     <>
         <p>Did you eat well?</p>
+        <p className={`sliderValue${props.EAT}`}>Selected Score: {props.EAT}</p>
         <input
         className="slider"
         id="EAT" 
@@ -225,6 +239,7 @@ function Step3(props) {
     return(
     <>
         <p>Have you exercised?</p>
+        <p className={`sliderValue${props.PHYSICAL}`}>Selected Score: {props.PHYSICAL}</p>
         <input
         className="slider"
         id="PHYSICAL" 
@@ -246,6 +261,7 @@ function Step4(props) {
     return(
     <>
         <p>Did you learn anything new?</p>
+        <p className={`sliderValue${props.MENTAL}`}>Selected Score: {props.MENTAL}</p>
         <input
         className="slider"
         id="MENTAL" 
@@ -267,6 +283,7 @@ function Step5(props) {
     return(
     <>
         <p>Did you speak to anyone?</p>
+        <p className={`sliderValue${props.SOCIAL}`}>Selected Score: {props.SOCIAL}</p>
         <input
         className="slider"
         id="SOCIAL" 
@@ -288,6 +305,7 @@ function Step6(props) {
     return(
     <>
         <p>Score your day..</p>
+        <p className={`sliderValue${props.DAY}`}>Selected Score: {props.DAY}</p>
         <input
         className="slider"
         id="DAY" 
@@ -323,7 +341,9 @@ function Step7(props) {
         value="Post"
         />
     </>
+
     );
+    
 }
 
 export default QuestionList;
