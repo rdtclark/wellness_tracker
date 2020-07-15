@@ -18,7 +18,6 @@ class WellnessContainer extends Component{
             user: [],
             questionList:[],
             selectedResults: []
-            
         }
         this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
         this.handleDateSubmit = this.handleDateSubmit.bind(this);
@@ -100,13 +99,8 @@ class WellnessContainer extends Component{
         const url =`http://localhost:8080/submissions/1?from=${dates.startDate}&to=${dates.endDate}`
         fetch(url)
         .then(res => res.json())
-<<<<<<< HEAD
-        .then(data => this.setState({previousResults: data}))
-        // .then(console.log(this.state.previousResults));
-=======
         .then(data => this.setState({selectedResults: data}))
         .then(console.log(this.state.selectedResults));
->>>>>>> develop
     }
 
 
@@ -124,28 +118,9 @@ class WellnessContainer extends Component{
                 <>
                     <NavBar />
 
-                    <ReasonByDate onDateSubmit={this.handleDateSubmit}/>
+                    {/* <ReasonByDate onDateSubmit={this.handleDateSubmit}/> */}
 
                     <Switch>
-<<<<<<< HEAD
-                        <Route exact path="/" component={Home} />
-                        <Route
-                            path="/submission"
-                            render={() => <QuestionList 
-                                questionList={this.state.questionList}
-                                onAnswerSubmit={this.handleAnswerSubmit} />}
-                        />
-                        <Route 
-                            path="/calendar"
-                            render={() => <CalendarBox />}
-                        />
-                        <Route 
-                            path="/stats" 
-                            render={() => <Stats submissionsData={this.state.previousResults}/>} 
-                        />
-
-                        <Route component={ErrorPage}/>
-=======
                     <Route exact path="/" component={Home} />
                     <Route
                     path="/submission"
@@ -160,22 +135,21 @@ class WellnessContainer extends Component{
                         onDateSubmit={this.handleDateSubmit} 
                          />}
                     />
+                    <Route 
+                        path="/stats" 
+                        render={() => <Stats 
+                            submissionsData={this.state.selectedResults}
+                            onDateSubmit={this.handleDateSubmit}/>
+                        }
+                    />
 
                     <Route component={ErrorPage}/>
->>>>>>> develop
                     </Switch>
                 </>
             </Router>
 
-<<<<<<< HEAD
-            <ReviewList 
-                previousResults={this.state.previousResults} 
-                previousResultsTest={this.state.previousResultsTest}
-            />
-=======
 
                 <Footer />
->>>>>>> develop
 
             <Footer />
             </>

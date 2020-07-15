@@ -1,7 +1,8 @@
 import React from 'react';
+import ReasonByDate from "./ReasonByDate";
 import { Chart } from "react-google-charts";
 
-const Stats = ({submissionsData}) => {
+const Stats = (props) => {
 
   const stats = {
     dates: [],
@@ -13,15 +14,15 @@ const Stats = ({submissionsData}) => {
     physicalScores: []
   }
 
-  for(let i = 0 ; i < submissionsData.length ; i++ ) {
+  for(let i = 0 ; i < props.submissionsData.length ; i++ ) {
     // console.log(data[i]);
-    stats.dates.push(new Date(submissionsData[i].date));
-    stats.dayScores.push(submissionsData[i].dayScore);
-    stats.sleepScores.push(submissionsData[i].answers[1].score);
-    stats.eatScores.push(submissionsData[i].answers[1].score);
-    stats.mentalScores.push(submissionsData[i].answers[2].score);
-    stats.socialScores.push(submissionsData[i].answers[3].score);
-    stats.physicalScores.push(submissionsData[i].answers[4].score);
+    stats.dates.push(new Date(props.submissionsData[i].date));
+    stats.dayScores.push(props.submissionsData[i].dayScore);
+    stats.sleepScores.push(props.submissionsData[i].answers[1].score);
+    stats.eatScores.push(props.submissionsData[i].answers[1].score);
+    stats.mentalScores.push(props.submissionsData[i].answers[2].score);
+    stats.socialScores.push(props.submissionsData[i].answers[3].score);
+    stats.physicalScores.push(props.submissionsData[i].answers[4].score);
   }
 
   const data = [["Date", "Day score", "Sleep score", "Eat score", "Mental score", "Social score", "Physical score"]];
@@ -31,7 +32,10 @@ const Stats = ({submissionsData}) => {
   }
 
   return (
-    <div>
+    <>
+      <ReasonByDate
+        onDateSubmit={props.onDateSubmit}
+      />
       <Chart
         chartType="SteppedAreaChart"
         data={data}
@@ -39,7 +43,7 @@ const Stats = ({submissionsData}) => {
         height="400px"
         legendToggle
       />
-    </div>
+    </>
   )
 
 }
