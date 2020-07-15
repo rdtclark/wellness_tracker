@@ -13,6 +13,9 @@ const NavBar = () => (
     <li class="navtext">
       <Link to="/calendar">Review Results</Link>
     </li>
+    <li>
+      <Link to="/stats">View graphs</Link>
+    </li>
   </ul>
   </div>
 );
