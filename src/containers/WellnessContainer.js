@@ -3,7 +3,6 @@ import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import QuestionList from '../components/QuestionList';
 import CalendarBox from '../components/CalendarBox';
-import ReasonByDate from '../components/ReasonByDate';
 import Greeting from '../components/Greeting';
 import Footer from '../components/Footer';
 import ErrorPage from "../components/ErrorPage";
