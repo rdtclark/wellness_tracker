@@ -152,9 +152,26 @@
   }
 }
 
+.sliderValue{
+  display: flex;
+  flex-wrap: wrap;
+  width: 50px;
+  height: 50px;
+  padding: none;
+  margin: none;
+
+}
+
 
 .sliderValue1{
   background-color: red;
+  display: flex;
+  flex-wrap: wrap;
+  width: 50px;
+  height: 50px;
+  padding: none;
+  margin: none;
+  
 }
 
 .sliderValue2{
@@ -163,6 +180,9 @@
 
 .sliderValue3{
   background-color:#c5db1a;
+  padding: none;
+  margin: none;
+  display: block;
 }
 
 .sliderValue4{
