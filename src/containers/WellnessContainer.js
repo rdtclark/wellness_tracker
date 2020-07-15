@@ -41,6 +41,19 @@ class WellnessContainer extends Component{
         .then(res => res.json())
         .then(data => this.setState({user: data}))
 
+        // Get last week Data
+        const today = new Date();
+        const lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+        const todayString = today.toISOString().split('T')[0];
+        const lastWeekString = lastWeek.toISOString().split('T')[0];
+
+        const dates = {
+            startDate: lastWeekString,
+            endDate: todayString
+        }
+
+        this.handleDateSubmit(dates);
+
     }
 
     handleAnswerSubmit(submittedAnswers) {
@@ -100,7 +113,6 @@ class WellnessContainer extends Component{
         fetch(url)
         .then(res => res.json())
         .then(data => this.setState({selectedResults: data}))
-        .then(console.log(this.state.selectedResults));
     }
 
 
