@@ -23,10 +23,33 @@ class DayModal extends Component {
         if (this.state.modal) {
 
         const day_results = this.props.selectedDay.map(result => { 
+
+            switch (result.question){
+                case "SLEEP":
+                var ic = "fas fa-bed"; 
+                break;
+                case "EAT":
+                var ic = "fas fa-utensils"; 
+                break;
+                case "PHYSICAL":
+                var ic = "fas fa-dumbbell"; 
+                break;
+                case "MENTAL":
+                var ic = "fas fa-book"; 
+                break;
+                case "SOCIAL":
+                var ic = "fas fa-users"; 
+                break;
+                case "DAY":
+                var ic = "fas fa-star-half-alt"; 
+                break;
+            }
+        
+
             return <>
-            <i className="fas fa-camera"></i>
-            <p>{result.question}</p>
-            <p>{result.score}</p>
+            
+            {/* <p>{result.question}</p> */}
+            <p><i className={ic}></i> : {result.score}</p>
             </>
         })
 
