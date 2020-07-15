@@ -105,8 +105,8 @@ class WellnessContainer extends Component{
     render(){ 
         return(
             <>
-            <Header/>
-
+           
+            
             <Greeting name={this.state.user.name}/>
 
             <Router>
@@ -144,9 +144,7 @@ class WellnessContainer extends Component{
             </Router>
 
 
-            <Footer />
-
-            <Footer />
+            <Footer /> 
             </>
         )
     }

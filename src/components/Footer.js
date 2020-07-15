@@ -4,8 +4,8 @@ const Footer = () => {
 
     return (
         <>
-            <footer>
-                <h2>I am the footer</h2>
+            <footer className="footer">
+                <h2>I am the foot</h2>
             </footer>
         </>
 

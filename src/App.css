@@ -1,15 +1,14 @@
 .app{
   box-sizing: border-box;
   text-align: center;
-  background-image: url("photo.jpg");
+  background-image: url("calm.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
   display: block;
-  padding-top: 100px;
   background-position: fixed;
-  overflow: scroll; 
+  overflow: auto;
 }
 
 .question-form{
@@ -24,7 +23,6 @@
   border-radius: 3px;
   opacity: 60%;
   color: black;
-
 }
 
 .slider::-webkit-slider-thumb{
@@ -33,7 +31,7 @@
   height: 48px;
   cursor: pointer;
   position: relative;
-  opacity: 60%;
+  opacity: 100%;
 }
 
 #selector{
@@ -129,8 +127,6 @@
 
 .header,
 .footer {
-  margin-left: 5px;
-  margin-right: 5px;
   flex: 0 1 100%;
   grid-column: 1 / -1;
 }
@@ -152,7 +148,7 @@
   }
 }
 
-.sliderValue{
+/* .sliderValue{
   display: flex;
   flex-wrap: wrap;
   width: 50px;
@@ -160,42 +156,107 @@
   padding: none;
   margin: none;
 
-}
+} */
 
 
 .sliderValue1{
   background-color: red;
-  display: flex;
-  flex-wrap: wrap;
-  width: 50px;
-  height: 50px;
   padding: none;
-  margin: none;
-  
+  margin: auto;
+  width: 150px;
+  display:grid ;
+  grid-auto-flow: column;
+  background: rgba(0, 151, 19, 0.4);
 }
 
 .sliderValue2{
   background-color: orange;
+  padding: none;
+  margin: auto;
+  width: 150px;
+  display:grid ;
+  grid-auto-flow: column;
+  background: rgba(0, 151, 19, 0.4);
 }
 
 .sliderValue3{
   background-color:#c5db1a;
   padding: none;
-  margin: none;
-  display: block;
+  margin: auto;
+  width: 150px;
+  display:grid ;
+  grid-auto-flow: column;
+  background: rgba(0, 151, 19, 0.4);
+  border-radius: 5px;
+  
+
+
 }
 
 .sliderValue4{
   background-color:aqua;
+  padding: none;
+  margin: auto;
+  width: 150px;
+  display:grid ;
+  grid-auto-flow: column;
+  background: rgba(0, 151, 19, 0.4);
 }
 .sliderValue5{
   background-color: green;
+  padding: none;
+  margin: auto;
+  width: 150px;
+  display:grid ;
+  grid-auto-flow: column;
+  background: rgba(0, 151, 19, 0.4);
 }
 
 .sliderValue6{
   background-color: blue;
+  padding: none;
+  margin: auto;
+  width: 150px;
+  display:grid ;
+  grid-auto-flow: column;
+  background: rgba(0, 151, 19, 0.4);
 }
 
-.sliderValue *{
-  color: aliceblue;
+
+.text{
+  opacity: 100%;
+  text-decoration: solid;
+}
+
+.footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 10px;
+  text-align: center;
+  background: #1abc9c;
+  padding: 40px;
+}
+
+.header {
+  padding: 0, 0, 30px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 20px;
+  width: 100%;
+
+
+
+}
+
+.MainNav{
+  padding: 20px;
+}
+
+.menu{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
 }
