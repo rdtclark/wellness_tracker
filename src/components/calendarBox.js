@@ -1,6 +1,6 @@
 import React from "react";
 import ReasonByDate from './ReasonByDate';
-
+import DayModal from './DayModal';
 
 const CalendarBox = (props) => {
 
@@ -8,11 +8,11 @@ const CalendarBox = (props) => {
     
     let dt = new Date(result.date);
 
-    if (result.dayScore > 3){
-      var day_style = "green" 
-    } else {
-      var day_style = "red"
-    }
+    // if (result.dayScore > 3){
+    //   var day_style = "green" 
+    // } else {
+    //   var day_style = "red"
+    // }
 
     // Get days of the week
     switch (dt.getDay()){
