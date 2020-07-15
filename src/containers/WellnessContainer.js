@@ -134,19 +134,11 @@ class WellnessContainer extends Component{
                     <NavBar />
                     <Switch>
                     <Route exact path="/" component={Home} />
-<<<<<<< HEAD
-                    <Route 
-                        path="/submission"
-                        render={() => <QuestionList 
-                            questionList={this.state.questionList}
-                            onAnswerSubmit={this.handleAnswerSubmit} />}
-=======
                     <Route
                     path="/submission"
                     render={() => <QuestionList 
                         questionList={this.state.questionList}
                         onAnswerSubmit={this.handleAnswerSubmit} />}
->>>>>>> b276ad60e20158c573058129b965b8edecc15ce8
                     />
                     <Route 
                     path="/calendar"

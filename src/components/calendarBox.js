@@ -1,13 +1,6 @@
 import React from "react";
 import ReasonByDate from './ReasonByDate';
 
-<<<<<<< HEAD
-const CalendarBox = () => (
-  <div>
-    <h4>I am the Calendar Box</h4>
-  </div>
-);
-=======
 
 const CalendarBox = (props) => {
 
@@ -88,7 +81,6 @@ const CalendarBox = (props) => {
         </>
     )
 }
->>>>>>> b276ad60e20158c573058129b965b8edecc15ce8
 
 export default CalendarBox;
 
