@@ -9,6 +9,7 @@ import Greeting from '../components/Greeting';
 import Footer from '../components/Footer';
 import ErrorPage from "../components/ErrorPage";
 import Home from "../components/Home";
+import Stats from "../components/Stats";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class WellnessContainer extends Component{
@@ -105,70 +106,59 @@ class WellnessContainer extends Component{
         .then(response => response.json())
 
     }
-    
-    // componentDidMount(){
-    //     const url = "/submissions"
-
-    //     fetch(url)
-    //     .then(res => res.json())
-    //     .then(data => this.setState({previousResults: data}))
-
-    // }
 
     handleDateSubmit(dates){
-
         const url =`http://localhost:8080/submissions/1?from=${dates.startDate}&to=${dates.endDate}`
         fetch(url)
         .then(res => res.json())
         .then(data => this.setState({previousResults: data}))
-        .then(console.log(this.state.previousResults));
+        // .then(console.log(this.state.previousResults));
     }
 
 
     render(){ 
-
         return(
             <>
-
             <Header/>
 
-            <Greeting
-            name={this.state.user.name}
-            />
+            <Greeting name={this.state.user.name}/>
 
             <Router>
                 <>
                     <NavBar />
-                    <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route
-                        path="/submission"
-                        render={() => <QuestionList 
-                            questionList={this.state.questionList}
-                            onAnswerSubmit={this.handleAnswerSubmit} />}
-                    />
-                    <Route 
-                    path="/calendar"
-                    render={() => <CalendarBox 
-                         />}
-                    />
 
-                    <Route component={ErrorPage}/>
+                    <ReasonByDate onDateSubmit={this.handleDateSubmit}/>
+
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route
+                            path="/submission"
+                            render={() => <QuestionList 
+                                questionList={this.state.questionList}
+                                onAnswerSubmit={this.handleAnswerSubmit} />}
+                        />
+                        <Route 
+                            path="/calendar"
+                            render={() => <CalendarBox />}
+                        />
+                        <Route 
+                            path="/stats" 
+                            render={() => <Stats submissionsData={this.state.previousResults}/>} 
+                        />
+
+                        <Route component={ErrorPage}/>
                     </Switch>
                 </>
             </Router>
 
-                <ReasonByDate
-                onDateSubmit={this.handleDateSubmit}/>
-
-                <ReviewList 
+            <ReviewList 
                 previousResults={this.state.previousResults} 
-                previousResultsTest={this.state.previousResultsTest}/>
+                previousResultsTest={this.state.previousResultsTest}
+            />
 
-                <Footer />
-
+            <Footer />
             </>
-            )
-        }
+        )
+    }
 }
 export default WellnessContainer;
