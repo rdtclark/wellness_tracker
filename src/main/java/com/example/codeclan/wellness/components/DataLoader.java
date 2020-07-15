@@ -38,33 +38,37 @@ public class DataLoader implements ApplicationRunner {
 
         ArrayList<String> dailyAnswers = new ArrayList<String>();
         Collections.addAll(dailyAnswers,
-                "Met my girlfriend", 
-                "Broke up with my girlfriend", 
-                "Did some sports", 
-                "The chips were amazing", 
-                "Went to a nice restaurant", 
+                "Met my girlfriend",
+                "Played fives with the lads",
+                "Fish and chips for tea",
+                "Went to a nice restaurant",
                 "Had a nice swim",
-                "My scottish friend keeps bothering me with french fries",
+                "Ate like a king",
+                "Went for a walk with Pauline",
                 "Wrote some good code",
-                "Had a bad day at work",
+                "Strange day at work",
                 "Got wasted",
-                "I kissed the  Bride",
-                "Obama was okay I guess",
-                "Thanks Obama",
-                "Met with some strange family members",
+                "Didn't want to get out of bed",
+                "Met with Mikey and Brian",
+                "Went to the football",
+                "Watched 4 episodes of The Wire",
                 "Great weather",
                 "Was late for work",
-                "Lost my job",
-                "................. FML",
+                "Went out for steak",
+                "Did nothing",
                 "Watched The Godfather and ate too much chocolate",
+                "Broke up with my girlfriend",
                 "Didn't leave the house",
                 "Met with my family",
                 "Made lasagne",
-                "Had a fight with my friend",
-                "Made up with my friend",
+                "Chilled at home",
+                "Had a long call with Tony",
                 "Finished reading Norwegian Wood",
                 "Applying for jobs",
-                "Learning some Italian");
+                "Learning some Italian",
+                "Went for a walk with Brian",
+                "Had Tony and Pauline round for tea",
+                "Started reading my new book");
         
         
         //Questions
@@ -91,49 +95,38 @@ public class DataLoader implements ApplicationRunner {
         userRepository.save(neil);
 
         //Submission
-        for(int i =  1 ; i < 92 ; i++ ){
+        for(int i =  1 ; i <= 198 ; i++ ){
 
             int day = i;
-            int month = 1;
 
-            if( 31 < i && i < 60 ){
-                day = i - 31;
-                month = 2;
-            }
-            if( 60 < i && i < 92 ){
-                day =  i - 60;
-                month = 3;
-            }
 
-            int score = (int)(Math.random() * 6) + 1;
+            int score1 = (int)(Math.random() * 6) + 1;
+            int score2 = (int)(Math.random() * 6) + 1;
+            int score3 = (int)(Math.random() * 6) + 1;
+            int score4 = (int)(Math.random() * 6) + 1;
+            int score5 = (int)(Math.random() * 6) + 1;
+
+            int dayScore = (score1 + score2 + score3 + score4 + score5) / 5;
+
             int dayComment = (int)(Math.random() * dailyAnswers.size());
 
-            Submission submission = new Submission(neil, score, dailyAnswers.get(dayComment), String.format("2020-%s-%s", month, day));
+            Submission submission = new Submission(neil, dayScore, dailyAnswers.get(dayComment), String.format("2020-1-%s", day));
             submissionRepository.save(submission);
 
-            score = (int)(Math.random() * 6) + 1;
 
-            Answer answer1 = new Answer(submission, score, sleep.getId());
+            Answer answer1 = new Answer(submission, score1, sleep.getId());
             answerRepository.save(answer1);
 
-            score = (int)(Math.random() * 6) + 1;
-
-            Answer answer2 = new Answer(submission, 3, eat.getId());
+            Answer answer2 = new Answer(submission, score2, eat.getId());
             answerRepository.save(answer2);
 
-            score = (int)(Math.random() * 6) + 1;
-
-            Answer answer3 = new Answer(submission, 4, mental.getId());
+            Answer answer3 = new Answer(submission, score3, mental.getId());
             answerRepository.save(answer3);
 
-            score = (int)(Math.random() * 6) + 1;
-
-            Answer answer4 = new Answer(submission, 3, social.getId());
+            Answer answer4 = new Answer(submission, score4, social.getId());
             answerRepository.save(answer4);
 
-            score = (int)(Math.random() * 6) + 1;
-
-            Answer answer5 = new Answer(submission, 5, physical.getId());
+            Answer answer5 = new Answer(submission, score5, physical.getId());
             answerRepository.save(answer5);
         }
 

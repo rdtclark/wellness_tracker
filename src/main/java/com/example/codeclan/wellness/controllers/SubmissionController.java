@@ -59,7 +59,8 @@ public class SubmissionController {
                 return new ResponseEntity<>(submissionRepository.findByUserIdAndDayScoreLessThan(userId, dayScore), HttpStatus.OK);
             }
         }
-        return new ResponseEntity<>(submissionRepository.findByUserId(userId), HttpStatus.OK);
+        return new ResponseEntity("Request not allowed you need to select a time interval", HttpStatus.FORBIDDEN);
+
     }
 
     @GetMapping(value = "/submissions/{userId}/{id}")
