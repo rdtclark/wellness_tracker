@@ -20,22 +20,24 @@ class DayModal extends Component {
 
     modal() {
 
+        if (this.state.modal) {
+
         const day_results = this.props.selectedDay.map(result => { 
             return <>
+            <i className="fas fa-camera"></i>
             <p>{result.question}</p>
-            <p>{result.id}</p>
             <p>{result.score}</p>
             </>
         })
-
-        if (this.state.modal) {
 
         return (
             <div className="modal is-active">
                 <div className="modal-background"></div>
                 <div className="modal-content">
+                    <div className="box">
                     <p>Info about the day</p>
-                    <div>{day_results}</div>
+                    {day_results}
+                    </div>
                 </div>
                 <button 
                 onClick={this.modalAction} 
