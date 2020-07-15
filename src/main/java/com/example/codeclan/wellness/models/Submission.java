@@ -44,8 +44,8 @@ public class Submission {
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    @Column(name = "trends")
-    private String[] trends;
+//    @Column(name = "trends")
+//    private String[] trends;
 
 
     public Submission(User user, int dayScore, String dayComment, String dateString) throws ParseException {
@@ -55,7 +55,7 @@ public class Submission {
         this.dayComment = dayComment;
         this.answers = new ArrayList<>();
         this.date = format.parse(dateString);
-        this.trends = dayComment.split(",");
+//        this.trends = dayComment.split(",");
     }
 
     public Submission(){

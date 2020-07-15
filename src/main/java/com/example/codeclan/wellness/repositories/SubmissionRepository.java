@@ -22,7 +22,7 @@ public interface SubmissionRepository extends JpaRepository<Submission, Long> {
 
 //    List<String> findByTrends(String dayComment);
 
-//    List<String> findByDayComment(String dayComment);
+//    List<String> findByTrends();
 
     List<Submission> findByDayCommentContains(String keyWord);
 }

@@ -21,6 +21,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -71,6 +72,22 @@ public class SubmissionController {
     @GetMapping(value = "/submissions/{userId}/{id}")
     public ResponseEntity getSubmission(@PathVariable Long userId, @PathVariable Long id){
         return new ResponseEntity<>(submissionRepository.findByUserIdAndId(userId, id), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/trends/{userId}")
+    public ResponseEntity<List<String>> getTrends(@PathVariable Long userId) {
+        List<Submission> submissions = submissionRepository.findByUserIdAndDayScoreGreaterThan(userId, 3);
+        HashMap<String, Integer> trends = new HashMap<>();
+        for (Submission submission : submissions){
+            if (trends.containsKey(submission.getDayComment())){
+                int i = trends.get(submission.getDayComment()) + 1;
+                trends.replace(submission.getDayComment(), i);
+            }
+            else {
+                trends.put(submission.getDayComment(), 1);
+            }
+        }
+        return new ResponseEntity(trends, HttpStatus.OK);
     }
 
 
