@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import QuestionList from '../components/QuestionList';
-import CalendarBox from '../components/CalendarBox';
+import Results from '../components/Results';
 import Greeting from '../components/Greeting';
 import Footer from '../components/Footer';
 import ErrorPage from "../components/ErrorPage";
@@ -125,7 +125,7 @@ class WellnessContainer extends Component{
                     />
                     <Route 
                     path="/calendar"
-                    render={() => <CalendarBox
+                    render={() => <Results
                         selectedResults={this.state.selectedResults}
                         onDateSubmit={this.handleDateSubmit} 
                          />}
