@@ -7,6 +7,7 @@ import Greeting from '../components/Greeting';
 import Footer from '../components/Footer';
 import ErrorPage from "../components/ErrorPage";
 import Home from "../components/Home";
+import Stats from "../components/Stats";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class WellnessContainer extends Component{
@@ -17,7 +18,6 @@ class WellnessContainer extends Component{
             user: [],
             questionList:[],
             selectedResults: []
-            
         }
         this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
         this.handleDateSubmit = this.handleDateSubmit.bind(this);
@@ -94,7 +94,6 @@ class WellnessContainer extends Component{
     }
 
     handleDateSubmit(dates){
-
         const url =`http://localhost:8080/submissions/1?from=${dates.startDate}&to=${dates.endDate}`
         fetch(url)
         .then(res => res.json())
@@ -104,19 +103,18 @@ class WellnessContainer extends Component{
 
 
     render(){ 
-
         return(
             <>
-
             <Header/>
 
-            <Greeting
-            name={this.state.user.name}
-            />
+            <Greeting name={this.state.user.name}/>
 
             <Router>
                 <>
                     <NavBar />
+
+                    {/* <ReasonByDate onDateSubmit={this.handleDateSubmit}/> */}
+
                     <Switch>
                     <Route exact path="/" component={Home} />
                     <Route
@@ -132,6 +130,13 @@ class WellnessContainer extends Component{
                         onDateSubmit={this.handleDateSubmit} 
                          />}
                     />
+                    <Route 
+                        path="/stats" 
+                        render={() => <Stats 
+                            submissionsData={this.state.selectedResults}
+                            onDateSubmit={this.handleDateSubmit}/>
+                        }
+                    />
 
                     <Route component={ErrorPage}/>
                     </Switch>
@@ -141,8 +146,9 @@ class WellnessContainer extends Component{
 
             <Footer />
 
+            <Footer />
             </>
-            )
-        }
+        )
+    }
 }
 export default WellnessContainer;
