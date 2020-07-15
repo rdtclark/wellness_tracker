@@ -19,12 +19,23 @@ class DayModal extends Component {
     }
 
     modal() {
+
+        const day_results = this.props.selectedDay.map(result => { 
+            return <>
+            <p>{result.question}</p>
+            <p>{result.id}</p>
+            <p>{result.score}</p>
+            </>
+        })
+
         if (this.state.modal) {
+
         return (
-            <div class="modal">
-                <div class="modal-background"></div>
-                <div class="modal-content">
-                    <p>{this.state.selectedDay}</p>
+            <div className="modal is-active">
+                <div className="modal-background"></div>
+                <div className="modal-content">
+                    <p>Info about the day</p>
+                    <div>{day_results}</div>
                 </div>
                 <button 
                 onClick={this.modalAction} 
@@ -42,7 +53,7 @@ class DayModal extends Component {
         return (
             <>
             <button onClick={this.modalAction}>More Info</button>
-            <div>{this.modal()}</div>
+            {this.modal()}
             </>
         )
 

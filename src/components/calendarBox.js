@@ -61,11 +61,14 @@ const CalendarBox = (props) => {
       break;
     }
 
-    return (<div className="panel" className={day_style} id={result.id}>
+    return (<div className="panel" className={day_style} key={result.id} id={result.id}>
       <p>{day} {dt.getDate()}</p>
       <p>"<i>{result.dayComment}</i>"</p>
       
       <p className={day_style}>Rating: {result.dayScore}</p>
+      <DayModal
+      selectedDay={result.answers} 
+      />
     </div>
     )  
   })
@@ -75,7 +78,7 @@ const CalendarBox = (props) => {
         <ReasonByDate
           onDateSubmit={props.onDateSubmit}
         />
-        <div class="wrapper">
+        <div className="wrapper">
           {results}
         </div>
         </>
