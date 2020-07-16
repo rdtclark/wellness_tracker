@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import Header from '../components/Header';
-import NavBar from '../components/NavBar';
-import QuestionList from '../components/QuestionList';
-import Results from '../components/Results';
-import Greeting from '../components/Greeting';
-import Footer from '../components/Footer';
+import React, { Component } from "react";
+import Header from "../components/Header";
+import QuestionList from "../components/QuestionList";
+import Results from "../components/Results";
+import Greeting from "../components/Greeting";
+import Footer from "../components/Footer";
 import ErrorPage from "../components/ErrorPage";
 import Home from "../components/Home";
 import Stats from "../components/Stats";
@@ -127,18 +126,14 @@ class WellnessContainer extends Component{
     }
 
 
-    render(){ 
-        return(
+  render() {
+    return (
             <>
-            <Header/>
-
-            <Greeting name={this.state.user.name}/>
-
             <Router>
                 <>
-                    <NavBar />
+                    <Header />
 
-                    {/* <ReasonByDate onDateSubmit={this.handleDateSubmit}/> */}
+                    <Greeting name={this.state.user.name}/>
 
                     <Switch>
                     <Route exact path="/" component={Home} />
@@ -172,10 +167,8 @@ class WellnessContainer extends Component{
                 </>
             </Router>
 
-
             <Footer />
 
-            <Footer />
             </>
         )
     }
