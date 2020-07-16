@@ -62,6 +62,9 @@ public class SubmissionController {
                 return new ResponseEntity<>(submissionRepository.findByUserIdAndDayScoreLessThan(userId, dayScore), HttpStatus.OK);
             }
         }
+        if (dayScore != null){
+            return new ResponseEntity<>(submissionRepository.findByUserIdAndDayScore(userId, dayScore), HttpStatus.OK);
+        }
         if (keyWord != null){
             return new ResponseEntity<>(submissionRepository.findByDayCommentContains(keyWord),  HttpStatus.OK);
         }

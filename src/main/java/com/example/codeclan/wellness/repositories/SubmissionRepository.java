@@ -25,4 +25,6 @@ public interface SubmissionRepository extends JpaRepository<Submission, Long> {
 //    List<String> findByTrends();
 
     List<Submission> findByDayCommentContains(String keyWord);
+
+    List<Submission> findByUserIdAndDayScore(Long userId, Integer DayScore);
 }
