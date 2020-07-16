@@ -11,11 +11,24 @@ const Stats = (props) => {
     eatScores: [],
     mentalScores: [],
     socialScores: [],
-    physicalScores: []
+    physicalScores: [],
+    goodDays: []
   }
 
+  const goodDayData = ['Comment', 'Count']
+
+  const goodDayList = props.trends[0]
+  
+  const badDayList = stats.goodDays.push(props.trends[0])
+
+  // const goodDayPieData = Object.entries(props.trends)
+
+  console.log(Object.entries(stats.goodDays))
+
+
+
+
   for(let i = 0 ; i < props.submissionsData.length ; i++ ) {
-    // console.log(data[i]);
     stats.dates.push(new Date(props.submissionsData[i].date));
     stats.dayScores.push(props.submissionsData[i].dayScore);
     stats.sleepScores.push(props.submissionsData[i].answers[1].score);

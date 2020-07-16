@@ -91,6 +91,7 @@ class QuestionList extends Component {
         </button>
       );
     }
+<<<<<<< HEAD
     return null;
   }
 
@@ -106,6 +107,72 @@ class QuestionList extends Component {
           Next
         </button>
       );
+=======
+
+    questions() { 
+        return this.props.questionList 
+    };
+
+    render() {
+
+       
+        
+        return (
+            <>
+                <h2>Wellness Submission for TODO..Make..Dynamic..Today</h2>
+                <p>Question {this.state.currentStep}</p> 
+                <form className="question-form" onSubmit={this.handleSubmit}>
+
+                    <Step1
+                    questions={this.props.questionList}
+                    currentStep={this.state.currentStep} 
+                    handleAnswerChange={this.handleAnswerChange}
+                    SLEEP={this.state.SLEEP}
+                    />
+
+                    <Step2
+                    currentStep={this.state.currentStep} 
+                    handleAnswerChange={this.handleAnswerChange}
+                    EAT={this.state.EAT}
+                    />
+
+                    <Step3
+                    currentStep={this.state.currentStep} 
+                    handleAnswerChange={this.handleAnswerChange}
+                    PHYSICAL={this.state.PHYSICAL}
+                    />
+
+                    <Step4
+                    currentStep={this.state.currentStep} 
+                    handleAnswerChange={this.handleAnswerChange}
+                    MENTAL={this.state.MENTAL}
+                    />
+
+                    <Step5
+                    currentStep={this.state.currentStep} 
+                    handleAnswerChange={this.handleAnswerChange}
+                    SOCIAL={this.state.SOCIAL}
+                    />
+
+                    <Step6
+                    currentStep={this.state.currentStep} 
+                    handleAnswerChange={this.handleAnswerChange}
+                    DAY={this.state.DAY}
+                    />
+
+                    <Step7
+                    currentStep={this.state.currentStep} 
+                    handleAnswerChange={this.handleAnswerChange}
+                    dayComment={this.state.dayComment}
+                    />
+
+                    {this.previousButton()}
+                    {this.nextButton()}
+                
+                </form>
+            </>
+        )
+>>>>>>> develop
     }
     return null;
   }
@@ -184,15 +251,6 @@ class QuestionList extends Component {
 }
 
 // STEP 1 INPUT
-
-// let slider = document.getElementById("myRange");
-// let output = document.getElementById("demo");
-// output.innerHTML = slider.value;
-
-// slider.oninput = function() {
-//     output.innerHTML = this.value;
-//   }
-
 function Step1(props) {
   if (props.currentStep !== 1) {
     return null;
