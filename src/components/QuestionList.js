@@ -347,7 +347,6 @@ function Step7(props) {
         value={props.dayComment}
         onChange={props.handleAnswerChange}
       />
-      <textarea name="comment">Enter text here...</textarea>
       <input className="button is-success" type="submit" value="Post" />
     </>
   );
