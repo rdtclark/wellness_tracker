@@ -1,8 +1,9 @@
 .app{
   box-sizing: border-box;
   text-align: center;
-  background-image: url("calm.jpg");
+  /* background-image: url("plant.jpg"); */
   background-position: center;
+  /* background-image: url("./plant.jpg"); */
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -21,7 +22,6 @@
   height: 7px;
   outline: none;
   border-radius: 3px;
-  opacity: 60%;
   color: black;
 }
 
@@ -32,7 +32,14 @@
   cursor: pointer;
   position: relative;
   opacity: 100%;
+  background-color: black;
 }
+
+.slider{
+
+  background-color: rgb(135, 202, 135);
+}
+
 
 #selector{
   height: 104px;
@@ -45,11 +52,22 @@
 }
 
 .btn{
-  height: 58px;
-  width: 48px;
-  background-color: black;
+ color: white;
+ /* text-shadow: 1px 1px 3px rgb(105, 105, 105); */
+ padding-left: 10px;
+ padding-right: 10px;
+ margin-left: 10px;
+ margin-right: 10px;
 }
 
+.buttons{
+  /* color: white; */
+  /* text-shadow: 1px 1px 3px rgb(105, 105, 105); */
+  padding-left: 100px;
+  padding-right: 100px;
+  margin-left: 100px;
+  margin-right: 100px;
+ }
 
 /* Visual Day Score */
 
@@ -159,7 +177,7 @@
 } */
 
 
-.sliderValue1{
+/* .sliderValue1{
   background-color: red;
   padding: none;
   margin: auto;
@@ -188,9 +206,6 @@
   grid-auto-flow: column;
   background: rgba(0, 151, 19, 0.4);
   border-radius: 5px;
-  
-
-
 }
 
 .sliderValue4{
@@ -220,7 +235,7 @@
   display:grid ;
   grid-auto-flow: column;
   background: rgba(0, 151, 19, 0.4);
-}
+} */
 
 
 .text{
@@ -233,10 +248,11 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  /* height: 10px; */
+  height: 10px;
   text-align: center;
   background: #1abc9c;
-  padding: 20px;
+  padding: 25px;
+  background-color: #fff;
 }
 
 .header {
@@ -263,4 +279,26 @@
   padding: 40px 0 40px;
   text-decoration: underline;
   font-weight: 100;
+}
+
+
+.navbar-center{
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-direction: row;
+  padding-left: 10px;
+  padding-right: 110px;
+  margin-right: 10px;
+}
+
+.bottom-text{
+  padding-bottom: 10px;
+}
+
+.mainNav33{
+  margin-right: 10px;
+  margin-left: 10px;
 }

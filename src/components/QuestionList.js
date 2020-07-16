@@ -82,6 +82,22 @@ class QuestionList extends Component {
   /*
    * the functions for our button
    */
+
+  nextButton(){
+    let currentStep = this.state.currentStep;
+    if(currentStep <7){
+        return (
+            <button 
+                className="button is-primary float-right" 
+                type="button" onClick={this._next}>
+            Next
+            </button>        
+        )
+    }
+    return null;
+  }
+
+
   previousButton() {
     let currentStep = this.state.currentStep;
     if (currentStep !== 1) {
@@ -91,90 +107,6 @@ class QuestionList extends Component {
         </button>
       );
     }
-<<<<<<< HEAD
-    return null;
-  }
-
-  nextButton() {
-    let currentStep = this.state.currentStep;
-    if (currentStep < 7) {
-      return (
-        <button
-          className="button is-primary float-right"
-          type="button"
-          onClick={this._next}
-        >
-          Next
-        </button>
-      );
-=======
-
-    questions() { 
-        return this.props.questionList 
-    };
-
-    render() {
-
-       
-        
-        return (
-            <>
-                {/* <h2>Wellness Submission for TODO..Make..Dynamic..Today</h2> */}
-                <p>Question {this.state.currentStep}</p> 
-                <form className="question-form" onSubmit={this.handleSubmit}>
-
-                    <Step1
-                    questions={this.props.questionList}
-                    currentStep={this.state.currentStep} 
-                    handleAnswerChange={this.handleAnswerChange}
-                    SLEEP={this.state.SLEEP}
-                    />
-
-                    <Step2
-                    currentStep={this.state.currentStep} 
-                    handleAnswerChange={this.handleAnswerChange}
-                    EAT={this.state.EAT}
-                    />
-
-                    <Step3
-                    currentStep={this.state.currentStep} 
-                    handleAnswerChange={this.handleAnswerChange}
-                    PHYSICAL={this.state.PHYSICAL}
-                    />
-
-                    <Step4
-                    currentStep={this.state.currentStep} 
-                    handleAnswerChange={this.handleAnswerChange}
-                    MENTAL={this.state.MENTAL}
-                    />
-
-                    <Step5
-                    currentStep={this.state.currentStep} 
-                    handleAnswerChange={this.handleAnswerChange}
-                    SOCIAL={this.state.SOCIAL}
-                    />
-
-                    <Step6
-                    currentStep={this.state.currentStep} 
-                    handleAnswerChange={this.handleAnswerChange}
-                    DAY={this.state.DAY}
-                    />
-
-                    <Step7
-                    currentStep={this.state.currentStep} 
-                    handleAnswerChange={this.handleAnswerChange}
-                    dayComment={this.state.dayComment}
-                    />
-
-                    {this.previousButton()}
-                    {this.nextButton()}
-                
-                </form>
-            </>
-        )
->>>>>>> develop
-    }
-    return null;
   }
 
   handleAnswerChange(event) {
@@ -257,7 +189,7 @@ function Step1(props) {
   }
   return (
     <>
-      <p>How well did you sleep?</p>
+      <h2>How well did you sleep?</h2>
       {/* <p className={`sliderValue${props.SLEEP}`}>
         <div className="text">Selected Score: {props.SLEEP}</div>
       </p> */}
@@ -282,7 +214,7 @@ function Step2(props) {
   }
   return (
     <>
-      <p>Did you eat well?</p>
+      <h2>Did you eat well?</h2>
       {/* <p className={`sliderValue${props.EAT}`}>
         {" "}
         <div className="text">Selected Score: {props.EAT}</div>
@@ -308,7 +240,7 @@ function Step3(props) {
   }
   return (
     <>
-      <p>Have you exercised?</p>
+      <h2>Have you exercised?</h2>
       {/* <p className={`sliderValue${props.PHYSICAL}`}>
         {" "}
         <div className="text">Selected Score: {props.PHYSICAL}</div>
@@ -334,7 +266,7 @@ function Step4(props) {
   }
   return (
     <>
-      <p>Did you learn anything new?</p>
+      <h2>Did you learn anything new?</h2>
       {/* <p className={`sliderValue${props.MENTAL}`}>
         Selected Score: {props.MENTAL}
       </p> */}
@@ -359,7 +291,7 @@ function Step5(props) {
   }
   return (
     <>
-      <p>Did you speak to anyone?</p>
+      <h2>Did you speak to anyone?</h2>
       {/* <p className={`sliderValue${props.SOCIAL}`}>
         Selected Score: {props.SOCIAL}
       </p> */}
@@ -384,7 +316,7 @@ function Step6(props) {
   }
   return (
     <>
-      <p>Score your day..</p>
+      <h2>Score your day..</h2>
       {/* <p className={`sliderValue${props.DAY}`}>Selected Score: {props.DAY}</p> */}
       <input
         className="slider"
@@ -407,7 +339,7 @@ function Step7(props) {
   }
   return (
     <>
-      <p>Comments on your day...</p>
+      <h2>Comments on your day...</h2>
       <input
         className="input is-rounded"
         type="text"
