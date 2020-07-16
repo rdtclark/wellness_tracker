@@ -15,14 +15,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.ws.Response;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @RestController
 public class SubmissionController {
@@ -77,35 +76,73 @@ public class SubmissionController {
         return new ResponseEntity<>(submissionRepository.findByUserIdAndId(userId, id), HttpStatus.OK);
     }
 
+//    @GetMapping(value = "/trends/{userId}")
+//    public ResponseEntity<ArrayList> getTrends(@PathVariable Long userId) {
+//        List<Submission> submissions = submissionRepository.findByUserIdAndDayScoreGreaterThan(userId, 0);
+//        HashMap<String, Integer> goodTrends = new HashMap<>();
+//        HashMap<String, Integer> badTrends = new HashMap<>();
+//        ArrayList<HashMap> trends = new ArrayList();
+//        for (Submission submission : submissions ){
+//            if (submission.getDayScore() > 3) {
+//                if (goodTrends.containsKey(submission.getDayComment())) {
+//                    int i = goodTrends.get(submission.getDayComment()) + 1;
+//                    goodTrends.replace(submission.getDayComment(), i);
+//                } else {
+//                    goodTrends.put(submission.getDayComment(), 1);
+//                }
+//            }
+//        }
+//        for (Submission submission : submissions ){
+//            if (submission.getDayScore() < 4) {
+//                if (badTrends.containsKey(submission.getDayComment())) {
+//                    int i = badTrends.get(submission.getDayComment()) + 1;
+//                    badTrends.replace(submission.getDayComment(), i);
+//                } else {
+//                    badTrends.put(submission.getDayComment(), 1);
+//                }
+//            }
+//        }
+//        trends.add(goodTrends);
+//        trends.add(badTrends);
+//        return new ResponseEntity(trends, HttpStatus.OK);
+//    }
+
+    // /submissions/userId?dayScore=word
     @GetMapping(value = "/trends/{userId}")
-    public ResponseEntity<ArrayList> getTrends(@PathVariable Long userId) {
-        List<Submission> submissions = submissionRepository.findByUserIdAndDayScoreGreaterThan(userId, 0);
-        HashMap<String, Integer> goodTrends = new HashMap<>();
-        HashMap<String, Integer> badTrends = new HashMap<>();
-        ArrayList<HashMap> trends = new ArrayList();
-        for (Submission submission : submissions ){
-            if (submission.getDayScore() > 3) {
-                if (goodTrends.containsKey(submission.getDayComment())) {
-                    int i = goodTrends.get(submission.getDayComment()) + 1;
-                    goodTrends.replace(submission.getDayComment(), i);
-                } else {
-                    goodTrends.put(submission.getDayComment(), 1);
-                }
+    public ResponseEntity<ArrayList> getTrends(@PathVariable Long userId,
+                                               @RequestParam(name = "dayScore", required = false) Integer dayScore){
+        List<Submission> submissions = submissionRepository.findByUserIdAndDayScore(userId, dayScore);
+        HashMap<String, Integer> trendsObject = new HashMap<>();
+        ArrayList trendsArray = new ArrayList();
+            if (dayScore != null){
+                for (Submission submission : submissions ){
+                        if (trendsObject.containsKey(submission.getDayComment())) {
+                            int i = trendsObject.get(submission.getDayComment()) + 1;
+                            trendsObject.replace(submission.getDayComment(), i);
+                        } else {
+                            trendsObject.put(submission.getDayComment(), 1);
+                        }
+                    }
             }
+
+        ArrayList<HashMap<String, Integer>> array = new ArrayList();
+        for (Map.Entry<String, Integer> entry : trendsObject.entrySet())
+        {
+            String key = entry.getKey();
+            Integer value = entry.getValue();
+            HashMap<String, Integer> hash = new HashMap<>();
+            hash.put(key, value);
+            array.add(hash);
         }
-        for (Submission submission : submissions ){
-            if (submission.getDayScore() < 4) {
-                if (badTrends.containsKey(submission.getDayComment())) {
-                    int i = badTrends.get(submission.getDayComment()) + 1;
-                    badTrends.replace(submission.getDayComment(), i);
-                } else {
-                    badTrends.put(submission.getDayComment(), 1);
-                }
-            }
-        }
-        trends.add(goodTrends);
-        trends.add(badTrends);
-        return new ResponseEntity(trends, HttpStatus.OK);
+        Comparator<HashMap<String, Integer>> compareByValue = (HashMap<String, Integer> o1, HashMap<String, Integer> o2) -> ((Integer) o1.values().toArray()[0]).compareTo( (Integer)o2.values().toArray()[0] );
+        Collections.sort(array, compareByValue.reversed());
+
+//        HashMap<String, Integer> map = new HashMap<>();
+//        for (HashMap<String, Integer> object : array){
+//            map.putAll(object);
+//        }
+//        trendsArray.add(map);
+        return new ResponseEntity(array, HttpStatus.OK);
     }
 
 
