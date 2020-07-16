@@ -23,6 +23,7 @@
   outline: none;
   border-radius: 3px;
   opacity: 60%;
+  color: black;
 
 }
 
@@ -149,4 +150,52 @@
   .wrapper > * {
     margin: 0;
   }
+}
+
+.sliderValue{
+  display: flex;
+  flex-wrap: wrap;
+  width: 50px;
+  height: 50px;
+  padding: none;
+  margin: none;
+
+}
+
+
+.sliderValue1{
+  background-color: red;
+  display: flex;
+  flex-wrap: wrap;
+  width: 50px;
+  height: 50px;
+  padding: none;
+  margin: none;
+  
+}
+
+.sliderValue2{
+  background-color: orange;
+}
+
+.sliderValue3{
+  background-color:#c5db1a;
+  padding: none;
+  margin: none;
+  display: block;
+}
+
+.sliderValue4{
+  background-color:aqua;
+}
+.sliderValue5{
+  background-color: green;
+}
+
+.sliderValue6{
+  background-color: blue;
+}
+
+.sliderValue *{
+  color: aliceblue;
 }

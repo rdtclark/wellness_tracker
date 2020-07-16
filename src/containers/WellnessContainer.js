@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import QuestionList from '../components/QuestionList';
-import CalendarBox from '../components/CalendarBox';
+import Results from '../components/Results';
 import Greeting from '../components/Greeting';
 import Footer from '../components/Footer';
 import ErrorPage from "../components/ErrorPage";
@@ -19,7 +19,8 @@ class WellnessContainer extends Component{
             questionList:[],
             selectedResults: [],
             graphTitle: "",
-            graphData: []
+            graphData: [],
+            trends: []
         }
         this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
         this.handleDateSubmit = this.handleDateSubmit.bind(this);
@@ -32,14 +33,12 @@ class WellnessContainer extends Component{
 
         // Get all questions
         const questions_url = "http://localhost:8080/questions"
-
         fetch(questions_url)
         .then(res => res.json())
         .then(data => this.setState({questionList: data}))
 
         // Get User Data
         const users_url = "http://localhost:8080/users/1"
-
         fetch(users_url)
         .then(res => res.json())
         .then(data => this.setState({user: data}))
@@ -56,6 +55,11 @@ class WellnessContainer extends Component{
         }
 
         this.handleDateSubmit(dates);
+        // Get Trends Data
+        const trends_url = "http://localhost:8080/trends/1?dayScore=5"
+        fetch(trends_url)
+        .then(res => res.json())
+        .then(trends_data => this.setState({trends: trends_data}))
 
     }
 
@@ -104,8 +108,6 @@ class WellnessContainer extends Component{
                 ]
             })
         };
-
-        // console.log(requestOptions);
         fetch('http://localhost:8080/submissions', requestOptions)
         .then(response => response.json())
 
@@ -131,9 +133,6 @@ class WellnessContainer extends Component{
 
             <Greeting name={this.state.user.name}/>
 
-            {/* <ReasonByDate
-                onDateSubmit={this.handleDateSubmit}/> */}
-
             <Router>
                 <>
                     <NavBar />
@@ -150,14 +149,15 @@ class WellnessContainer extends Component{
                     />
                     <Route 
                     path="/calendar"
-                    render={() => <CalendarBox
+                    render={() => <Results
                         selectedResults={this.state.selectedResults}
                         onDateSubmit={this.handleDateSubmit} 
                          />}
                     />
                     <Route 
                         path="/stats" 
-                        render={() => <Stats 
+                        render={() => <Stats
+                            trends={this.state.trends} 
                             submissionsData={this.state.selectedResults}
                             graphTitle={this.state.graphTitle}
                             graphData={this.state.graphData}
@@ -172,7 +172,7 @@ class WellnessContainer extends Component{
             </Router>
 
 
-                <Footer />
+            <Footer />
 
             <Footer />
             </>
