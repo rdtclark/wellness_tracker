@@ -11,22 +11,17 @@ const Stats = (props) => {
     eatScores: [],
     mentalScores: [],
     socialScores: [],
-    physicalScores: [],
-    goodDays: []
+    physicalScores: []
   }
 
-  const goodDayData = ['Comment', 'Count']
+  const goodDayData = [['Comment', 'Occurrences']];
 
-  const goodDayList = props.trends[0]
-  
-  const badDayList = stats.goodDays.push(props.trends[0])
-
-  // const goodDayPieData = Object.entries(props.trends)
-
-  console.log(Object.entries(stats.goodDays))
-
-
-
+  for (const [key, value] of Object.entries(props.trends)) { 
+    for (const [key2, value2] of Object.entries(value)) {
+      let arr = [key2, parseInt(value2)]
+      goodDayData.push(arr);
+    }
+  }
 
   for(let i = 0 ; i < props.submissionsData.length ; i++ ) {
     stats.dates.push(new Date(props.submissionsData[i].date));
@@ -54,7 +49,20 @@ const Stats = (props) => {
         data={data}
         width="100%"
         height="400px"
-        legendToggle
+      />
+
+      <Chart
+        chartType="BarChart"
+        data={goodDayData}
+        width="100vw"
+        height="3000px"
+        options={{
+          title: 'Trends on Good Days',
+          chartArea: { width: '40%' },
+          colors: ['#b0120a'],
+          legend: { position: 'none' }
+        }
+      }
       />
     </>
   )
