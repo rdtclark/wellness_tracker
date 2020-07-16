@@ -76,37 +76,6 @@ public class SubmissionController {
         return new ResponseEntity<>(submissionRepository.findByUserIdAndId(userId, id), HttpStatus.OK);
     }
 
-//    @GetMapping(value = "/trends/{userId}")
-//    public ResponseEntity<ArrayList> getTrends(@PathVariable Long userId) {
-//        List<Submission> submissions = submissionRepository.findByUserIdAndDayScoreGreaterThan(userId, 0);
-//        HashMap<String, Integer> goodTrends = new HashMap<>();
-//        HashMap<String, Integer> badTrends = new HashMap<>();
-//        ArrayList<HashMap> trends = new ArrayList();
-//        for (Submission submission : submissions ){
-//            if (submission.getDayScore() > 3) {
-//                if (goodTrends.containsKey(submission.getDayComment())) {
-//                    int i = goodTrends.get(submission.getDayComment()) + 1;
-//                    goodTrends.replace(submission.getDayComment(), i);
-//                } else {
-//                    goodTrends.put(submission.getDayComment(), 1);
-//                }
-//            }
-//        }
-//        for (Submission submission : submissions ){
-//            if (submission.getDayScore() < 4) {
-//                if (badTrends.containsKey(submission.getDayComment())) {
-//                    int i = badTrends.get(submission.getDayComment()) + 1;
-//                    badTrends.replace(submission.getDayComment(), i);
-//                } else {
-//                    badTrends.put(submission.getDayComment(), 1);
-//                }
-//            }
-//        }
-//        trends.add(goodTrends);
-//        trends.add(badTrends);
-//        return new ResponseEntity(trends, HttpStatus.OK);
-//    }
-
     // /submissions/userId?dayScore=word
     @GetMapping(value = "/trends/{userId}")
     public ResponseEntity<ArrayList> getTrends(@PathVariable Long userId,
@@ -139,9 +108,10 @@ public class SubmissionController {
 
 //        HashMap<String, Integer> map = new HashMap<>();
 //        for (HashMap<String, Integer> object : array){
-//            map.putAll(object);
+//            map.put((String)object.keySet().toArray()[0], (Integer)object.values().toArray()[0]);
+////            Collections.sort(map);
 //        }
-//        trendsArray.add(map);
+//        array.add(map);
         return new ResponseEntity(array, HttpStatus.OK);
     }
 
