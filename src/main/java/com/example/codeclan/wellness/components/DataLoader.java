@@ -99,14 +99,47 @@ public class DataLoader implements ApplicationRunner {
 
             int day = i;
 
+            // Stats
+            int optimismLevel = 4;
+            int goodSleeper = 4;
+            int foodies = 5;
+            int partyMonster = 4;
+            int bookWorm = 3;
+            int broLevel = 2;
 
-            int score1 = (int)(Math.random() * 6) + 1;
-            int score2 = (int)(Math.random() * 6) + 1;
-            int score3 = (int)(Math.random() * 6) + 1;
-            int score4 = (int)(Math.random() * 6) + 1;
-            int score5 = (int)(Math.random() * 6) + 1;
+            int goodDay = 6;
+            int score1;
+            int score2;
+            int score3;
+            int score4;
+            int score5;
 
-            int dayScore = (score1 + score2 + score3 + score4 + score5) / 5;
+
+            if((int)(Math.random() * 6) > optimismLevel){
+                goodDay = 3;
+                score1 = goodDay - (int)(Math.random() * (6 - goodSleeper));
+                if(score1 < 1) score1 = 1;
+                score2 = goodDay - (int)(Math.random() * (6 - foodies));
+                if(score2 < 1) score2 = 1;
+                score3 = goodDay - (int)(Math.random() * (6 - partyMonster));
+                if(score3 < 1) score3 = 1;
+                score4 = goodDay - (int)(Math.random() * (6 - bookWorm));
+                if(score4 < 1) score4 = 1;
+                score5 = goodDay - (int)(Math.random() * (6 - broLevel));
+                if(score5 < 1) score5 = 1;
+            }
+            else {
+                score1 = goodDay - (int)(Math.random() * (6 - goodSleeper));
+                score2 = goodDay - (int)(Math.random() * (6 - foodies));
+                score3 = goodDay - (int)(Math.random() * (6 - partyMonster));
+                score4 = goodDay - (int)(Math.random() * (6 - bookWorm));
+                score5 = goodDay - (int)(Math.random() * (6 - broLevel));
+            }
+
+            int dayScore = goodDay - (int)(Math.random() * 3);
+
+
+
 
             int dayComment = (int)(Math.random() * dailyAnswers.size());
 
