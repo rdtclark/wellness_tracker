@@ -38,6 +38,19 @@ const Stats = (props) => {
     }
   }
 
+  //
+
+  const goodDayData = [['Comment', 'Occurrences']];
+
+  for (const [key, value] of Object.entries(props.trends)) { 
+    for (const [key2, value2] of Object.entries(value)) {
+      let arr = [key2, parseInt(value2)]
+      goodDayData.push(arr);
+    }
+  }
+
+  //
+
   let graphData = props.graphData;
   let graphTitle = props.graphTitle;
 
@@ -198,6 +211,20 @@ const Stats = (props) => {
       width="80%"
       height="400px"
       legendToggle
+      />
+
+      <Chart
+        chartType="BarChart"
+        data={goodDayData}
+        width="100vw"
+        height="3000px"
+        options={{
+          title: 'Trends on Good Days',
+          chartArea: { width: '40%' },
+          colors: ['#b0120a'],
+          legend: { position: 'none' }
+        }
+      }
       />
 
     </>

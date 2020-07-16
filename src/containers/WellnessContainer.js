@@ -55,6 +55,7 @@ class WellnessContainer extends Component{
         }
 
         this.handleDateSubmit(dates);
+        
         // Get Trends Data
         const trends_url = "http://localhost:8080/trends/1?dayScore=5"
         fetch(trends_url)
@@ -157,7 +158,7 @@ class WellnessContainer extends Component{
                     <Route 
                         path="/stats" 
                         render={() => <Stats
-                            trends={this.state.trends} 
+                            trends={this.state.trends}
                             submissionsData={this.state.selectedResults}
                             graphTitle={this.state.graphTitle}
                             graphData={this.state.graphData}
