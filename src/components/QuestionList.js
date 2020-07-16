@@ -113,8 +113,6 @@ class QuestionList extends Component {
         return this.props.questionList 
     };
 
-   
-
     render() {
 
        
@@ -179,15 +177,6 @@ class QuestionList extends Component {
 
 
 // STEP 1 INPUT
-
-// let slider = document.getElementById("myRange");
-// let output = document.getElementById("demo");
-// output.innerHTML = slider.value;
-
-// slider.oninput = function() {
-//     output.innerHTML = this.value;
-//   }
-
 function Step1(props) {
     if (props.currentStep !== 1) {
       return null

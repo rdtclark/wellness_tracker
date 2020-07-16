@@ -8,12 +8,6 @@ const Results = (props) => {
     
     let dt = new Date(result.date);
 
-    // if (result.dayScore > 3){
-    //   var day_style = "green" 
-    // } else {
-    //   var day_style = "red"
-    // }
-
     // Get days of the week
     switch (dt.getDay()){
       case 0:

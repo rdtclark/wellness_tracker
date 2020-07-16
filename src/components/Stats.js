@@ -33,6 +33,7 @@ const Stats = (props) => {
 
   return (
     <>
+    {console.log(props.trends)}
       <ReasonByDate
         onDateSubmit={props.onDateSubmit}
       />

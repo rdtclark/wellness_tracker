@@ -17,7 +17,8 @@ class WellnessContainer extends Component{
         this.state={
             user: [],
             questionList:[],
-            selectedResults: []
+            selectedResults: [],
+            trends: []
         }
         this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
         this.handleDateSubmit = this.handleDateSubmit.bind(this);
@@ -40,6 +41,13 @@ class WellnessContainer extends Component{
         fetch(users_url)
         .then(res => res.json())
         .then(data => this.setState({user: data}))
+
+        // Get Trends Data
+        const trends_url = "http://localhost:8080/trends/1"
+
+        fetch(trends_url)
+        .then(res => res.json())
+        .then(trends_data => this.setState({trends: trends_data}))
 
     }
 
@@ -132,7 +140,8 @@ class WellnessContainer extends Component{
                     />
                     <Route 
                         path="/stats" 
-                        render={() => <Stats 
+                        render={() => <Stats
+                            trends={this.state.trends} 
                             submissionsData={this.state.selectedResults}
                             onDateSubmit={this.handleDateSubmit}/>
                         }
