@@ -19,7 +19,8 @@ class WellnessContainer extends Component{
             selectedResults: [],
             graphTitle: "",
             graphData: [],
-            trends: []
+            trends: [],
+            showGraph: ""
         }
         this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
         this.handleDateSubmit = this.handleDateSubmit.bind(this);
@@ -122,7 +123,13 @@ class WellnessContainer extends Component{
 
     handleGraphSelected(title, data){
         this.setState({graphData: data});
-        this.setState({graphTitle: title})
+        this.setState({graphTitle: title});
+        if(title === "trending") {
+            this.setState({showGraph: "trend"});
+        }
+        else {
+            this.setState({showGraph: "scores"})
+        }
     }
 
 
@@ -154,6 +161,7 @@ class WellnessContainer extends Component{
                         path="/stats" 
                         render={() => <Stats
                             trends={this.state.trends}
+                            showGraph={this.state.showGraph}
                             submissionsData={this.state.selectedResults}
                             graphTitle={this.state.graphTitle}
                             graphData={this.state.graphData}

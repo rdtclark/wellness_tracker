@@ -13,7 +13,6 @@ class DayModal extends Component {
     }
 
     modalAction(event){
-        console.log(this.state.modal);
         this.setState({modal: !this.state.modal})
         this.setState({selectedDay: event.target.value})
     }

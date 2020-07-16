@@ -1,6 +1,7 @@
-import React from 'react';
+import React from "react";
 import ReasonByDate from "./ReasonByDate";
 import { Chart } from "react-google-charts";
+import DayModal from "./DayModal";
 
 const Stats = (props) => {
 
@@ -37,14 +38,15 @@ const Stats = (props) => {
       bad: []
     }
   }
+  let answers = [];
 
   //
-  const goodDayData = [['Comment', 'Occurrences']];
+  const commentData = [['Comment', 'Occurrences']];
 
   for (const [key, value] of Object.entries(props.trends)) { 
     for (const [key2, value2] of Object.entries(value)) {
       let arr = [key2, parseInt(value2)]
-      goodDayData.push(arr);
+      commentData.push(arr);
     }
   }
   //
@@ -138,6 +140,7 @@ const Stats = (props) => {
     const graphName = event.target.value;
     let data = [];
     let title = "";
+
     if( graphName === "dayScore" ) {
       data = dayData;
       title = "Well-being by day";
@@ -162,41 +165,55 @@ const Stats = (props) => {
       data = physicalData;
       title = "Physical by day";
     }
+    if( graphName === "trending" ) {
+      data = null;
+      title = "trending";
+    }
     props.onGraphSelected(title, data);
   }
 
   if(graphTitle === ""){
     graphData = dayData;
-    graphTitle = "Well-being score";
+    graphTitle = "Well-being by day";
   }
 
-  const melon = [
-    ["Protein",0.0168,"Melons, cantaloupe, raw"],
-    ["Carbohydrates",0.029672727272727274,"Melons, cantaloupe, raw"],
-    ["Vitamin C",0.4893333333333334,"Melons, cantaloupe, raw"],
-    ["Calcium",0.006923076923076923,"Melons, cantaloupe, raw"],
-    ["Zinc",0.0225,"Melons, cantaloupe, raw"],
-    ["Sodium",0.010666666666666666,"Melons, cantaloupe, raw"]
-  ];
-  const color = "blue";
+  // const handleOnClick = [
+  //   {
+  //     eventName: 'select',
+  //     callback: ({ chartWrapper }) => {
+  //       const chart = chartWrapper.getChart()
+  //       const selection = chart.getSelection()
+  //       if (selection.length === 1) {
+  //         const [selectedItem] = selection
+  //         const { row, column } = selectedItem
+  //         const date = graphData[row + 1][0]
+  //         const submission = props.submissionsData.find(submission =>  submission.date === date.toISOString().split('T')[0] )
+  //         answers = submission.answers;
+  //       }
+  //     }
+  //   }
+  // ]
 
-  return (
-    <>
-      <ReasonByDate
-        onDateSubmit={props.onDateSubmit}
-      />
-      <label htmlFor="graphs">Graphs</label>
+  function renderGraph() {
+    if(props.showGraph === "trend"){
+      return <Chart
+      className="graph"
+      chartType="BarChart"
+      data={commentData}
+      width="100%"
+      height="100%"
+      options={{
+        title: 'Trends on Good Days',
+        chartArea: { width: '40%' },
+        colors: ['#b0120a'],
+        legend: { position: 'none' }}}/>
+    }
+    // if(props.shwGraph === "modal"){
 
-      <select name="graphs" id="select-graphs" onChange={handleSelect}>
-        <option value="dayScore" defaultValue >Day score</option>
-        <option value="sleepScore">Sleeping score</option>
-        <option value="eatScore">Eating score</option>
-        <option value="mentalScore">Mental score</option>
-        <option value="socialScore">Social score</option>
-        <option value="physicalScore">Physical score</option>
-      </select>
-
-      <Chart
+    // }
+    else {
+      return <Chart
+      className="graph"
       chartType="SteppedAreaChart"
       data={graphData}
       options={{
@@ -206,25 +223,35 @@ const Stats = (props) => {
           'maxValue': 2.5
         }
       }}
-      width="80%"
+      width="100%"
       height="400px"
       legendToggle
+      // chartEvents={handleOnClick}
       />
+    }
+  }
 
-      <Chart
-        chartType="BarChart"
-        data={goodDayData}
-        width="100vw"
-        height="3000px"
-        options={{
-          title: 'Trends on Good Days',
-          chartArea: { width: '40%' },
-          colors: ['#b0120a'],
-          legend: { position: 'none' }
-        }
-      }
+  return (
+    <>
+      <ReasonByDate
+        onDateSubmit={props.onDateSubmit}
       />
+      <label htmlFor="graphs">Select Graphs: </label>
 
+      <select name="graphs" id="select-graphs" onChange={handleSelect}>
+        <option value="dayScore" defaultValue >Day score</option>
+        <option value="sleepScore">Sleeping score</option>
+        <option value="eatScore">Eating score</option>
+        <option value="mentalScore">Mental score</option>
+        <option value="socialScore">Social score</option>
+        <option value="physicalScore">Physical score</option>
+        <option value="trending">Trending</option>
+      </select>
+
+      <div className="stats">
+        {renderGraph()}
+      </div>
+      {/* <DayModal selectedDay={answers} /> */}
     </>
   )
 

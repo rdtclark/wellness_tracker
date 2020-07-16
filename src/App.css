@@ -302,3 +302,10 @@
   margin-right: 10px;
   margin-left: 10px;
 }
+
+.stats{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
