@@ -138,8 +138,6 @@ class WellnessContainer extends Component{
                 <>
                     <NavBar />
 
-                    {/* <ReasonByDate onDateSubmit={this.handleDateSubmit}/> */}
-
                     <Switch>
                     <Route exact path="/" component={Home} />
                     <Route
@@ -172,10 +170,8 @@ class WellnessContainer extends Component{
                 </>
             </Router>
 
-
             <Footer />
 
-            <Footer />
             </>
         )
     }
