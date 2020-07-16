@@ -41,7 +41,7 @@ class WellnessContainer extends Component{
         .then(data => this.setState({user: data}))
 
         // Get Trends Data
-        const trends_url = "http://localhost:8080/trends/1"
+        const trends_url = "http://localhost:8080/trends/1?dayScore=5"
         fetch(trends_url)
         .then(res => res.json())
         .then(trends_data => this.setState({trends: trends_data}))

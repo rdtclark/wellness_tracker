@@ -23,6 +23,14 @@ const Stats = (props) => {
     }
   }
 
+  // var output = props.trends.map(function(obj) {
+  //   return Object.keys(obj).sort().map(function(key) { 
+  //     return [obj, parseInt(key)];
+  //   });
+  // });
+
+  console.log(goodDayData)
+
   for(let i = 0 ; i < props.submissionsData.length ; i++ ) {
     stats.dates.push(new Date(props.submissionsData[i].date));
     stats.dayScores.push(props.submissionsData[i].dayScore);
