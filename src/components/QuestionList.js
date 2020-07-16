@@ -119,7 +119,7 @@ class QuestionList extends Component {
         
         return (
             <>
-                <h2>Wellness Submission for TODO..Make..Dynamic..Today</h2>
+                {/* <h2>Wellness Submission for TODO..Make..Dynamic..Today</h2> */}
                 <p>Question {this.state.currentStep}</p> 
                 <form className="question-form" onSubmit={this.handleSubmit}>
 
