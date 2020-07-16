@@ -30,21 +30,18 @@ class WellnessContainer extends Component{
 
         // Get all questions
         const questions_url = "http://localhost:8080/questions"
-
         fetch(questions_url)
         .then(res => res.json())
         .then(data => this.setState({questionList: data}))
 
         // Get User Data
         const users_url = "http://localhost:8080/users/1"
-
         fetch(users_url)
         .then(res => res.json())
         .then(data => this.setState({user: data}))
 
         // Get Trends Data
         const trends_url = "http://localhost:8080/trends/1"
-
         fetch(trends_url)
         .then(res => res.json())
         .then(trends_data => this.setState({trends: trends_data}))

@@ -25,23 +25,28 @@ class DayModal extends Component {
         const day_results = this.props.selectedDay.map(result => { 
 
             switch (result.question){
+
+
                 case "SLEEP":
                 var ic = "fas fa-bed"; 
                 break;
                 case "EAT":
-                var ic = "fas fa-utensils"; 
+                ic = "fas fa-utensils"; 
                 break;
                 case "PHYSICAL":
-                var ic = "fas fa-dumbbell"; 
+                ic = "fas fa-dumbbell"; 
                 break;
                 case "MENTAL":
-                var ic = "fas fa-book"; 
+                ic = "fas fa-book"; 
                 break;
                 case "SOCIAL":
-                var ic = "fas fa-users"; 
+                ic = "fas fa-users"; 
                 break;
                 case "DAY":
-                var ic = "fas fa-star-half-alt"; 
+                ic = "fas fa-star-half-alt"; 
+                break;
+                default:
+                ic = "fas fa-star-half-alt";
                 break;
             }
         

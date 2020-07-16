@@ -14,22 +14,25 @@ const Results = (props) => {
         var day = "Sunday";
         break;
       case 1:
-        var day = "Monday";
+        day = "Monday";
         break;
       case 2:
-        var day = "Tuesday";
+        day = "Tuesday";
         break;
       case 3:
-        var day = "Wednesday";
+        day = "Wednesday";
         break;
       case 4:
-        var day = "Thursday";
+        day = "Thursday";
         break;
       case 5:
-        var day = "Friday";
+        day = "Friday";
         break;
       case 6:
-        var day = "Saturday";
+        day = "Saturday";
+        break;
+      default:
+        day = "Sunday";
         break;  
     }
 
@@ -39,20 +42,23 @@ const Results = (props) => {
       var day_style = "one"; 
       break;
       case 2:
-      var day_style = "two"; 
+      day_style = "two"; 
       break;
       case 3:
-      var day_style = "three"; 
+      day_style = "three"; 
       break;
       case 4:
-      var day_style = "four"; 
+      day_style = "four"; 
       break;
       case 5:
-      var day_style = "five"; 
+      day_style = "five"; 
       break;
       case 6:
-      var day_style = "six"; 
+      day_style = "six"; 
       break;
+      default:
+      day_style = "one";
+      break;  
     }
 
     return (<div className="panel" className={day_style} key={result.id} id={result.id}>
