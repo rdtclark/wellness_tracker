@@ -122,7 +122,6 @@ class QuestionList extends Component {
   render() {
     return (
       <>
-        <h2>Wellness Submission for TODO..Make..Dynamic..Today</h2>
         <p>Question {this.state.currentStep}</p>
         <form className="question-form" onSubmit={this.handleSubmit}>
           <Step1
