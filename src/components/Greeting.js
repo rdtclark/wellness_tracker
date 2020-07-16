@@ -16,7 +16,7 @@ const Greeting = ({name}) => {
 
     return (
         <>
-            <h2>{greet}, {name}</h2>
+            <h2 className="greeting">{greet}, {name}</h2>
         </>
 
     )

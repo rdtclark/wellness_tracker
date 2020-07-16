@@ -9,8 +9,11 @@ import { Link } from "react-router-dom";
 const Header = () => (
     <div className="header">
     <ul className="menu">
+        {/* <li class="navtext">
+            <p>Wellness, It's an inside job.</p>
+        </li> */}
       <li class="navtext">
-        <Link to="/">Home</Link>
+        <Link to="/">Wellness, It's an inside job.</Link>
       </li>
       <li class="navtext">
         <Link to="/submission">Record your day</Link>

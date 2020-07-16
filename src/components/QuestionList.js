@@ -172,7 +172,7 @@ class QuestionList extends Component {
           {this.previousButton()}
           {this.nextButton()}
         </form>
-        {this.state.currentStep === 1 && `Sleep: ${this.state.SLEEP}`}
+        {this.state.currentStep === 1 && `SLEEP: ${this.state.SLEEP}`}
         {this.state.currentStep === 2 && `EAT: ${this.state.EAT}`}
         {this.state.currentStep === 3 && `PHYSICAL: ${this.state.PHYSICAL}`}
         {this.state.currentStep === 4 && `MENTAL: ${this.state.MENTAL}`}
