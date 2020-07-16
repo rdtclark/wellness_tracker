@@ -54,7 +54,7 @@ class ReasonByDate extends Component {
             <div>
                 <h1><b>Select a date</b></h1>
             <form onSubmit={this.handleSubmit}>
-                <label for="sdate">Start Date</label>
+                <label htmlFor="sdate">Start Date</label>
                 <input className="control"
                 type="date"
                 name="sdate"
@@ -62,7 +62,7 @@ class ReasonByDate extends Component {
                 onChange={this.handleStartDateChange}/>
 
 
-                <label for="edate">End Date</label>
+                <label htmlFor="edate">End Date</label>
                 <input className="control"
                 type="date"
                 name="edate"

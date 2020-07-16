@@ -17,10 +17,13 @@ class WellnessContainer extends Component{
         this.state={
             user: [],
             questionList:[],
-            selectedResults: []
+            selectedResults: [],
+            graphTitle: "",
+            graphData: []
         }
         this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
         this.handleDateSubmit = this.handleDateSubmit.bind(this);
+        this.handleGraphSelected = this.handleGraphSelected.bind(this);
     }
 
     // http://localhost:8080
@@ -115,6 +118,11 @@ class WellnessContainer extends Component{
         .then(data => this.setState({selectedResults: data}))
     }
 
+    handleGraphSelected(title, data){
+        this.setState({graphData: data});
+        this.setState({graphTitle: title})
+    }
+
 
     render(){ 
         return(
@@ -151,7 +159,10 @@ class WellnessContainer extends Component{
                         path="/stats" 
                         render={() => <Stats 
                             submissionsData={this.state.selectedResults}
-                            onDateSubmit={this.handleDateSubmit}/>
+                            graphTitle={this.state.graphTitle}
+                            graphData={this.state.graphData}
+                            onDateSubmit={this.handleDateSubmit}
+                            onGraphSelected={this.handleGraphSelected}/>
                         }
                     />
 

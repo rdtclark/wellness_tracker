@@ -70,13 +70,15 @@ const CalendarBox = (props) => {
     )  
   })
 
+  const reversedResults = results.reverse();
+
     return(
         <>
         <ReasonByDate
           onDateSubmit={props.onDateSubmit}
         />
         <div class="wrapper">
-          {results}
+          {reversedResults}
         </div>
         </>
     )

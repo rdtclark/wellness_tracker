@@ -38,6 +38,9 @@ const Stats = (props) => {
     }
   }
 
+  let graphData = props.graphData;
+  let graphTitle = props.graphTitle;
+
   const offset = 3.5;
 
   for(let i = 0 ; i < props.submissionsData.length ; i++ ) {
@@ -120,95 +123,83 @@ const Stats = (props) => {
     physicalData.push([stats.dates[i], stats.physical.good[i], stats.physical.bad[i]]);
   }
 
+  function handleSelect(event) {
+    const graphName = event.target.value;
+    let data = [];
+    let title = "";
+    if( graphName === "dayScore" ) {
+      data = dayData;
+      title = "Well-being by day";
+    }
+    if( graphName === "sleepScore" ) {
+      data = sleepData;
+      title = "Sleeping by day";
+    }
+    if( graphName === "eatScore" ) {
+      data = eatData;
+      title = "Eating by day";
+    }
+    if( graphName === "mentalScore" ) {
+      data = mentalData;
+      title = "Mental by day";
+    }
+    if( graphName === "socialScore" ) {
+      data = socialData;
+      title = "Socializing by day";
+    }
+    if( graphName === "physicalScore" ) {
+      data = physicalData;
+      title = "Physical by day";
+    }
+    props.onGraphSelected(title, data);
+  }
+
+  if(graphTitle === ""){
+    graphData = dayData;
+    graphTitle = "Well-being score";
+  }
+
+  const melon = [
+    ["Protein",0.0168,"Melons, cantaloupe, raw"],
+    ["Carbohydrates",0.029672727272727274,"Melons, cantaloupe, raw"],
+    ["Vitamin C",0.4893333333333334,"Melons, cantaloupe, raw"],
+    ["Calcium",0.006923076923076923,"Melons, cantaloupe, raw"],
+    ["Zinc",0.0225,"Melons, cantaloupe, raw"],
+    ["Sodium",0.010666666666666666,"Melons, cantaloupe, raw"]
+  ];
+  const color = "blue";
+
   return (
     <>
       <ReasonByDate
         onDateSubmit={props.onDateSubmit}
       />
+      <label htmlFor="graphs">Graphs</label>
+
+      <select name="graphs" id="select-graphs" onChange={handleSelect}>
+        <option value="dayScore" defaultValue >Day score</option>
+        <option value="sleepScore">Sleeping score</option>
+        <option value="eatScore">Eating score</option>
+        <option value="mentalScore">Mental score</option>
+        <option value="socialScore">Social score</option>
+        <option value="physicalScore">Physical score</option>
+      </select>
+
       <Chart
-        chartType="SteppedAreaChart"
-        data={dayData}
-        options={{
-          title: "Well-being by day",
-          vAxis: {
-            'minValue': -2.5, 
-            'maxValue': 2.5
-          }
-        }}
-        width="100%"
-        height="400px"
-        legendToggle
+      chartType="SteppedAreaChart"
+      data={graphData}
+      options={{
+        title: graphTitle,
+        vAxis: {
+          'minValue': -2.5, 
+          'maxValue': 2.5
+        }
+      }}
+      width="80%"
+      height="400px"
+      legendToggle
       />
-      <Chart
-        chartType="SteppedAreaChart"
-        data={sleepData}
-        options={{
-          title: "sleeping by day",
-          vAxis: {
-            'minValue': -2.5, 
-            'maxValue': 2.5
-          }
-        }}
-        width="100%"
-        height="400px"
-        legendToggle
-      />
-      <Chart
-        chartType="SteppedAreaChart"
-        data={eatData}
-        options={{
-          title: "Eating by day",
-          vAxis: {
-            'minValue': -2.5, 
-            'maxValue': 2.5
-          }
-        }}
-        width="100%"
-        height="400px"
-        legendToggle
-      />
-      <Chart
-        chartType="SteppedAreaChart"
-        data={mentalData}
-        options={{
-          title: "mental by day",
-          vAxis: {
-            'minValue': -2.5, 
-            'maxValue': 2.5
-          }
-        }}
-        width="100%"
-        height="400px"
-        legendToggle
-      />
-      <Chart
-        chartType="SteppedAreaChart"
-        data={socialData}
-        options={{
-          title: "Socializing by day",
-          vAxis: {
-            'minValue': -2.5, 
-            'maxValue': 2.5
-          }
-        }}
-        width="100%"
-        height="400px"
-        legendToggle
-      />
-      <Chart
-        chartType="SteppedAreaChart"
-        data={physicalData}
-        options={{
-          title: "Physical by day",
-          vAxis: {
-            'minValue': -2.5, 
-            'maxValue': 2.5
-          }
-        }}
-        width="100%"
-        height="400px"
-        legendToggle
-      />
+
     </>
   )
 
