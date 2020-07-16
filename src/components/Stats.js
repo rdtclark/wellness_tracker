@@ -201,7 +201,7 @@ const Stats = (props) => {
       chartType="BarChart"
       data={commentData}
       width="100%"
-      height="100%"
+      height="400px"
       options={{
         title: 'Trends on Good Days',
         chartArea: { width: '40%' },
