@@ -39,7 +39,6 @@ const Stats = (props) => {
   }
 
   //
-
   const goodDayData = [['Comment', 'Occurrences']];
 
   for (const [key, value] of Object.entries(props.trends)) { 
@@ -48,7 +47,6 @@ const Stats = (props) => {
       goodDayData.push(arr);
     }
   }
-
   //
 
   let graphData = props.graphData;
