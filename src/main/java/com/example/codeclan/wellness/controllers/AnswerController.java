@@ -1,7 +1,6 @@
 package com.example.codeclan.wellness.controllers;
 
 import com.example.codeclan.wellness.models.Answer;
-import com.example.codeclan.wellness.models.QuestionType;
 import com.example.codeclan.wellness.repositories.AnswerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,11 +22,6 @@ public class AnswerController {
     public ResponseEntity<List<Answer>> getAllAnswers(){
         return new ResponseEntity<>(answerRepository.findAll(), HttpStatus.OK);
     }
-
-//    @GetMapping("/answers/enums")
-//    public ResponseEntity<List<QuestionType>> getAllQuestions(){
-//        return new ResponseEntity<>(answerRepository.)
-//    }
 
     @PostMapping("/answers")
     public ResponseEntity<Answer> postAnswer(@RequestBody Answer answer){

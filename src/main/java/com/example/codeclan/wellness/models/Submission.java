@@ -24,7 +24,6 @@ public class Submission {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @JsonIgnoreProperties("submissions")
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -44,10 +43,6 @@ public class Submission {
     @Temporal(TemporalType.DATE)
     private Date date;
 
-//    @Column(name = "trends")
-//    private String[] trends;
-
-
     public Submission(User user, int dayScore, String dayComment, String dateString) throws ParseException {
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         this.user = user;
@@ -55,7 +50,6 @@ public class Submission {
         this.dayComment = dayComment;
         this.answers = new ArrayList<>();
         this.date = format.parse(dateString);
-//        this.trends = dayComment.split(",");
     }
 
     public Submission(){
@@ -105,10 +99,5 @@ public class Submission {
     public void setDayComment(String dayComment) {
         this.dayComment = dayComment;
     }
-
-//    public void splitDayComments(String dayComment){
-//        this.trends = dayComment.split(",");
-//        for (int i = 0; i < trends.length; i++);
-//    }
 
 }

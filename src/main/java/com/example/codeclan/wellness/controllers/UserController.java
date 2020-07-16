@@ -1,6 +1,5 @@
 package com.example.codeclan.wellness.controllers;
 
-import com.example.codeclan.wellness.models.QuestionType;
 import com.example.codeclan.wellness.models.Submission;
 import com.example.codeclan.wellness.models.User;
 import com.example.codeclan.wellness.repositories.SubmissionRepository;
@@ -10,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -38,10 +36,5 @@ public class UserController {
     public ResponseEntity<List<Submission>> getSubmissions(@PathVariable Long id){
         return new ResponseEntity<>(submissionRepository.findByUserId(id), HttpStatus.OK);
     }
-
-//    @GetMapping(value = "/questions")
-//    public ResponseEntity<List<QuestionType>> getQuestions(){
-//        return new ResponseEntity<>(userRepository.findByQuestions(), HttpStatus.OK);
-//    }
 
 }

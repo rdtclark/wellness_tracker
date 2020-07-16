@@ -1,8 +1,5 @@
 package com.example.codeclan.wellness.controllers.messages;
 
-import com.example.codeclan.wellness.models.Question;
-import com.example.codeclan.wellness.models.QuestionType;
-
 import java.io.Serializable;
 
 public class AnswerRequest implements Serializable {

@@ -35,7 +35,7 @@ public class SubmissionController {
     @Autowired
     AnswerRepository answerRepository;
 
-    // /submissions/userId?from=12-12-2020&to=31-12-2020
+    // /submissions/userId?from=2020-02-13&to=2020-04-13
     // /submissions/userId?dayScore=3&request=greater
     // /submissions/userId?dayScore=3&request=less
     // /submissions/userId?keyWord=word
@@ -76,7 +76,7 @@ public class SubmissionController {
         return new ResponseEntity<>(submissionRepository.findByUserIdAndId(userId, id), HttpStatus.OK);
     }
 
-    // /submissions/userId?dayScore=word
+    // /trends/1?dayScore=5
     @GetMapping(value = "/trends/{userId}")
     public ResponseEntity<ArrayList> getTrends(@PathVariable Long userId,
                                                @RequestParam(name = "dayScore", required = false) Integer dayScore){
@@ -105,19 +105,11 @@ public class SubmissionController {
         }
         Comparator<HashMap<String, Integer>> compareByValue = (HashMap<String, Integer> o1, HashMap<String, Integer> o2) -> ((Integer) o1.values().toArray()[0]).compareTo( (Integer)o2.values().toArray()[0] );
         Collections.sort(array, compareByValue.reversed());
-
-//        HashMap<String, Integer> map = new HashMap<>();
-//        for (HashMap<String, Integer> object : array){
-//            map.put((String)object.keySet().toArray()[0], (Integer)object.values().toArray()[0]);
-////            Collections.sort(map);
-//        }
-//        array.add(map);
         return new ResponseEntity(array, HttpStatus.OK);
     }
 
 
     @PostMapping("/submissions")
-//    @RequestMapping(method = RequestMethod.POST, path = "/submissions")
     public ResponseEntity postSubmission(@RequestBody SubmissionRequest sub) throws ParseException {
 
         User user = userRepository.findUserById(sub.getUserId());
