@@ -1,0 +1,39 @@
+version: '3.7'
+
+# Define services
+services:
+  # App backend service
+  app-server:
+    # Configuration for building the docker image for the backend service
+    build:
+      context: java_backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    restart: always
+    environment: # Pass environment variables to the service
+      SPRING_DATASOURCE_URL: jdbc:h2:file:./db/wellness_db 
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD: 
+    networks:
+      - backend
+      - frontend
+
+  # Frontend Service 
+  app-client:
+    build:
+      context: react_frontend 
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_API_BASE_URL: http://127.0.0.1:8080
+    ports:
+      - "9090:80"
+    restart: always
+    depends_on:
+      - app-server
+    networks:
+      - frontend  
+
+networks:
+  backend:
+  frontend:

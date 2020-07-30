@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import ErrorPage from "../components/ErrorPage";
 import Home from "../components/Home";
 import Stats from "../components/Stats";
+import { API_BASE_URL } from '../constants';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class WellnessContainer extends Component{
@@ -32,13 +33,13 @@ class WellnessContainer extends Component{
     componentDidMount() {
 
         // Get all questions
-        const questions_url = "http://localhost:8080/questions"
+	const questions_url = API_BASE_URL + "/questions"
         fetch(questions_url)
         .then(res => res.json())
         .then(data => this.setState({questionList: data}))
 
         // Get User Data
-        const users_url = "http://localhost:8080/users/1"
+	const users_url = API_BASE_URL + "/users/1"
         fetch(users_url)
         .then(res => res.json())
         .then(data => this.setState({user: data}))
@@ -57,7 +58,7 @@ class WellnessContainer extends Component{
         this.handleDateSubmit(dates);
         
         // Get Trends Data
-        const trends_url = "http://localhost:8080/trends/1?dayScore=5"
+        const trends_url = API_BASE_URL + "/trends/1?dayScore=5"
         fetch(trends_url)
         .then(res => res.json())
         .then(trends_data => this.setState({trends: trends_data}))
@@ -109,13 +110,13 @@ class WellnessContainer extends Component{
                 ]
             })
         };
-        fetch('http://localhost:8080/submissions', requestOptions)
+	    fetch(API_BASE_URL + '/submissions', requestOptions)
         .then(response => response.json())
 
     }
 
     handleDateSubmit(dates){
-        const url =`http://localhost:8080/submissions/1?from=${dates.startDate}&to=${dates.endDate}`
+        const url = API_BASE_URL + `/submissions/1?from=${dates.startDate}&to=${dates.endDate}`
         fetch(url)
         .then(res => res.json())
         .then(data => this.setState({selectedResults: data}))
