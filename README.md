@@ -1,15 +1,64 @@
+<p align="center"><img src="readme/logo.jpg"></img></p>
+
 # The Wellness Tracker
-> Track your wellbeing every day with 5 simple questions, and work out the leading of your best (or worst) days.
+> Track your wellbeing every day with 5 simple questions, and work out the leading cause of your best (or worst) days.
 
-Our wellbeing app is aimed towards individuals who want to track how they were feeling over a set period of time.
+Our wellbeing app is aimed towards individuals who want to track their wellness in 5 major areas.
 
-We will ask basic questions and evaluate on their answers to determine what made their day good/bad and suggest based on their answers, what actions are positive influences and what actions are negative.
+- Social
+- Diet
+- Sleep
+- Mental
+- Physical
+
+The app asks basic questions which map to a score between 1-6. Each of those answers is then evaluated to determine what made the users day good/bad. 
+The user can then look for trends to learn what are the positive and negative influences in their life.
+
+## Live Version
+http://www.amiwell.club
+
+Hosting Configuration:
+- Docker with Docker Compose
+- Nginx
+- Digital Ocean VPS
+- Ubuntu 18.04
+
+## Technology Used
+
+- Java Spring Boot Backend
+- H2 Database
+- React Frontend
+- Google Charts
 
 ## MVP
 
-Ask the user basic set up questions to do with 5 aspects in their life; sleeping, eating, social, and both mental and physical exercise.
+Ask the user questions to do with 5 aspects of their life on that day; sleeping, eating, social, mental and physical.
 
-Ask how they felt yesterday was after answering the above questions or, how the feel the day has gone.
+Ask the user for their answers for the day before unless it is past 5PM.
 
-- User can score questions
-- User can input a reason comment for a good day or bad day
+User is presented with a visual way to understand what they did on their best and worst days.
+
+### Database Layout
+
+![Database Layput](readme/database_layout.png)
+
+### User Stories during planning
+
+As a user I want to:
+
+- score my day based on 5 basic questions
+- input a reason comment for a good day or bad day
+- view top reason comments over time
+- answer questions one at a time, in a step-by-step way
+- answer questions for the day before if before 5PM
+
+### React Components Planned
+
+![React Components Planned](readme/components_before.png)
+
+### React Components Final
+
+![React Components Planned](readme/components_after.png)
+
+
+
